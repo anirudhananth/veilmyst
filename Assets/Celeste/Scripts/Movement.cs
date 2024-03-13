@@ -168,7 +168,8 @@ public class Movement : MonoBehaviour
     {
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-        FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+        // ------------------------- IMPORTANT -------------------------
+        // FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
         hasDashed = true;
 
@@ -183,7 +184,8 @@ public class Movement : MonoBehaviour
 
     IEnumerator DashWait()
     {
-        FindObjectOfType<GhostTrail>().ShowGhost();
+        // ------------------------- IMPORTANT -------------------------
+        // FindObjectOfType<GhostTrail>().ShowGhost();
         StartCoroutine(GroundDash());
         DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
