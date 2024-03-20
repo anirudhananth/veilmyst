@@ -3,12 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
     private Collision coll;
     [HideInInspector]
     public Rigidbody2D rb;
+
+    private PlayerInput input;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction dashAction;
+    private InputAction wallClimbAction;
+
     private AnimationScript anim;
 
     [Space]
@@ -52,16 +60,22 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        float xRaw = Input.GetAxisRaw("Horizontal");
-        float yRaw = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(x, y);
+        if (input == null)
+        {
+            input = GetComponent<PlayerInput>();
+            moveAction = input.actions["Move"];
+            jumpAction = input.actions["Jump"];
+            dashAction = input.actions["Dash"];
+            wallClimbAction = input.actions["WallClimb"];
+        }
+        Vector2 moveDelta = moveAction.ReadValue<Vector2>();
+        float x = moveDelta.x;
+        float y = moveDelta.y;
 
-        Walk(dir);
+        Walk(moveDelta);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        if (coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
         {
             if(side != coll.wallSide)
                 anim.Flip(side*-1);
@@ -69,7 +83,7 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
 
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
+        if (wallClimbAction.ReadValue<float>() == 0 || !coll.onWall || !canMove)
         {
             wallGrab = false;
             wallSlide = false;
@@ -108,7 +122,7 @@ public class Movement : MonoBehaviour
         if (!coll.onWall || coll.onGround)
             wallSlide = false;
 
-        if (Input.GetButtonDown("Jump"))
+        if (jumpAction.triggered)
         {
             anim.SetTrigger("jump");
 
@@ -118,10 +132,10 @@ public class Movement : MonoBehaviour
                 WallJump();
         }
 
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
+        if (dashAction.triggered && !hasDashed)
         {
-            if(xRaw != 0 || yRaw != 0)
-                Dash(xRaw, yRaw);
+            if(x != 0 || y != 0)
+                Dash(x, y);
         }
 
         if (coll.onGround && !groundTouch)
