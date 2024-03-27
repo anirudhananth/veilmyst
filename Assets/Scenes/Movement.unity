@@ -296,18 +296,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6754429991695949415, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754429991695949415, guid: 0b691e463df234e1aa7eea7572b5f94f,
+        type: 3}
       propertyPath: m_PixelSnapping
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6754429991695949415, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
       propertyPath: m_RefResolutionX
-      value: 380
+      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 6754429991695949415, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
       propertyPath: m_RefResolutionY
-      value: 210
+      value: 270
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
