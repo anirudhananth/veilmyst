@@ -25,21 +25,34 @@ public class Movement : MonoBehaviour
     public float jumpForce = 50;
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
-    public float dashSpeed = 20;
+    public float dashSpeed = 10f;
 
     [Space]
     [Header("Booleans")]
     public bool canMove;
     public bool wallGrab;
+    public bool canWallGrab;
     public bool wallJumped;
     public bool wallSlide;
+    public bool canWallSlide = true;
+    public bool canDash = true;
     public bool isDashing;
+    public bool hasDashed;
+    public bool isHoldingJump;
+    public bool canJump;
+    public bool isGroundDash;
+    public bool isGroundDashing;
+    public bool isGroundDashed;
+    public bool isGroundDashWindow;
 
     [Space]
 
     private bool groundTouch;
-    private bool hasDashed;
-
+    [NonSerialized]
+    private float x, y;
+    private float coyoteTime = 0.1f;
+    private float coyoteTimeCounter;
+    
     public int side = 1;
 
     [Space]
@@ -55,6 +68,7 @@ public class Movement : MonoBehaviour
         coll = GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
+            rb.gravityScale = 3;
     }
 
     // Update is called once per frame
@@ -69,13 +83,14 @@ public class Movement : MonoBehaviour
             wallClimbAction = input.actions["WallClimb"];
         }
         Vector2 moveDelta = moveAction.ReadValue<Vector2>();
-        float x = moveDelta.x;
-        float y = moveDelta.y;
+        x = moveDelta.x;
+        y = moveDelta.y;
+        Vector2 dir = new Vector2(x, y);
 
         Walk(moveDelta);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
+        if (canWallGrab && coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
         {
             if(side != coll.wallSide)
                 anim.Flip(side*-1);
@@ -105,37 +120,56 @@ public class Movement : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
         }
-        else
+        else if (!wallGrab && !isDashing)
         {
             rb.gravityScale = 3;
         }
 
-        if(coll.onWall && !coll.onGround)
+        if(coll.onWall && !coll.onGround && !isDashing)
         {
-            if (x != 0 && !wallGrab)
+            if (x != 0 && !wallGrab && (canWallSlide || rb.velocity.y < 0))
             {
                 wallSlide = true;
                 WallSlide();
             }
         }
 
-        if (!coll.onWall || coll.onGround)
+        if (!coll.onWall || coll.onGround) {
             wallSlide = false;
-
+        }
+        
         if (jumpAction.triggered)
         {
+            isHoldingJump = true;
             anim.SetTrigger("jump");
 
-            if (coll.onGround)
+            canWallSlide = true;
+            if (coll.onWall && coll.onGround) {
+                canWallSlide = false;
+                StartCoroutine(SetWallSlide());
                 Jump(Vector2.up, false);
-            if (coll.onWall && !coll.onGround)
+                return;
+            }
+            if (!coll.onWall && coyoteTimeCounter > 0 && ((isDashing && isGroundDash) || !isDashing)) 
+            {
+                Jump(Vector2.up, false);
+                return;
+            }
+            if (coll.onWall && !coll.onGround && ((isDashing && isGroundDash) || !isDashing))
+            {    
                 WallJump();
+                return;
+            }
         }
 
-        if (dashAction.triggered && !hasDashed)
+        if (Input.GetButtonUp("Jump")) {
+            isHoldingJump = false;
+            canJump = true;
+        }
+
+        if (canDash && dashAction.triggered && !hasDashed)
         {
-            if(x != 0 || y != 0)
-                Dash(x, y);
+            Dash(x, y);
         }
 
         if (coll.onGround && !groundTouch)
@@ -149,23 +183,75 @@ public class Movement : MonoBehaviour
             groundTouch = false;
         }
 
+        if(coll.onGround) {
+            if(rb.velocity.y < 0) {
+                rb.velocity = new(rb.velocity.x, 0);
+            }
+        }
+
         WallParticle(y);
+
+        // if(hasDashed && !isDashing && (coll.onGround || coll.onWall)) {
+        //     hasDashed = false;
+        // }
+
+        if(!hasDashed && !isDashing && coll.onGround) {
+            canDash = true;
+        }
+
+        if(isGroundDashed && (coll.onGround || coll.onWall)) {
+            StartCoroutine(ResetDash());
+            isGroundDashing = false;
+            hasDashed = false;
+            isDashing = false;
+            isGroundDashed = false;
+            GetComponent<BetterJumping>().enabled = true;
+        }
+
+        if(coll.onGround) {
+            coyoteTimeCounter = coyoteTime;
+        } else {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
         if (wallGrab || wallSlide || !canMove)
             return;
 
-        if(x > 0)
-        {
-            side = 1;
-            anim.Flip(side);
+        if(!isDashing) {
+            if(x > 0)
+            {
+                side = 1;
+                anim.Flip(side);
+            }
+            if (x < 0)
+            {
+                side = -1;
+                anim.Flip(side);
+            }
         }
-        if (x < 0)
-        {
-            side = -1;
-            anim.Flip(side);
-        }
+    }
 
+    IEnumerator ResetDash() {
+        dashParticle.Stop();
+        isGroundDashed = false;
 
+        yield return new WaitForSeconds(0.1f);
+        isDashing = false;
+        yield return new WaitForSeconds(0.3f);
+        isGroundDashWindow = false;
+    }
+
+    IEnumerator SetWallSlide() {
+        canWallSlide = false;
+        yield return new WaitForSeconds(0.25f);
+        canWallSlide = true;
+    }
+
+    IEnumerator SetWallGrab() {
+        canWallSlide = false;
+        canWallGrab = false;
+        yield return new WaitForSeconds(0.25f);
+        canWallGrab = true;
     }
 
     void GroundTouch()
@@ -180,34 +266,72 @@ public class Movement : MonoBehaviour
 
     private void Dash(float x, float y)
     {
+        canDash = false;
+        isDashing = true;
+        hasDashed = true;
+        GetComponent<BetterJumping>().enabled = false;
+        // if(isHoldingJump) canJump = false;
+        if(x != 0) {
+            x = x < 0 ? -1f : 1f;
+        }
+        if(y != 0) {
+            y = y < 0 ? -1f : 1f;
+        }
+
+        if(y == 0 && coll.onGround) {
+            isGroundDash = true;
+        } else {
+            isGroundDash = false;
+        }
+
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         // ------------------------- IMPORTANT -------------------------
         // FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
-        hasDashed = true;
+        // rb.velocity = Vector2.zero;
 
         anim.SetTrigger("dash");
 
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
+        if (x == 0 && y == 0) {
+            dir = new(side, 0);
+        }
 
-        rb.velocity += dir.normalized * dashSpeed;
-        StartCoroutine(DashWait());
+        if(isGroundDash) {
+            StartCoroutine(GroundDashWait(dir));
+        } else {
+            StartCoroutine(DashWait(dir));
+        }
     }
 
-    IEnumerator DashWait()
+    IEnumerator GroundDashWait(Vector2 dir) {
+        isGroundDashing = true;
+        isGroundDashWindow = true;
+        StartCoroutine(GroundDash());
+        rb.gravityScale = 3;
+        rb.velocity = dir.normalized * dashSpeed;
+
+        dashParticle.Play();
+        
+        yield return new WaitForSeconds(.3f);
+
+        isGroundDashed = true;
+        isGroundDash = false;
+    }
+
+    IEnumerator DashWait(Vector2 dir)
     {
         // ------------------------- IMPORTANT -------------------------
         // FindObjectOfType<GhostTrail>().ShowGhost();
         StartCoroutine(GroundDash());
-        DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
+        // DOVirtual.Float(14, 0, .2f, RigidbodyDrag);
 
-        dashParticle.Play();
         rb.gravityScale = 0;
-        GetComponent<BetterJumping>().enabled = false;
+        rb.velocity = dir.normalized * dashSpeed;
+        dashParticle.Play();
         wallJumped = true;
-        isDashing = true;
 
         yield return new WaitForSeconds(.3f);
 
@@ -220,7 +344,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator GroundDash()
     {
-        yield return new WaitForSeconds(.15f);
+        yield return new WaitForSeconds(.35f);
         if (coll.onGround)
             hasDashed = false;
     }
@@ -238,7 +362,24 @@ public class Movement : MonoBehaviour
 
         Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
 
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
+        float _x = x;
+        if(_x != 0) {
+            _x = _x < 0 ? -1f : 1f;
+        }
+        if(_x == 0) {
+            if(wallGrab) {
+                Jump(Vector2.up / 1f, true);
+                StartCoroutine(SetWallGrab());
+            } else {
+                Jump((Vector2.up / 1f + wallDir / 2f), true);
+            }
+        } else if(_x != 0) {
+            if(_x == wallDir.x) { // Same direction
+                Jump((Vector2.up / 1f + wallDir / 2f), true);
+            } else {
+                Jump((Vector2.up / 1.25f + wallDir / 1.5f), true);
+            }
+        }
 
         wallJumped = true;
     }
@@ -263,13 +404,25 @@ public class Movement : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
+        if (isDashing)
+            return;
+
         if (!canMove)
             return;
 
         if (wallGrab)
             return;
 
-        if (!wallJumped)
+        if (!coll.onGround && isGroundDashWindow)
+            return;
+
+        if (coll.onGround && isGroundDashing) return;
+
+        if(!wallJumped && isGroundDashing && !coll.onGround && !coll.onWall)
+        {
+            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+        }
+        else if (!wallJumped)
         {
             rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
         }
@@ -281,10 +434,18 @@ public class Movement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
+        // if (!canJump) return;
+        // if(wall) Debug.Log(dir.x + " " + dir.y);
+        dir = dir.normalized;
+        if(isDashing && isGroundDashing) {
+            StartCoroutine(ResetDash());
+        }
+
         slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
-        rb.velocity = new Vector2(rb.velocity.x, 0);
+        if(!wall) rb.velocity = new Vector2(rb.velocity.x, 0);
+        else rb.velocity = Vector2.zero;
         rb.velocity += dir * jumpForce;
 
         particle.Play();
