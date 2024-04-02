@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Celeste/Scenes/SampleScene.unity
     guid: 3f10384c504ad484d977d5872506b53f
   - enabled: 1
+    path: Assets/Scenes/TestMap_EnemyAI.unity
+    guid: df9cff37b2f97c94f9da5667f7527ccf
+  - enabled: 1
     path: Assets/Scenes/Movement.unity
     guid: 547c93a1fc1774d09a52b38cbf079087
   m_configObjects: {}
