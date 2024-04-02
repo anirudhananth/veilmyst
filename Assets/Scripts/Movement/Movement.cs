@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     private InputAction wallClimbAction;
 
     private AnimationScript anim;
+    private Vector2 spawnLocation;
 
     [Space]
     [Header("Stats")]
@@ -69,12 +71,32 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
             rb.gravityScale = 3;
+        spawnLocation = transform.position;
+    }
+
+    public void Die()
+    {
+        transform.position = spawnLocation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (input == null)
+        // Temporary level switching
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else if (Input.GetKey(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("Level2");
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene("Level3");
+        }
+
+            if (input == null)
         {
             input = GetComponent<PlayerInput>();
             moveAction = input.actions["Move"];
