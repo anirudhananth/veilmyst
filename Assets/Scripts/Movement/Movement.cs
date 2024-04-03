@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Alpha5))
         {
-            SceneManager.LoadScene("TestMap_Platform");
+            SceneManager.LoadScene("TestMap_Platforms");
         }
 
         if (input == null)
