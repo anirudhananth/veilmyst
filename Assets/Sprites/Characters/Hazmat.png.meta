@@ -123,11 +123,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character_Sheet_0
+      name: Hazmat_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -137,18 +137,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e56b491a22ef52145a97d9e568c57a8f
-      internalID: 1459526267
+      spriteID: 866e0291573d92144a1e70c7626dac56
+      internalID: -78357569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_1
+      name: Hazmat_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 36
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -158,18 +158,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52b205e6c8252e541a1947d3c93e43d8
-      internalID: -797307500
+      spriteID: d0a226e9c0501174b843f4faaef06e75
+      internalID: 1646555400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_2
+      name: Hazmat_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 72
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -179,18 +179,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 284e640374f8dff4587dcb5e59d928fc
-      internalID: -1070901863
+      spriteID: 0003618a87613964fb1e2abb51b7ed34
+      internalID: -186675986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_3
+      name: Hazmat_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 108
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -200,18 +200,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e88bf5b9ce62664f90a4ed45704b6bd
-      internalID: 2021355547
+      spriteID: e82e9d758e8964b4bbd41d22facfde44
+      internalID: -1374268426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_4
+      name: Hazmat_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 144
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -221,18 +221,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31be3758f27b5ee4ea84851a84ae51db
-      internalID: 91235478
+      spriteID: 55623b5020da62a4bbe3dd1242258bcf
+      internalID: -762638280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_5
+      name: Hazmat_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 96
+        x: 180
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -242,18 +242,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9422bfd8f78a294e87f4d4579566a27
-      internalID: -1864016154
+      spriteID: 4e2806fc4cd39074a9555dc1fc06ba5c
+      internalID: 1670826445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_6
+      name: Hazmat_6
       rect:
         serializedVersion: 2
-        x: 192
-        y: 96
+        x: 216
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -263,18 +263,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbd0be7fe2acb674883eebe7bb078a67
-      internalID: -909998202
+      spriteID: a857573090cf08c439291d2b69eeb4e6
+      internalID: 443377018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_7
+      name: Hazmat_7
       rect:
         serializedVersion: 2
-        x: 224
-        y: 96
+        x: 252
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -284,39 +284,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14c21bd0bea5da244896123cbaf1260b
-      internalID: 1064762057
+      spriteID: a61aa06bac9f7a741910e61645962086
+      internalID: 706651793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3695ea49db5bd184ab0c2ac5da4dc6e1
-      internalID: 296764165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_9
+      name: Hazmat_8
       rect:
         serializedVersion: 2
         x: 288
-        y: 96
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -326,18 +305,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 841d5584bc2478c46a26f9515062ed02
-      internalID: 1929648680
+      spriteID: e0fee954587cda2419daf4e44fb94f1f
+      internalID: 1686956346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_10
+      name: Hazmat_9
       rect:
         serializedVersion: 2
-        x: 320
-        y: 96
+        x: 324
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -347,18 +326,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3957e6e7e8d2514a84ea4b71e8deded
-      internalID: 2121568363
+      spriteID: f790735fb7451994f9cf929e524a330d
+      internalID: -625797202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_11
+      name: Hazmat_10
       rect:
         serializedVersion: 2
-        x: 352
-        y: 96
+        x: 360
+        y: 252
         width: 32
         height: 32
       alignment: 0
@@ -368,165 +347,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9322fd855e8c5414e984cf62eb0317e4
-      internalID: -309637576
+      spriteID: 1663df83fe4c89140a16c6692c1c7ae1
+      internalID: -30101456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bd7ad4b39449984eb2451526a73a829
-      internalID: 106057667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_13
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bbc4e74ca55c00489375f9415185d46
-      internalID: -1270746853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_14
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e4333b2c39136d4e8b839230a6fed3a
-      internalID: 896725873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_15
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d923bcebd0bf1d4469d83cc7f16d7ca2
-      internalID: 1181850325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_16
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1b14bc4742ac5047b7a6398397e3853
-      internalID: 703271748
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72775094ef0b72944ac88a5b30639283
-      internalID: -1918926302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 199cf1dfab9b29244a3bb1e72b9691cf
-      internalID: 1750208929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: character_Sheet_19
+      name: Hazmat_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -536,18 +368,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1998a94d637d3e04c86063aa0b727b9c
-      internalID: -1254013001
+      spriteID: 8337e5785415e654dac94bf9192bb846
+      internalID: -635486891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_20
+      name: Hazmat_12
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 36
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -557,18 +389,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c44aa5bc5d3f0444487aaab06fc0508b
-      internalID: -1770705973
+      spriteID: da98fcd1c4c17894082f9433bff1b574
+      internalID: 1219440950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_21
+      name: Hazmat_13
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 72
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -578,18 +410,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e4115522c4a4384f91f15e67487c00e
-      internalID: -1162908363
+      spriteID: 66dfb9f014701f243925a8a6016b745c
+      internalID: -1336741664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_22
+      name: Hazmat_14
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 108
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -599,18 +431,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6574412765249fd4b89f488e4e6812e9
-      internalID: 163239395
+      spriteID: 8edfb4e78ec683e41b3502fc087b1558
+      internalID: 683243485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_23
+      name: Hazmat_15
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 144
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -620,18 +452,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be754133962082840b7a3d25d4a63d8a
-      internalID: 1814300843
+      spriteID: 353a7042d5e1eb2479c966de5928f84c
+      internalID: -909963548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_24
+      name: Hazmat_16
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
+        x: 180
+        y: 216
         width: 32
         height: 32
       alignment: 0
@@ -641,14 +473,623 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c41627d830649554ea86ca173601c74d
-      internalID: -467250502
+      spriteID: 581f85eaf6b8e5247b49cb5bfeff1e98
+      internalID: -1966773246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_25
+      name: Hazmat_17
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 216
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0725ef52248b9c442a225a47a0608d65
+      internalID: -643647038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5973d2354f6fda49963e94d2f3c0358
+      internalID: -1846732972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_19
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c90eab184f9aa941bf4504cc88a34f3
+      internalID: -1873551548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_20
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59cedf86be8b5fb40baa06596889f3eb
+      internalID: -719588452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_21
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c8c8bd6a709a94c8fe2138cbd9428b
+      internalID: 1606152827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_22
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ba9f5978e8589b4c8da745c4b606d24
+      internalID: -122466233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_23
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 180
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b06052f5401504198eeb39a42f9b7f
+      internalID: 1527213157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72aec18a2b1f97a4895156f02b5df454
+      internalID: -1305305733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_25
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 144
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab718cfd32ec9c46922379351db8c6d
+      internalID: 1260547673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a1760bba55d7548850c4ea6b9b39a9
+      internalID: 894698774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_27
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9ded5cbbfdf4442af1754f51cf5b38
+      internalID: -2028844541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_28
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47941be2e942da74c9c526e8c786ac98
+      internalID: -818911574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_29
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c1a52ed9821d7469a02fce766cc3f7
+      internalID: -360367583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_30
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae675724ba3f9b47974d36b7006c7a1
+      internalID: -1902808208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_31
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 108
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072daca8cca6d7342a14ddecfac59ee2
+      internalID: -1457064519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af88b7013f8d8c24ba3c00388f5008ac
+      internalID: 2122019798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_33
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d09cd6615ff92a49a43c22cfa990ec7
+      internalID: 785622819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_34
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94f173c1df68814d85e4590aa010426
+      internalID: -200276031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_35
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc97b2a89a90974a8a6154adc50e7c4
+      internalID: 1627667066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_36
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe65a1d8c3b7ab4d9546039188d93ca
+      internalID: -1835831380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_37
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc32cd13e8fb4b04fa72b9a7f676869f
+      internalID: 527730581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_38
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 72
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc35bd10a999f741abb30cd48e49a9c
+      internalID: 220845863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7bd5f0f696f2e24b924b5ecfa16428e
+      internalID: -2139906723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_40
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5fb2611e33cc4143ac61500fcc58a6b
+      internalID: 77924717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5c1b19247cfb84e863f7e54a874caa
+      internalID: -1754275367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_42
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff25d8f3a406d0640b743625e1331fe6
+      internalID: -1262857393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_43
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab019887195f4924ca8c97d3e755c832
+      internalID: -1096283311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_44
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c634eb5e3dd744eaf3a47c645450ad
+      internalID: -990207384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_45
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 36
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fe3f95b91b63043a4177a712f373b4
+      internalID: -1703754429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_46
       rect:
         serializedVersion: 2
         x: 0
@@ -662,17 +1103,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87c90ae3777c22a469ceb0e9da4e60eb
-      internalID: 270527772
+      spriteID: bbc19705fdc4fc5419b667d2656b7aa8
+      internalID: 1444702891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: character_Sheet_26
+      name: Hazmat_47
       rect:
         serializedVersion: 2
-        x: 32
+        x: 36
         y: 0
         width: 32
         height: 32
@@ -683,8 +1124,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1536252733384f64d9418cfa38514fab
-      internalID: -1187588660
+      spriteID: 932884ce059fd3a4ca58ffc488bf0699
+      internalID: -1725137679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_48
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8b471fdb6ca88478a0ce073c11d860
+      internalID: -861155232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_49
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b5fdbe965af0742a4b77d380dcc72b
+      internalID: -507725426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_50
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a42a68e873e5f154f81e1464636b2b2e
+      internalID: 256975184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_51
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d3573e044e1b7144bf8cf97c75f4480
+      internalID: -891868037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_52
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8bee4ae33c23f4eb3a356b9f647f35
+      internalID: 1648072891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_53
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb34744021a598a4e90cee3043c6f02d
+      internalID: -1817557857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_54
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fcb0e0879b9ef4e91d0bdf2b548a3e
+      internalID: -1215518029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazmat_55
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee5a858e3a31f74cb8e3e6f67d554e6
+      internalID: -773451785
       vertices: []
       indices: 
       edges: []
@@ -700,33 +1309,62 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      character_Sheet_0: 1459526267
-      character_Sheet_1: -797307500
-      character_Sheet_10: 2121568363
-      character_Sheet_11: -309637576
-      character_Sheet_12: 106057667
-      character_Sheet_13: -1270746853
-      character_Sheet_14: 896725873
-      character_Sheet_15: 1181850325
-      character_Sheet_16: 703271748
-      character_Sheet_17: -1918926302
-      character_Sheet_18: 1750208929
-      character_Sheet_19: -1254013001
-      character_Sheet_2: -1070901863
-      character_Sheet_20: -1770705973
-      character_Sheet_21: -1162908363
-      character_Sheet_22: 163239395
-      character_Sheet_23: 1814300843
-      character_Sheet_24: -467250502
-      character_Sheet_25: 270527772
-      character_Sheet_26: -1187588660
-      character_Sheet_3: 2021355547
-      character_Sheet_4: 91235478
-      character_Sheet_5: -1864016154
-      character_Sheet_6: -909998202
-      character_Sheet_7: 1064762057
-      character_Sheet_8: 296764165
-      character_Sheet_9: 1929648680
+      Hazmat_0: -78357569
+      Hazmat_1: 1646555400
+      Hazmat_10: -30101456
+      Hazmat_11: -635486891
+      Hazmat_12: 1219440950
+      Hazmat_13: -1336741664
+      Hazmat_14: 683243485
+      Hazmat_15: -909963548
+      Hazmat_16: -1966773246
+      Hazmat_17: -643647038
+      Hazmat_18: -1846732972
+      Hazmat_19: -1873551548
+      Hazmat_2: -186675986
+      Hazmat_20: -719588452
+      Hazmat_21: 1606152827
+      Hazmat_22: -122466233
+      Hazmat_23: 1527213157
+      Hazmat_24: -1305305733
+      Hazmat_25: 1260547673
+      Hazmat_26: 894698774
+      Hazmat_27: -2028844541
+      Hazmat_28: -818911574
+      Hazmat_29: -360367583
+      Hazmat_3: -1374268426
+      Hazmat_30: -1902808208
+      Hazmat_31: -1457064519
+      Hazmat_32: 2122019798
+      Hazmat_33: 785622819
+      Hazmat_34: -200276031
+      Hazmat_35: 1627667066
+      Hazmat_36: -1835831380
+      Hazmat_37: 527730581
+      Hazmat_38: 220845863
+      Hazmat_39: -2139906723
+      Hazmat_4: -762638280
+      Hazmat_40: 77924717
+      Hazmat_41: -1754275367
+      Hazmat_42: -1262857393
+      Hazmat_43: -1096283311
+      Hazmat_44: -990207384
+      Hazmat_45: -1703754429
+      Hazmat_46: 1444702891
+      Hazmat_47: -1725137679
+      Hazmat_48: -861155232
+      Hazmat_49: -507725426
+      Hazmat_5: 1670826445
+      Hazmat_50: 256975184
+      Hazmat_51: -891868037
+      Hazmat_52: 1648072891
+      Hazmat_53: -1817557857
+      Hazmat_54: -1215518029
+      Hazmat_55: -773451785
+      Hazmat_6: 443377018
+      Hazmat_7: 706651793
+      Hazmat_8: 1686956346
+      Hazmat_9: -625797202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

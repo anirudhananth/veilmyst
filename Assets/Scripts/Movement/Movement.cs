@@ -89,8 +89,16 @@ public class Movement : MonoBehaviour
         {
             SceneManager.LoadScene("Level3");
         }
+        else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene("TestMap_EnemyAI");
+        }
+        else if (Input.GetKey(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene("TestMap_Platform");
+        }
 
-            if (input == null)
+        if (input == null)
         {
             input = GetComponent<PlayerInput>();
             moveAction = input.actions["Move"];
@@ -333,15 +341,21 @@ public class Movement : MonoBehaviour
 
         // rb.velocity = Vector2.zero;
 
-        anim.SetTrigger("dash");
-
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
         if (x == 0 && y == 0) {
             dir = new(side, 0);
         }
+        if (dir.x != 0)
+        {
+            anim.SetTrigger("dashSide");
+        }
+        else
+        {
+            anim.SetTrigger(dir.y > 0 ? "dashUp" : "dashDown");
+        }
 
-        if(isGroundDash) {
+        if (isGroundDash) {
             StartCoroutine(GroundDashWait(dir));
         } else {
             StartCoroutine(DashWait(dir));
