@@ -13,7 +13,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - Solid
   - Ground
   - PostProcessing
   - 
@@ -44,6 +44,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 2899589785
+    locked: 0
+  - name: Solid
+    uniqueID: 3152744301
     locked: 0
   - name: Player
     uniqueID: 3115117261
