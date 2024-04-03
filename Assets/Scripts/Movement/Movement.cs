@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour
     public bool isGroundDashing;
     public bool isGroundDashed;
     public bool isGroundDashWindow;
+    public bool isWallClimbForce;
 
     [Space]
 
@@ -52,7 +53,6 @@ public class Movement : MonoBehaviour
     private float x, y;
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
-    
     public int side = 1;
 
     [Space]
@@ -123,6 +123,10 @@ public class Movement : MonoBehaviour
         else if (!wallGrab && !isDashing)
         {
             rb.gravityScale = 3;
+        }
+
+        if (wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
+            StartCoroutine(WallClimbEndForce());
         }
 
         if(coll.onWall && !coll.onGround && !isDashing)
@@ -210,6 +214,7 @@ public class Movement : MonoBehaviour
 
         if(coll.onGround) {
             coyoteTimeCounter = coyoteTime;
+            isWallClimbForce = false;
         } else {
             coyoteTimeCounter -= Time.deltaTime;
         }
@@ -252,6 +257,27 @@ public class Movement : MonoBehaviour
         canWallGrab = false;
         yield return new WaitForSeconds(0.25f);
         canWallGrab = true;
+    }
+
+    IEnumerator WallClimbEndForce() {
+        isWallClimbForce = true;
+        float wallSide = coll.onRightWall ? 1 : -1;
+        float duration = 0.2f;
+        float time = 0;
+
+        while (time < duration / 2f) {
+            rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Force);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        time = 0;
+
+        while (time < duration / 2f) {
+            rb.AddForce(wallSide * Vector2.right * 0.2f, ForceMode2D.Force);
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 
     void GroundTouch()
@@ -374,11 +400,7 @@ public class Movement : MonoBehaviour
                 Jump((Vector2.up / 1f + wallDir / 2f), true);
             }
         } else if(_x != 0) {
-            if(_x == wallDir.x) { // Same direction
-                Jump((Vector2.up / 1f + wallDir / 2f), true);
-            } else {
-                Jump((Vector2.up / 1.25f + wallDir / 1.5f), true);
-            }
+            Jump((Vector2.up / 1f + wallDir / 2f), true);
         }
 
         wallJumped = true;
@@ -424,7 +446,11 @@ public class Movement : MonoBehaviour
         }
         else if (!wallJumped)
         {
-            rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+            if(isWallClimbForce) {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            } else {
+                rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+            }
         }
         else
         {
