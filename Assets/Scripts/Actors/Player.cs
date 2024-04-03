@@ -25,6 +25,7 @@ public class Player : Actor
             self.transform.position = player.spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
+            yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
         }
         player.animator.SetBool("isDead", true);
