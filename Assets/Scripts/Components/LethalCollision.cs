@@ -3,9 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collision2D))]
+public delegate void OnCollideDestructible(LethalCollision self, Destructible destructible);
+
+[RequireComponent(typeof(Collider2D))]
 public class LethalCollision : MonoBehaviour
 {
+    public OnCollideDestructible OnCollideDestructible = DefaultCollisionHandler;
+
+    public static void DefaultCollisionHandler(LethalCollision self, Destructible destructible)
+    {
+        destructible.Die(self.gameObject);
+    }
+
     private void Start()
     {
         Collider2D collider = GetComponent<Collider2D>();
@@ -18,7 +27,7 @@ public class LethalCollision : MonoBehaviour
         Destructible destructible;
         if (other.gameObject.TryGetComponent(out destructible))
         {
-            destructible.Die(gameObject);
+            OnCollideDestructible(this, destructible);
         }
     }
 }
