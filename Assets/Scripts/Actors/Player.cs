@@ -13,16 +13,20 @@ public class Player : Actor
     private PlayerInput input;
     private Rigidbody2D rb;
     private Destructible destructible;
+    private Vector2 spawnLocation;
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
     {
+        Player player = self.GetComponent<Player>();
+
         IEnumerator SlowMoDeath()
         {
             yield return new WaitForSeconds(0.8f);
-            Destroy(self.gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            self.transform.position = player.spawnLocation;
+            player.animator.SetBool("isDead", false);
+            player.rb.isKinematic = false;
+            player.input.ActivateInput();
         }
-        Player player = self.GetComponent<Player>();
         player.animator.SetBool("isDead", true);
         // Disable movement and inputs
         player.rb.velocity = Vector3.zero;
@@ -34,6 +38,7 @@ public class Player : Actor
 
     private void Start()
     {
+        spawnLocation = transform.position;
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
