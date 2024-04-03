@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Actor : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class Patrolling : MonoBehaviour
 {
     [SerializeField]
     GameObject pointA;
@@ -16,45 +17,33 @@ public class Actor : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private Transform currentPoint;
+    private Vector2 moveDirection;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
-        //anim.SetBool("isRunning",true);
+        moveDirection = (currentPoint.position - transform.position).normalized;
+        Debug.Assert(pointA != null);
+        Debug.Assert(pointB != null);
     }
 
     void Update()
     {
-        Vector2 point  = currentPoint.position-transform.position;
-        if(currentPoint == pointB.transform)
-        {
-            rb.velocity = new Vector2(speed, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-speed, 0);
-        }
+        rb.velocity = moveDirection * speed;
 
         if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointB.transform)
         {
-            flip();
             currentPoint = pointA.transform;
+            moveDirection = (currentPoint.position - transform.position).normalized;
         }
 
         if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointA.transform)
         {
-            flip();
             currentPoint = pointB.transform;
+            moveDirection = (currentPoint.position - transform.position).normalized;
         }
-    }
-
-    private void flip()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
     }
 
     private void OnDrawGizmos() 

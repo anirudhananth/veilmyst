@@ -70,13 +70,7 @@ public class Movement : MonoBehaviour
         coll = GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
-            rb.gravityScale = 3;
-        spawnLocation = transform.position;
-    }
-
-    public void Die()
-    {
-        transform.position = spawnLocation;
+        rb.gravityScale = 3;
     }
 
     // Update is called once per frame
