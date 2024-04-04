@@ -156,7 +156,7 @@ MonoBehaviour:
   CPPos: {x: 0, y: 0, z: 0}
   CamPos: {x: 0, y: 0, z: -20}
   speed: 5
-  player: {fileID: 0}
+  player: {fileID: 1546527876}
 --- !u!4 &250211212
 Transform:
   m_ObjectHideFlags: 0
