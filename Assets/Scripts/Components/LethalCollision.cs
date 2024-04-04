@@ -8,6 +8,8 @@ public delegate void OnCollideDestructible(LethalCollision self, Destructible de
 [RequireComponent(typeof(Collider2D))]
 public class LethalCollision : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject Prefab;
     public OnCollideDestructible OnCollideDestructible = DefaultCollisionHandler;
 
     public static void DefaultCollisionHandler(LethalCollision self, Destructible destructible)

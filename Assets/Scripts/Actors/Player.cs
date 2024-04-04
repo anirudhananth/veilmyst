@@ -17,8 +17,17 @@ public class Player : Actor
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
     {
+
         Player player = self.GetComponent<Player>();
 
+        LethalCollision lc;
+        if(killer.gameObject.TryGetComponent(out lc))
+        {
+            if(lc.Prefab.tag.Equals("DestructibleEnemy") && self.gameObject.GetComponent<Movement>().isDashing)
+            {
+                return;
+            }
+        }
         IEnumerator SlowMoDeath()
         {
             yield return new WaitForSeconds(0.8f);

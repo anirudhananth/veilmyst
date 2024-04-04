@@ -6,10 +6,10 @@ using UnityEngine;
 public class Patrolling : MonoBehaviour
 {
     [SerializeField]
-    GameObject pointA;
+    public GameObject pointA;
 
     [SerializeField]
-    GameObject pointB;
+    public GameObject pointB;
 
     [SerializeField]
     float speed = 1f;
