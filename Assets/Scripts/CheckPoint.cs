@@ -6,11 +6,12 @@ public class CheckPoint : MonoBehaviour
 {
     public GameManager GM; // game manager
     public Vector3 CamPos;
+    Camera MainCam;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        MainCam = Camera.main;
     }
 
     // Update is called once per frame
@@ -25,6 +26,8 @@ public class CheckPoint : MonoBehaviour
         {
             GM.CPPos = transform.position;
             GM.CamPos = CamPos;
+            if(MainCam.transform.position != CamPos)
+                StartCoroutine(GM.move());
         }
     }
 }
