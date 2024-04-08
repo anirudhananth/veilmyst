@@ -156,7 +156,7 @@ MonoBehaviour:
   CPPos: {x: 0, y: 0, z: 0}
   CamPos: {x: 0, y: 0, z: -20}
   speed: 5
-  player: {fileID: 1546527876}
+  player: {fileID: 0}
 --- !u!4 &250211212
 Transform:
   m_ObjectHideFlags: 0
@@ -6440,12 +6440,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914, type: 3}
---- !u!1 &1546527876 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-    type: 3}
-  m_PrefabInstance: {fileID: 1546527875}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1681717235
 GameObject:
   m_ObjectHideFlags: 0
