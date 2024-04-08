@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     private InputAction wallClimbAction;
 
     private AnimationScript anim;
-    private Vector2 spawnLocation;
+    public Vector3 spawnLocation;
 
     [Space]
     [Header("Stats")]
