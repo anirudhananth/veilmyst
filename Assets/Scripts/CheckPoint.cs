@@ -26,8 +26,9 @@ public class CheckPoint : MonoBehaviour
         {
             GM.CPPos = transform.position;
             GM.CamPos = CamPos;
-            if(MainCam.transform.position != CamPos)
-                StartCoroutine(GM.move());
+            if(MainCam.transform.position != CamPos) {
+                GM.speed = 0;
+            }
         }
     }
 }
