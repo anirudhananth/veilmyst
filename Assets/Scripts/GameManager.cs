@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     Camera MainCam;
     public Vector3 CPPos;
     public Vector3 CamPos;
-    public float speed = 5f;
+    public float speed;
     private float distance;
+    private float duration;
     private float distanceCovered;
 
     // Player-related vars
@@ -32,6 +33,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         playMovScript.spawnLocation = CPPos;
+
+        if (MainCam.transform.position != CamPos)
+        {
+            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed);
+            speed += 0.01f * Time.deltaTime;
+        }
     }
 
     public IEnumerator move()
@@ -41,13 +48,14 @@ public class GameManager : MonoBehaviour
 
         //Time.timeScale = 0;
         playMovScript.canDash = false;
+        duration = 1f;
         while (speed < 1)
         {
-            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed);
-            speed += 0.02f;
+            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed / duration);
+            speed += 0.02f * Time.fixedDeltaTime;
 
             //Time.timeScale = speed;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         Time.timeScale = 1;
     }
