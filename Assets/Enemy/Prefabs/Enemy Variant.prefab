@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0047359467, y: -0.0010257959}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.12, y: 1.02}
+  m_Size: {x: 1.2683744, y: 1.7039464}
   m_EdgeRadius: 0
 --- !u!114 &7709097505980335217
 MonoBehaviour:
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3739f981e499c48a2c58154cfb3570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 2285920460113254040}
+  Parent: {fileID: 2285920460113254040}
 --- !u!1001 &9142736538275641556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,9 +166,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509461178074970760, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
-      propertyPath: Prefab
+      propertyPath: Parent
       value: 
-      objectReference: {fileID: 2285920460113254040}
+      objectReference: {fileID: 6883440582500140292}
     - target: {fileID: 7014566413050211916, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Name
@@ -186,11 +186,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9040340640127678464}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7014566413050211916, guid: 52753f32b49253842a7da39c31cc9a38,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6883440582500140292}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52753f32b49253842a7da39c31cc9a38, type: 3}
 --- !u!1 &2285920460113254040 stripped
 GameObject:
@@ -198,11 +194,11 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9142736538275641556}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6883440582500140292
+--- !u!114 &6883440582500140292 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2407001160986312144, guid: 52753f32b49253842a7da39c31cc9a38,
+    type: 3}
+  m_PrefabInstance: {fileID: 9142736538275641556}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2285920460113254040}
   m_Enabled: 1
@@ -210,8 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c1ac0efe547254b91614071933adcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpawned: 0
-  Spawner: {fileID: 0}
 --- !u!4 &7920109341966164336 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1371459383757773220, guid: 52753f32b49253842a7da39c31cc9a38,

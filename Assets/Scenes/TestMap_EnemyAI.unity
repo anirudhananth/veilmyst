@@ -326,11 +326,21 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5017083491347940040, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017083491347940040, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.125
+      objectReference: {fileID: 0}
     - target: {fileID: 6165516049565536804, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1929801911, guid: 3ef7b9f394f6cf248b14c9d2e6214cf4,
+      objectReference: {fileID: -407325161, guid: b409fadb492488143be5a2875f9963fe,
         type: 3}
     - target: {fileID: 6865705769676078629, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
@@ -360,12 +370,12 @@ PrefabInstance:
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.45
+      value: 3.41
       objectReference: {fileID: 0}
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
@@ -3593,6 +3603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSpawned: 0
+  isDead: 0
   Spawner: {fileID: 0}
 --- !u!1 &1506781136
 GameObject:
@@ -3682,7 +3693,7 @@ GameObject:
   m_Layer: 0
   m_Name: Point (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3833,12 +3844,12 @@ PrefabInstance:
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.9326825
+      value: -7.93
       objectReference: {fileID: 0}
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2832565
+      value: 3.74
       objectReference: {fileID: 0}
     - target: {fileID: 7920109341966164336, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
         type: 3}

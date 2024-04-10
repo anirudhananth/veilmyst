@@ -14,6 +14,8 @@ public class Patrolling : MonoBehaviour
     [SerializeField]
     float speed = 1f;
 
+    public bool IsPaused = false;
+
     private Rigidbody2D rb;
     private Animator anim;
     private Transform currentPoint;
@@ -31,6 +33,7 @@ public class Patrolling : MonoBehaviour
 
     void Update()
     {
+        if (IsPaused) return;
         rb.velocity = moveDirection * speed;
 
         if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointB.transform)
