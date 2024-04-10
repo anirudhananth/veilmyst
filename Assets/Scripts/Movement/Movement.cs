@@ -486,6 +486,12 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
+        if (coll.riding)
+        {
+            Vector2 platformVelocity = coll.riding.velocity;
+            platformVelocity.y = 0;
+            rb.velocity += platformVelocity;
+        }
     }
 
     private void Jump(Vector2 dir, bool wall)

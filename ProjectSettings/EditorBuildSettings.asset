@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Movement.unity
     guid: 547c93a1fc1774d09a52b38cbf079087
   - enabled: 1
-    path: Assets/Scenes/TestMap_EnemyAI.unity
-    guid: df9cff37b2f97c94f9da5667f7527ccf
-  - enabled: 1
-    path: Assets/Scenes/TestMap_Platforms.unity
-    guid: 36be664863ae9c04b8d03c2de5865971
-  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: b5757188e400eb84795739ea2452c22f
   - enabled: 1
@@ -29,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3.unity
     guid: 5fb90bbb244a9b849a50edfca6fd6f4a
+  - enabled: 1
+    path: Assets/Scenes/TestMap_EnemyAI.unity
+    guid: df9cff37b2f97c94f9da5667f7527ccf
+  - enabled: 1
+    path: Assets/Scenes/TestMap_Platforms.unity
+    guid: 36be664863ae9c04b8d03c2de5865971
   m_configObjects: {}
