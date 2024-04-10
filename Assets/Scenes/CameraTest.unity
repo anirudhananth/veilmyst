@@ -152,11 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a41092fd70ee24c9abfb5ee9605b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathCount: 0
   CPPos: {x: 0, y: 0, z: 0}
   CamPos: {x: 0, y: 0, z: -20}
   speed: 5
+  speedScalar: 0.2
   player: {fileID: 0}
+  playMovScript: {fileID: 0}
+  enemies: []
+  enemPos: []
+  DeathCount: 0
 --- !u!4 &250211212
 Transform:
   m_ObjectHideFlags: 0
@@ -6423,16 +6427,6 @@ PrefabInstance:
     - target: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
         type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-        type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

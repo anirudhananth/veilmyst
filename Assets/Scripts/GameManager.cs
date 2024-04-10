@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Vector3 CPPos;
     public Vector3 CamPos;
     public float speed;
+    public float speedScalar;
     private float distance;
     private float duration;
     private float distanceCovered;
@@ -17,16 +18,24 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Movement playMovScript;
 
+    // Enemy-related vars
+    public List <GameObject> enemies;
+    public List <Vector3> enemPos;
+
     // Misc
     public int DeathCount;
+    int i;
 
     // Start is called before the first frame update
     void Start()
     {
         MainCam = Camera.main;
         
+        // Find Player and Player-related stuff
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
+
+        FindEnemies();
     }
 
     // Update is called once per frame
@@ -37,7 +46,7 @@ public class GameManager : MonoBehaviour
         if (MainCam.transform.position != CamPos)
         {
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed);
-            speed += 0.01f * Time.deltaTime;
+            speed += speedScalar * Time.deltaTime;
         }
     }
 
@@ -52,11 +61,57 @@ public class GameManager : MonoBehaviour
         while (speed < 1)
         {
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed / duration);
-            speed += 0.02f * Time.fixedDeltaTime;
+            speed += 2f * Time.deltaTime;
 
             //Time.timeScale = speed;
             yield return new WaitForFixedUpdate();
         }
         Time.timeScale = 1;
+    }
+
+    public void FindEnemies()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].transform.position = enemPos[i];
+        }
+
+        enemies.Clear();
+        enemPos.Clear();
+
+        // Find enemies and enemy-related stuff
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("DestructibleEnemy"))
+        {
+            enemies.Add(enemy);
+        }
+        foreach (GameObject enemy in enemies)
+        {
+            enemPos.Add(enemy.transform.position);
+        }
+    }
+
+    public void ResetLevel()
+    {
+        player.transform.position = CPPos;
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].transform.position = enemPos[i];
+        }
+    }
+
+    public void NewCheckpoint(Vector3 CheckPointPos, Vector3 CameraPos)
+    {
+        CPPos = CheckPointPos;
+        CamPos = CameraPos;
+        if (MainCam.transform.position != CamPos)
+        {
+            speed = 0;
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].transform.position = enemPos[i];
+        }
     }
 }
