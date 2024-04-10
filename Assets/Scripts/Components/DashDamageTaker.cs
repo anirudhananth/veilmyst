@@ -11,7 +11,7 @@ public delegate void OnCollideDash(DashDamageTaker self);
 public class DashDamageTaker : MonoBehaviour
 {
     [SerializeField]
-    public GameObject Prefab;
+    public GameObject Parent;
     public OnCollideDash OnCollideDash = DefaultDashHandler;
 
     public static void DefaultDashHandler(DashDamageTaker self)
@@ -20,9 +20,9 @@ public class DashDamageTaker : MonoBehaviour
         //If gameobject has script called Enemy
 
         Enemy enemy;
-        if(self.gameObject.TryGetComponent<Enemy>(out enemy))
+        if(self.Parent.TryGetComponent(out enemy))
         {
-            enemy.onDeath();
+            enemy.OnDeath();
         }
         else
         {
@@ -45,7 +45,6 @@ public class DashDamageTaker : MonoBehaviour
         {
             if(movement.isDashing)
             {
-                Debug.Log(other.gameObject.name);
                 OnCollideDash(this);                
             }
         }

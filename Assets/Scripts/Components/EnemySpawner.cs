@@ -44,9 +44,8 @@ public class EnemySpawner : MonoBehaviour
         SpawnedPawn.GetComponent<Enemy>().Spawner = this;
     }
 
-    public void Spawn(GameObject gameobject)
+    public void Spawn()
     {
-        Destroy(gameobject);
         StartCoroutine(SpawnPawn());
     }
 }
