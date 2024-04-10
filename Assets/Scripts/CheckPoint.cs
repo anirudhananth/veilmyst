@@ -24,11 +24,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            GM.CPPos = transform.position;
-            GM.CamPos = CamPos;
-            if(MainCam.transform.position != CamPos) {
-                GM.speed = 0;
-            }
+            GM.NewCheckpoint(transform.position, CamPos);
         }
     }
 }

@@ -14857,9 +14857,9 @@ GameObject:
   - component: {fileID: -1149608380584541964}
   - component: {fileID: 8762005006866471222}
   - component: {fileID: 5790789147886637462}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14924,6 +14924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  spawnLocation: {x: 0, y: 0, z: 0}
   speed: 7
   jumpForce: 12
   slideSpeed: 1
@@ -14986,6 +14987,7 @@ MonoBehaviour:
   onLeftWall: 0
   onTopLeftWall: 0
   wallSide: 0
+  riding: {fileID: 0}
   collisionRadius: 0.1
   bottomOffset: {x: 0, y: -0.95}
   rightOffset: {x: 0.5, y: -0.33}
