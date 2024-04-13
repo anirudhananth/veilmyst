@@ -121,13 +121,15 @@ public class Movement : MonoBehaviour
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if(isWallClimbForce) {
+            rb.gravityScale = 0;
             if(isUpwardForce && coll.onWall) {
+                if(coll.onPlatformWall && coll.platform) rb.velocity = new(rb.velocity.x, rb.velocity.y);
                 rb.velocity += Vector2.up * 85 * Time.deltaTime;
             } else if(isUpwardForce && !coll.onWall) {
                 rb.velocity += Vector2.up * 75 * Time.deltaTime;
                 rb.velocity += wallSideForce * Vector2.right * 35 * Time.deltaTime;
             } else {
-                rb.gravityScale = 3;
+                if(!coll.onPlatformWall) rb.gravityScale = 3;
                 // rb.velocity += wallSideForce * Vector2.right * 25 * Time.deltaTime;
                 if(coll.onGround) {
                     isWallClimbForce = false;
@@ -161,19 +163,27 @@ public class Movement : MonoBehaviour
         if (wallGrab && !isDashing)
         {
             rb.gravityScale = 0;
+
             if(x > .2f || x < -.2f)
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
 
             float speedModifier = y > 0 ? .5f : 1;
 
-            rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+            if(!coll.onPlatformWall) {
+                rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+            } else if(coll.platform) {
+                Rigidbody2D platform = coll.platform.GetComponent<Rigidbody2D>();
+                Vector2 platformVelocity = platform.velocity;
+                float wallSide = coll.onRightWall ? 1 : -1;
+                rb.velocity = new Vector2(rb.velocity.x + wallSide, platformVelocity.y + y * (speed * speedModifier));
+            }
         }
         else if (!wallGrab && !isDashing)
         {
             rb.gravityScale = 3;
         }
 
-        if (rb.velocity.y > 0 && wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
+        if (y > 0 && wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
             StartCoroutine(WallClimbEndForce());
         }
 
