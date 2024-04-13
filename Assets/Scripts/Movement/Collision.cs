@@ -24,7 +24,9 @@ public class Collision : MonoBehaviour
 
     [Header("Platform")]
 
+    public Collider2D platform;
     public bool onPlatform;
+    public bool onPlatformWall;
     public bool onPlatformRightWall;
     public bool onPlatformLeftWall;
     public bool onPlatformTopRightWall;
@@ -72,10 +74,18 @@ public class Collision : MonoBehaviour
         onPlatform = platformCol;
         riding = (platformCol) ? platformCol.GetComponent<Rigidbody2D>() : null;
 
+        onPlatformWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, platformLayer) 
+            || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, platformLayer);
         onPlatformLeftWall = onLeftWall;
         onPlatformRightWall = onRightWall;
         onPlatformTopRightWall = onTopRightWall;
         onPlatformLeftWall = onTopLeftWall;
+
+        if(onPlatformLeftWall) {
+            platform = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, platformLayer);
+        } else {
+            platform = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, platformLayer);
+        }
     }
 
     void OnDrawGizmos()
