@@ -14924,6 +14924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  spawnLocation: {x: 0, y: 0, z: 0}
   speed: 7
   jumpForce: 12
   slideSpeed: 1
@@ -14979,13 +14980,22 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 384
-  onGround: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  onGround: 1
   onWall: 0
   onRightWall: 0
   onTopRightWall: 0
   onLeftWall: 0
   onTopLeftWall: 0
   wallSide: 0
+  onPlatform: 0
+  onPlatformRightWall: 0
+  onPlatformLeftWall: 0
+  onPlatformTopRightWall: 0
+  onPlatformTopLeftWall: 0
+  riding: {fileID: 0}
   collisionRadius: 0.1
   bottomOffset: {x: 0, y: -0.95}
   rightOffset: {x: 0.5, y: -0.33}

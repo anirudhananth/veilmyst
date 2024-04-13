@@ -56,6 +56,8 @@ public class Movement : MonoBehaviour
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
     public int side = 1;
+    private bool isUpwardForce = true;
+    private float wallSideForce;
 
     [Space]
     [Header("Polish")]
@@ -118,6 +120,24 @@ public class Movement : MonoBehaviour
         Walk(moveDelta);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
+        if(isWallClimbForce) {
+            if(isUpwardForce && coll.onWall) {
+                rb.velocity += Vector2.up * 85 * Time.deltaTime;
+            } else if(isUpwardForce && !coll.onWall) {
+                rb.velocity += Vector2.up * 75 * Time.deltaTime;
+                rb.velocity += wallSideForce * Vector2.right * 35 * Time.deltaTime;
+            } else {
+                rb.gravityScale = 3;
+                // rb.velocity += wallSideForce * Vector2.right * 25 * Time.deltaTime;
+                if(coll.onGround) {
+                    isWallClimbForce = false;
+                    rb.gravityScale = 3;
+                    return;
+                }
+            }
+            return;
+        }
+
         if (canWallGrab && coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
         {
             if(side != coll.wallSide)
@@ -153,7 +173,7 @@ public class Movement : MonoBehaviour
             rb.gravityScale = 3;
         }
 
-        if (wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
+        if (rb.velocity.y > 0 && wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
             StartCoroutine(WallClimbEndForce());
         }
 
@@ -313,22 +333,29 @@ public class Movement : MonoBehaviour
     IEnumerator WallClimbEndForce() {
         isWallClimbForce = true;
         float wallSide = coll.onRightWall ? 1 : -1;
+        wallSideForce = wallSide;
         float duration = 0.2f;
         float time = 0;
+        isUpwardForce = true;
 
-        while (time < duration / 2f) {
-            rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Force);
-            time += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.25f);
 
-        time = 0;
+        // rb.velocity = Vector2.zero;
 
-        while (time < duration / 2f) {
-            rb.AddForce(wallSide * Vector2.right * 0.2f, ForceMode2D.Force);
-            time += Time.deltaTime;
-            yield return null;
-        }
+        isUpwardForce = false;
+        // while (time < duration / 2f) {
+        //     rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Force);
+        //     time += Time.deltaTime;
+        //     yield return null;
+        // }
+
+        // time = 0;
+
+        // while (time < duration / 2f) {
+        //     rb.AddForce(wallSide * Vector2.right * 0.2f, ForceMode2D.Force);
+        //     time += Time.deltaTime;
+        //     yield return null;
+        // }
     }
 
     void GroundTouch()

@@ -7,9 +7,11 @@ public class Collision : MonoBehaviour
 
     [Header("Layers")]
     public LayerMask groundLayer;
+    public LayerMask platformLayer;
 
     [Space]
 
+    [Header("Ground")]
     public bool onGround;
     public bool onWall;
     public bool onRightWall;
@@ -17,6 +19,16 @@ public class Collision : MonoBehaviour
     public bool onLeftWall;
     public bool onTopLeftWall;
     public int wallSide;
+
+    [Space]
+
+    [Header("Platform")]
+
+    public bool onPlatform;
+    public bool onPlatformRightWall;
+    public bool onPlatformLeftWall;
+    public bool onPlatformTopRightWall;
+    public bool onPlatformTopLeftWall;
     public Rigidbody2D riding;
 
     [Space]
@@ -37,7 +49,12 @@ public class Collision : MonoBehaviour
     void Update()
     {
         Collider2D groundCol = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
-        riding = (groundCol) ? groundCol.GetComponent<Rigidbody2D>() : null;
+        Collider2D platformCol = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, platformLayer);
+        SetGroundBooleans(groundCol);
+        SetPlatformBooleans(platformCol);
+    }
+
+    void SetGroundBooleans(Collider2D groundCol) {
         onGround = groundCol;
         onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) 
             || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
@@ -49,6 +66,16 @@ public class Collision : MonoBehaviour
         onTopLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + topLeftOffset, collisionRadius, groundLayer);
 
         wallSide = onRightWall ? -1 : 1;
+    }
+
+    void SetPlatformBooleans(Collider2D platformCol) {
+        onPlatform = platformCol;
+        riding = (platformCol) ? platformCol.GetComponent<Rigidbody2D>() : null;
+
+        onPlatformLeftWall = onLeftWall;
+        onPlatformRightWall = onRightWall;
+        onPlatformTopRightWall = onTopRightWall;
+        onPlatformLeftWall = onTopLeftWall;
     }
 
     void OnDrawGizmos()
