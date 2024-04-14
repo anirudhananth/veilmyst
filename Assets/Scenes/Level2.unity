@@ -409,6 +409,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
+        type: 3}
+      propertyPath: canJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
+        type: 3}
+      propertyPath: wallJumped
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
+        type: 3}
+      propertyPath: canWallGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
+        type: 3}
+      propertyPath: canWallSlide
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2924308874895785105, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
         type: 3}
       propertyPath: m_LocalPosition.x

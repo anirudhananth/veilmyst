@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
     public bool canWallGrab;
     public bool wallJumped;
     public bool wallSlide;
-    public bool canWallSlide = true;
+    public bool canWallSlide ;
     public bool canDash = true;
     public bool isDashing;
     public bool hasDashed;
@@ -171,10 +171,10 @@ public class Movement : MonoBehaviour
             isHoldingJump = true;
             anim.SetTrigger("jump");
 
-            canWallSlide = true;
+            //canWallSlide = true;
             if (coll.onWall && coll.onGround) {
                 canWallSlide = false;
-                StartCoroutine(SetWallSlide());
+               // StartCoroutine(SetWallSlide());
                 Jump(Vector2.up, false);
                 return;
             }
