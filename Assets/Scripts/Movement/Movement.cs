@@ -64,6 +64,10 @@ public class Movement : MonoBehaviour
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
 
+    [Space]
+    [Header("Stamina")]
+    public Stamina stamina;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -157,6 +161,16 @@ public class Movement : MonoBehaviour
         {
             if (x != 0 && !wallGrab && (canWallSlide || rb.velocity.y < 0))
             {
+                if(stamina!=null)
+                {
+                    if(stamina.currentstamina<=0)
+                    {
+                        //Debug.Log("cannotslide");
+                        wallSlide = false;
+                        return;
+                    }
+                }
+
                 wallSlide = true;
                 WallSlide();
             }
@@ -211,10 +225,22 @@ public class Movement : MonoBehaviour
             groundTouch = false;
         }
 
-        if(coll.onGround) {
+        if(coll.onGround) 
+        {
+            if(stamina!=null)
+            {
+                stamina.StartRecharge();
+            }
             if(rb.velocity.y < 0) {
                 rb.velocity = new(rb.velocity.x, 0);
             }
+        }
+        else
+        {
+            if(stamina!=null)
+            {
+                stamina.StopRecharge();
+            } 
         }
 
         WallParticle(y);
@@ -242,6 +268,7 @@ public class Movement : MonoBehaviour
         } else {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
 
         if (wallGrab || wallSlide || !canMove)
             return;
@@ -316,6 +343,18 @@ public class Movement : MonoBehaviour
 
     private void Dash(float x, float y)
     {
+        if(stamina!=null)
+        {
+            bool canDash = stamina.ReduceStamina(stamina.dash_stamina);
+            if(canDash)
+            {
+                stamina.StopRecharge();
+            }
+            else
+            {
+                return;
+            }
+        }
         canDash = false;
         isDashing = true;
         hasDashed = true;
@@ -374,6 +413,10 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(.3f);
 
         isGroundDashed = true;
+        if(stamina!=null)
+        {
+            stamina.StartRecharge();
+        }
         isGroundDash = false;
     }
 
@@ -496,6 +539,18 @@ public class Movement : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
+        if(stamina!=null)
+        {
+            bool canDash = stamina.ReduceStamina(stamina.normaljump_stamina);
+            if(canDash)
+            {
+                stamina.StopRecharge();
+            }
+            else
+            {
+                return;
+            }
+        }
         // if (!canJump) return;
         // if(wall) Debug.Log(dir.x + " " + dir.y);
         dir = dir.normalized;

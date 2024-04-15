@@ -24,11 +24,16 @@ public class BetterJumping : MonoBehaviour
             PlayerInput input = GetComponent<PlayerInput>();
             jumpAction = input.actions["Jump"];
         }
-        if(rb.velocity.y < 0) {
+        if(rb.velocity.y < 0) 
+        {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() == 0) {
+        } 
+        else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() == 0) 
+        {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        } else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() != 0 && (movement.hasDashed && !movement.wallJumped)) {
+        } 
+        else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() != 0 && (movement.hasDashed && !movement.wallJumped)) 
+        {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
