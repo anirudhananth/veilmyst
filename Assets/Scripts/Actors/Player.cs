@@ -23,7 +23,7 @@ public class Player : Actor
         LethalCollision lc;
         if(killer.gameObject.TryGetComponent(out lc))
         {
-            if(lc.Parent.tag.Equals("DestructibleEnemy") && self.gameObject.GetComponent<Movement>().isDashing)
+            if(lc.Parent && lc.Parent.tag.Equals("DestructibleEnemy") && self.gameObject.GetComponent<Movement>().isDashing)
             {
                 return;
             }
