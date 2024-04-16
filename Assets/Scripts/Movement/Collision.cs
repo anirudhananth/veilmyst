@@ -8,6 +8,7 @@ public class Collision : MonoBehaviour
     [Header("Layers")]
     public LayerMask groundLayer;
     public LayerMask platformLayer;
+    public LayerMask climbableWallLayer;
 
     [Space]
 
@@ -33,6 +34,14 @@ public class Collision : MonoBehaviour
     public bool onPlatformTopLeftWall;
     public Rigidbody2D riding;
 
+    [Space] 
+
+    [Header("Platform")]
+
+    public bool onClimbableWall;
+    public bool onClimbableLeftWall;
+    public bool onClimbableRightWall;
+
     [Space]
 
     [Header("Collision")]
@@ -54,6 +63,7 @@ public class Collision : MonoBehaviour
         Collider2D platformCol = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, platformLayer);
         SetGroundBooleans(groundCol);
         SetPlatformBooleans(platformCol);
+        SetClimbableWallBooleans();
     }
 
     void SetGroundBooleans(Collider2D groundCol) {
@@ -86,6 +96,15 @@ public class Collision : MonoBehaviour
         } else {
             platform = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, platformLayer);
         }
+    }
+
+    void SetClimbableWallBooleans() {
+        onClimbableWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, climbableWallLayer) 
+            || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, climbableWallLayer);
+
+        onClimbableRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, climbableWallLayer);
+        onClimbableLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, climbableWallLayer);
+
     }
 
     void OnDrawGizmos()

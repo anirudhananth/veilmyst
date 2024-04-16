@@ -140,7 +140,7 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (canWallGrab && coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
+        if (canWallGrab && coll.onClimbableWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
         {
             if(side != coll.wallSide)
                 anim.Flip(side*-1);
@@ -570,7 +570,11 @@ public class Movement : MonoBehaviour
         {
             Vector2 platformVelocity = coll.riding.velocity;
             platformVelocity.y = 0;
-            rb.velocity += platformVelocity;
+            // if(platformVelocity.x > 0) {
+            //     rb.velocity += platformVelocity;
+            // } else {
+            // }
+                rb.velocity += platformVelocity;
         }
     }
 
