@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +8,14 @@ public class Collision : MonoBehaviour
     [Header("Layers")]
     public LayerMask groundLayer;
     public LayerMask platformLayer;
+    public LayerMask climbableWallLayer;
 
     [Space]
 
     [Header("Ground")]
     public bool onGround;
     public bool onWall;
+    public bool onLedge;
     public bool onRightWall;
     public bool onTopRightWall;
     public bool onLeftWall;
@@ -32,6 +34,14 @@ public class Collision : MonoBehaviour
     public bool onPlatformTopRightWall;
     public bool onPlatformTopLeftWall;
     public Rigidbody2D riding;
+
+    [Space] 
+
+    [Header("Platform")]
+
+    public bool onClimbableWall;
+    public bool onClimbableLeftWall;
+    public bool onClimbableRightWall;
 
     [Space]
 
@@ -54,6 +64,7 @@ public class Collision : MonoBehaviour
         Collider2D platformCol = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, platformLayer);
         SetGroundBooleans(groundCol);
         SetPlatformBooleans(platformCol);
+        SetClimbableWallBooleans();
     }
 
     void SetGroundBooleans(Collider2D groundCol) {
@@ -67,7 +78,7 @@ public class Collision : MonoBehaviour
         onTopRightWall = Physics2D.OverlapCircle((Vector2)transform.position + topRightOffset, collisionRadius, groundLayer);
         onTopLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + topLeftOffset, collisionRadius, groundLayer);
 
-        wallSide = onRightWall ? -1 : 1;
+        wallSide = onRightWall ? 1 : -1;
     }
 
     void SetPlatformBooleans(Collider2D platformCol) {
@@ -86,6 +97,15 @@ public class Collision : MonoBehaviour
         } else {
             platform = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, platformLayer);
         }
+    }
+
+    void SetClimbableWallBooleans() {
+        onClimbableWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, climbableWallLayer) 
+            || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, climbableWallLayer);
+
+        onClimbableRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, climbableWallLayer);
+        onClimbableLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, climbableWallLayer);
+
     }
 
     void OnDrawGizmos()
