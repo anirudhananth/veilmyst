@@ -22,6 +22,7 @@ public class AnimationScript : MonoBehaviour
     void Update()
     {
         anim.SetBool("onGround", coll.onGround);
+        anim.SetBool("onEdge", coll.onLedge);
         anim.SetBool("onWall", coll.onWall);
         anim.SetBool("onRightWall", coll.onRightWall);
         anim.SetBool("wallGrab", move.wallGrab);
