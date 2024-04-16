@@ -9,7 +9,7 @@ public delegate void OnCollideDestructible(LethalCollision self, Destructible de
 public class LethalCollision : MonoBehaviour
 {
     [SerializeField]
-    public GameObject Prefab;
+    public Enemy Parent;
     public OnCollideDestructible OnCollideDestructible = DefaultCollisionHandler;
 
     public static void DefaultCollisionHandler(LethalCollision self, Destructible destructible)
@@ -27,6 +27,7 @@ public class LethalCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) 
     {
         Destructible destructible;
+        if (Parent && Parent.isDead) return;
         if (other.gameObject.TryGetComponent(out destructible))
         {
             OnCollideDestructible(this, destructible);

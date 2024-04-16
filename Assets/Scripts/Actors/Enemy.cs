@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class Enemy : Actor
@@ -8,26 +7,41 @@ public class Enemy : Actor
     public bool isSpawned = false;
     public bool isDead = false;
     public EnemySpawner Spawner;
+    private Animator animator;
+    private Rigidbody2D rb;
 
-
-    public void onDeath()
+    public void OnDeath()
     {
-        if(isDead)
+        if (isDead)
         {
-            return;  
+            return;
         }
-        else
+        isDead = true;
+        animator.SetBool("isDead", true);
+        Destroy(gameObject, 1f);
+        GetComponent<Collider2D>().enabled = false;
+        Patrolling p;
+        if(TryGetComponent<Patrolling>(out p))
         {
-            isDead=true;
+            GetComponent<Patrolling>().IsPaused = true;
         }
-            
-        if(isSpawned)
+        GetComponentInChildren<LethalCollision>().enabled = false;
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        if (isSpawned)
         {
-            Spawner.Spawn(gameObject);
+            Spawner.Spawn();
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        animator.SetBool("isMoving", rb.velocity.magnitude > 0.01);
     }
 }

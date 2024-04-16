@@ -56,6 +56,8 @@ public class Movement : MonoBehaviour
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
     public int side = 1;
+    private bool isUpwardForce = true;
+    private float wallSideForce;
 
     [Space]
     [Header("Polish")]
@@ -63,6 +65,10 @@ public class Movement : MonoBehaviour
     public ParticleSystem jumpParticle;
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
+
+    [Space]
+    [Header("Stamina")]
+    public Stamina stamina;
 
     // Start is called before the first frame update
     void Start()
@@ -114,7 +120,27 @@ public class Movement : MonoBehaviour
         Walk(moveDelta);
         anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (canWallGrab && coll.onWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
+        if(isWallClimbForce) {
+            rb.gravityScale = 0;
+            if(isUpwardForce && coll.onWall) {
+                if(coll.onPlatformWall && coll.platform) rb.velocity = new(rb.velocity.x, rb.velocity.y);
+                rb.velocity += Vector2.up * 85 * Time.deltaTime;
+            } else if(isUpwardForce && !coll.onWall) {
+                rb.velocity += Vector2.up * 75 * Time.deltaTime;
+                rb.velocity += wallSideForce * Vector2.right * 35 * Time.deltaTime;
+            } else {
+                if(!coll.onPlatformWall) rb.gravityScale = 3;
+                // rb.velocity += wallSideForce * Vector2.right * 25 * Time.deltaTime;
+                if(coll.onGround) {
+                    isWallClimbForce = false;
+                    rb.gravityScale = 3;
+                    return;
+                }
+            }
+            return;
+        }
+
+        if (canWallGrab && coll.onClimbableWall && wallClimbAction.ReadValue<float>() != 0 && canMove)
         {
             if(side != coll.wallSide)
                 anim.Flip(side*-1);
@@ -137,19 +163,27 @@ public class Movement : MonoBehaviour
         if (wallGrab && !isDashing)
         {
             rb.gravityScale = 0;
+
             if(x > .2f || x < -.2f)
-            rb.velocity = new Vector2(rb.velocity.x, 0);
+                rb.velocity = new Vector2(rb.velocity.x, 0);
 
             float speedModifier = y > 0 ? .5f : 1;
 
-            rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+            if(!coll.onPlatformWall) {
+                rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+            } else if(coll.platform) {
+                Rigidbody2D platform = coll.platform.GetComponent<Rigidbody2D>();
+                Vector2 platformVelocity = platform.velocity;
+                float wallSide = coll.onRightWall ? 1 : -1;
+                rb.velocity = new Vector2(rb.velocity.x + wallSide, platformVelocity.y + y * (speed * speedModifier));
+            }
         }
         else if (!wallGrab && !isDashing)
         {
             rb.gravityScale = 3;
         }
 
-        if (wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
+        if (y > 0 && wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
             StartCoroutine(WallClimbEndForce());
         }
 
@@ -157,6 +191,16 @@ public class Movement : MonoBehaviour
         {
             if (x != 0 && !wallGrab && (canWallSlide || rb.velocity.y < 0))
             {
+                if(stamina!=null)
+                {
+                    if(stamina.currentstamina<=0)
+                    {
+                        //Debug.Log("cannotslide");
+                        wallSlide = false;
+                        return;
+                    }
+                }
+
                 wallSlide = true;
                 WallSlide();
             }
@@ -211,10 +255,22 @@ public class Movement : MonoBehaviour
             groundTouch = false;
         }
 
-        if(coll.onGround) {
+        if(coll.onGround) 
+        {
+            if(stamina!=null)
+            {
+                stamina.StartRecharge();
+            }
             if(rb.velocity.y < 0) {
                 rb.velocity = new(rb.velocity.x, 0);
             }
+        }
+        else
+        {
+            if(stamina!=null)
+            {
+                stamina.StopRecharge();
+            } 
         }
 
         WallParticle(y);
@@ -242,6 +298,7 @@ public class Movement : MonoBehaviour
         } else {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
 
         if (wallGrab || wallSlide || !canMove)
             return;
@@ -286,22 +343,29 @@ public class Movement : MonoBehaviour
     IEnumerator WallClimbEndForce() {
         isWallClimbForce = true;
         float wallSide = coll.onRightWall ? 1 : -1;
+        wallSideForce = wallSide;
         float duration = 0.2f;
         float time = 0;
+        isUpwardForce = true;
 
-        while (time < duration / 2f) {
-            rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Force);
-            time += Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.25f);
 
-        time = 0;
+        // rb.velocity = Vector2.zero;
 
-        while (time < duration / 2f) {
-            rb.AddForce(wallSide * Vector2.right * 0.2f, ForceMode2D.Force);
-            time += Time.deltaTime;
-            yield return null;
-        }
+        isUpwardForce = false;
+        // while (time < duration / 2f) {
+        //     rb.AddForce(Vector2.up * 0.1f, ForceMode2D.Force);
+        //     time += Time.deltaTime;
+        //     yield return null;
+        // }
+
+        // time = 0;
+
+        // while (time < duration / 2f) {
+        //     rb.AddForce(wallSide * Vector2.right * 0.2f, ForceMode2D.Force);
+        //     time += Time.deltaTime;
+        //     yield return null;
+        // }
     }
 
     void GroundTouch()
@@ -316,6 +380,18 @@ public class Movement : MonoBehaviour
 
     private void Dash(float x, float y)
     {
+        if(stamina!=null)
+        {
+            bool canDash = stamina.ReduceStamina(stamina.dash_stamina);
+            if(canDash)
+            {
+                stamina.StopRecharge();
+            }
+            else
+            {
+                return;
+            }
+        }
         canDash = false;
         isDashing = true;
         hasDashed = true;
@@ -374,6 +450,10 @@ public class Movement : MonoBehaviour
         yield return new WaitForSeconds(.3f);
 
         isGroundDashed = true;
+        if(stamina!=null)
+        {
+            stamina.StartRecharge();
+        }
         isGroundDash = false;
     }
 
@@ -490,12 +570,28 @@ public class Movement : MonoBehaviour
         {
             Vector2 platformVelocity = coll.riding.velocity;
             platformVelocity.y = 0;
-            rb.velocity += platformVelocity;
+            // if(platformVelocity.x > 0) {
+            //     rb.velocity += platformVelocity;
+            // } else {
+            // }
+                rb.velocity += platformVelocity;
         }
     }
 
     private void Jump(Vector2 dir, bool wall)
     {
+        if(stamina!=null)
+        {
+            bool canDash = stamina.ReduceStamina(stamina.normaljump_stamina);
+            if(canDash)
+            {
+                stamina.StopRecharge();
+            }
+            else
+            {
+                return;
+            }
+        }
         // if (!canJump) return;
         // if(wall) Debug.Log(dir.x + " " + dir.y);
         dir = dir.normalized;
