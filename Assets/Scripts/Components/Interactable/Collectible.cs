@@ -5,7 +5,6 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float staminaincreaseamount = 5.0f;
     void Start()
     {
         
@@ -27,7 +26,6 @@ public class Collectible : MonoBehaviour
 
     private void Triggerbehavior()
     {
-        MainManager.Instance.IncreaseStamina(staminaincreaseamount);
         Destroy(gameObject);
     }
 }
