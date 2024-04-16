@@ -78,7 +78,7 @@ public class Collision : MonoBehaviour
         onTopRightWall = Physics2D.OverlapCircle((Vector2)transform.position + topRightOffset, collisionRadius, groundLayer);
         onTopLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + topLeftOffset, collisionRadius, groundLayer);
 
-        wallSide = onRightWall ? -1 : 1;
+        wallSide = onRightWall ? 1 : -1;
     }
 
     void SetPlatformBooleans(Collider2D platformCol) {

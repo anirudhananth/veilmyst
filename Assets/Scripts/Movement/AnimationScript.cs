@@ -29,7 +29,6 @@ public class AnimationScript : MonoBehaviour
         anim.SetBool("wallSlide", move.wallSlide);
         anim.SetBool("canMove", move.canMove);
         anim.SetBool("isDashing", move.isDashing);
-
     }
 
     public void SetHorizontalMovement(float x,float y, float yVel)
@@ -37,6 +36,7 @@ public class AnimationScript : MonoBehaviour
         anim.SetFloat("HorizontalAxis", x);
         anim.SetFloat("VerticalAxis", y);
         anim.SetFloat("VerticalVelocity", yVel);
+        anim.SetBool("lookAwayOnWall", (coll.onRightWall && x < 0) || (coll.onLeftWall && x > 0));
     }
 
     public void SetTrigger(string trigger)
