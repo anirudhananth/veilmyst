@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,8 +10,8 @@ public class BetterJumping : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     private Movement movement;
+    public float k=0f;
 
-    public bool isshortJump = false;
 
     void Start()
     {
@@ -27,17 +27,17 @@ public class BetterJumping : MonoBehaviour
             PlayerInput input = GetComponent<PlayerInput>();
             jumpAction = input.actions["Jump"];
         }
-        
-        isshortJump = false;
+
+        k = jumpAction.ReadValue<float>();
         if(rb.velocity.y < 0) 
         {
+            //falling?
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         } 
         else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() == 0) 
         {
-            //short jump triggered here?
-            isshortJump = true;
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier  ) * Time.deltaTime;
+            //short jump triggered here
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier-1) * Time.deltaTime;
         } 
         else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() != 0 && (movement.hasDashed && !movement.wallJumped)) 
         {
