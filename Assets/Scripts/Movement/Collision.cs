@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +15,7 @@ public class Collision : MonoBehaviour
     [Header("Ground")]
     public bool onGround;
     public bool onWall;
+    public bool onLedge;
     public bool onRightWall;
     public bool onTopRightWall;
     public bool onLeftWall;
