@@ -10,6 +10,9 @@ public class BetterJumping : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     private Movement movement;
+    public float k=0f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,6 +27,8 @@ public class BetterJumping : MonoBehaviour
             PlayerInput input = GetComponent<PlayerInput>();
             jumpAction = input.actions["Jump"];
         }
+
+        k = jumpAction.ReadValue<float>();
         if(rb.velocity.y < 0) 
         {
             //falling?
