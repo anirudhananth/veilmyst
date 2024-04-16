@@ -7,6 +7,7 @@ public class Stamina : MonoBehaviour
     // Start is called before the first frame update
     public float currentstamina;
     public float defaultmaxstamina = 100;
+    public bool useManager = false;
     public float maxstamina;
 
     public Movement movement;
@@ -26,11 +27,23 @@ public class Stamina : MonoBehaviour
 
     private void Start() 
     {
-        maxstamina = defaultmaxstamina;
+        if(useManager)
+        {
+            maxstamina = MainManager.Instance.MaxStamina;
+        }
+        else
+        {
+            maxstamina = defaultmaxstamina;
+        }
         currentstamina = maxstamina;
     }
     private void Update()
     {
+        if(useManager)
+        {
+            maxstamina = MainManager.Instance.MaxStamina;
+        }
+        
         if(movement.wallSlide)
         {
             SlideReduceStamina();
