@@ -61,7 +61,6 @@ public class Stamina : MonoBehaviour
 
     public void StartRecharge()
     {
-        Debug.Log("r");
         canrecharge = true;
     }
 
