@@ -20,7 +20,11 @@ public class Enemy : Actor
         animator.SetBool("isDead", true);
         Destroy(gameObject, 1f);
         GetComponent<Collider2D>().enabled = false;
-        GetComponent<Patrolling>().IsPaused = true;
+        Patrolling p;
+        if(TryGetComponent<Patrolling>(out p))
+        {
+            GetComponent<Patrolling>().IsPaused = true;
+        }
         GetComponentInChildren<LethalCollision>().enabled = false;
         rb.isKinematic = true;
         rb.velocity = Vector3.zero;
