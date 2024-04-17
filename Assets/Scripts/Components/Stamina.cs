@@ -83,13 +83,20 @@ public class Stamina : MonoBehaviour
     }
     public bool ReduceStamina(float amount)
     {
-        if((currentstamina-amount)<0)
+        if(currentstamina<=0)
         {
             return false;
         }
         else
         {
-            currentstamina-=amount;
+            if ( currentstamina - amount < 0)
+            {
+                currentstamina = 0;
+            }
+            else 
+            {
+                currentstamina-=amount;
+            }
             return true;
         }
     }
