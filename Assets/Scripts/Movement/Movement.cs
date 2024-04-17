@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
         rb.gravityScale = 3;
+        spawnLocation = transform.position;
     }
 
     // Update is called once per frame
