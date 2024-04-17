@@ -14,6 +14,7 @@ public class Player : Actor
     private Rigidbody2D rb;
     private Destructible destructible;
     private Vector2 spawnLocation;
+    private StaminaBar staminaBar;
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
     {
@@ -29,11 +30,12 @@ public class Player : Actor
             }
         }
         IEnumerator SlowMoDeath()
-        {
+        { 
             yield return new WaitForSeconds(0.8f);
             self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
+            player.staminaBar.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
         }
@@ -41,6 +43,7 @@ public class Player : Actor
         // Disable movement and inputs
         player.rb.velocity = Vector3.zero;
         player.rb.isKinematic = true;
+        player.staminaBar.gameObject.SetActive(false);
         player.input.DeactivateInput();
 
         self.StartCoroutine(SlowMoDeath());
@@ -52,7 +55,9 @@ public class Player : Actor
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
+        staminaBar = GetComponentInChildren<StaminaBar>();
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
+        Debug.Assert(staminaBar != null);
     }
 }
