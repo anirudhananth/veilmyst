@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playMovScript.spawnLocation = CPPos;
+        // playMovScript.spawnLocation = CPPos;
 
         if (MainCam.transform.position != CamPos)
         {

@@ -77,6 +77,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
         rb.gravityScale = 3;
+        spawnLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -350,6 +351,7 @@ public class Movement : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f);
 
+        Debug.Log("YO");
         // rb.velocity = Vector2.zero;
 
         isUpwardForce = false;

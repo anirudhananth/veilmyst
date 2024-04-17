@@ -31,7 +31,7 @@ public class Player : Actor
         IEnumerator SlowMoDeath()
         {
             yield return new WaitForSeconds(0.8f);
-            self.transform.position = player.spawnLocation;
+            self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
             yield return new WaitForSeconds(0.2f);
@@ -48,7 +48,7 @@ public class Player : Actor
 
     private void Start()
     {
-        spawnLocation = transform.position;
+        spawnLocation = GameObject.FindWithTag("Player").transform.position;
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
