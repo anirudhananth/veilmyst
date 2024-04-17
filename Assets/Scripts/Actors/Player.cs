@@ -48,7 +48,7 @@ public class Player : Actor
 
     private void Start()
     {
-        spawnLocation = transform.position;
+        spawnLocation = GameObject.FindWithTag("Player").transform.position;
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7183300995886487709}
   - component: {fileID: 357957076189187205}
   - component: {fileID: 1259782431157196080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JumpParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 8005043364538225574}
   - component: {fileID: 1438832306725646903}
   - component: {fileID: 5151409475860315125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlideParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9752,7 +9752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2841071919741202798}
   - component: {fileID: 5451119700102602865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SquishBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9830,7 +9830,7 @@ GameObject:
   - component: {fileID: 1019704772738537908}
   - component: {fileID: 7296716780685526721}
   - component: {fileID: 2322023093703348857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: JumpParticle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14731,7 +14731,7 @@ GameObject:
   - component: {fileID: 2846731739245386706}
   - component: {fileID: 8898613395767869081}
   - component: {fileID: 4257925960357445154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14856,9 +14856,9 @@ GameObject:
   - component: {fileID: 1305499684131436793}
   - component: {fileID: -1149608380584541964}
   - component: {fileID: 8762005006866471222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14965,7 +14965,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 3
   lowJumpMultiplier: 8
-  isshortJump: 0
 --- !u!114 &5689299662008537363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15125,7 +15124,7 @@ GameObject:
   - component: {fileID: 6212501876212903040}
   - component: {fileID: 1722462306832807165}
   - component: {fileID: 9146898950248270160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DashParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19965,7 +19964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664905929325765353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlideParticleParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
