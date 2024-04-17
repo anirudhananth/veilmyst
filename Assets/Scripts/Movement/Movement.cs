@@ -350,6 +350,7 @@ public class Movement : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f);
 
+        Debug.Log("YO");
         // rb.velocity = Vector2.zero;
 
         isUpwardForce = false;
