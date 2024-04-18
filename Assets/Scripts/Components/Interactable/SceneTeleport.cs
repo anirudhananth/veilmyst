@@ -20,7 +20,6 @@ public class SceneTeleport : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.F))
             {
-                Debug.Log("T");
                 OpenScene();
             }
         }
