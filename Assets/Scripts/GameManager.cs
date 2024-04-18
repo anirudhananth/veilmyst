@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         if (MainCam.transform.position != CamPos)
         {
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed);
+            if (speed < 1) speed = 0.5f;
             speed += 0.08f * Time.deltaTime;
         }
     }
