@@ -188,7 +188,7 @@ public class Movement : MonoBehaviour
             StartCoroutine(WallClimbEndForce());
         }
 
-        if(coll.onWall && !coll.onGround && !isDashing)
+        if(coll.onWall && !coll.onGround && !isDashing && rb.velocity.y < 0)
         {
             if (x != 0 && !wallGrab && (canWallSlide || rb.velocity.y < 0))
             {
