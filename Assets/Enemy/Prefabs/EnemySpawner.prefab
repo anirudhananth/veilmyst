@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnEnemy: {fileID: 2285920460113254040, guid: 6e3aad59091a5cd45b0a3202f0ae7a3a,
     type: 3}
-  SpawnDelay: 1
+  SpawnDelay: 3.5
   SpawnPoint: {fileID: 4237988944735555109}
   PatrolPoint: {fileID: 5733127598710806813}
   SpawnPosition: {x: 0, y: 0, z: 0}
