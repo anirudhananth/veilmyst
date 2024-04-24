@@ -37,7 +37,6 @@ public class Player : Actor
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
             player.staminaBar.gameObject.SetActive(player.staminaBar.isvisible);
-            player.staminaBar.stamina.currentstamina = player.staminaBar.stamina.maxstamina;
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
         }
