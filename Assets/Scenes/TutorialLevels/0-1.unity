@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 284640522}
   - component: {fileID: 284640524}
   - component: {fileID: 284640523}
+  - component: {fileID: 284640525}
   m_Layer: 0
   m_Name: Ability (1)
   m_TagString: Untagged
@@ -947,6 +948,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.5, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &284640525
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284640521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &332717283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1833,7 @@ GameObject:
   - component: {fileID: 601741697}
   - component: {fileID: 601741699}
   - component: {fileID: 601741698}
+  - component: {fileID: 601741700}
   m_Layer: 0
   m_Name: Ability (2)
   m_TagString: Untagged
@@ -1895,6 +1918,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &601741700
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601741696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &651062532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +2962,7 @@ GameObject:
   - component: {fileID: 943502317}
   - component: {fileID: 943502319}
   - component: {fileID: 943502318}
+  - component: {fileID: 943502320}
   m_Layer: 0
   m_Name: Ability (5)
   m_TagString: Untagged
@@ -3002,6 +3047,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &943502320
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943502316}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &952799798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9050235658899963338, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
@@ -3019,6 +3085,7 @@ GameObject:
   - component: {fileID: 1011596767}
   - component: {fileID: 1011596769}
   - component: {fileID: 1011596768}
+  - component: {fileID: 1011596770}
   m_Layer: 0
   m_Name: Ability (4)
   m_TagString: Untagged
@@ -3103,6 +3170,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1011596770
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011596766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1038886978
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,15 +3231,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[C] or [SPACE] to Jump'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38eac61269491e04e8bc9ea2f330aab5, type: 2}
+  m_sharedMaterial: {fileID: 155840681643348120, guid: 38eac61269491e04e8bc9ea2f330aab5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278238719
-  m_fontColor: {r: 1, g: 0.7411765, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3168,8 +3257,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3232,10 +3321,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2021672919}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -156.32999}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1047358386 stripped
 Transform:
@@ -3395,6 +3484,7 @@ GameObject:
   - component: {fileID: 1238434446}
   - component: {fileID: 1238434447}
   - component: {fileID: 1238434448}
+  - component: {fileID: 1238434449}
   m_Layer: 0
   m_Name: Ability (0)
   m_TagString: Untagged
@@ -3479,6 +3569,27 @@ MonoBehaviour:
   uiText: {fileID: 1038886979}
   Instruction: Press [C] to Jump
   helpTime: 0
+--- !u!95 &1238434449
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238434445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1239240529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15143,6 +15254,7 @@ GameObject:
   - component: {fileID: 2100058817}
   - component: {fileID: 2100058819}
   - component: {fileID: 2100058818}
+  - component: {fileID: 2100058820}
   m_Layer: 0
   m_Name: Ability (3)
   m_TagString: Untagged
@@ -15227,6 +15339,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &2100058820
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100058816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2107840877
 GameObject:
   m_ObjectHideFlags: 0
