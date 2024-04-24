@@ -41,8 +41,4 @@ public class MainManager : MonoBehaviour
             return;
         }
     }
-    public void IncreaseStamina(float amount)
-    {
-        MaxStamina+=amount;
-    }
 }

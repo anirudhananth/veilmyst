@@ -14858,6 +14858,7 @@ GameObject:
   - component: {fileID: 8762005006866471222}
   - component: {fileID: 7690347724824063150}
   - component: {fileID: 1741369952633824696}
+  - component: {fileID: 5382130837180811556}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -15234,6 +15235,29 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd6b7bab095cfbf499943f969312d2a8, type: 3}
   Dash: {fileID: 8300000, guid: b61b994661a3f57418f1046771e728cc, type: 3}
   Death: {fileID: 8300000, guid: 9b094eb572e0fbc44abe615bdcd2e864, type: 3}
+--- !u!114 &5382130837180811556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117108824006022323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d6ee1921312794a995858d9c2a4da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentstamina: 0
+  defaultmaxstamina: 150
+  useManager: 1
+  maxstamina: 150
+  movement: {fileID: 99493568218852288}
+  normaljump_stamina: 40
+  fulljump_stamina: 60
+  dash_stamina: 80
+  sliding_10ms_stamina: 0.5
+  ground_charge_10ms_stamina: 1.25
+  canrecharge: 0
 --- !u!1 &8195859897924604415
 GameObject:
   m_ObjectHideFlags: 0

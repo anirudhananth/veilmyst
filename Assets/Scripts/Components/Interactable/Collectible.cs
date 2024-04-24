@@ -34,7 +34,6 @@ public class Collectible : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-        MainManager.Instance.IncreaseStamina(staminaincreaseamount);
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         source.Play();
         Destroy(gameObject, 1f);
