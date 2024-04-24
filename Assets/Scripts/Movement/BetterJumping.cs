@@ -9,6 +9,7 @@ public class BetterJumping : MonoBehaviour
     private InputAction jumpAction;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    public float maxFallSpeed = 8f;
     private Movement movement;
     void Start()
     {
@@ -40,5 +41,8 @@ public class BetterJumping : MonoBehaviour
             Debug.Log("value not 0");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        Vector2 vel = rb.velocity;
+        vel.y = Mathf.Max(vel.y, -maxFallSpeed);
+        rb.velocity = vel;
     }
 }

@@ -14966,6 +14966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 3
   lowJumpMultiplier: 8
+  maxFallSpeed: 8
 --- !u!114 &5689299662008537363
 MonoBehaviour:
   m_ObjectHideFlags: 0
