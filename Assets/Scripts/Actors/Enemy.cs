@@ -12,29 +12,44 @@ public class Enemy : Actor
     private Rigidbody2D rb;
     private AudioSource audioSource;
 
-    public void OnDeath()
+    protected void Disable()
+    {
+        isDead = true;
+        GetComponent<Collider2D>().enabled = false;
+        var lc = GetComponentInChildren<LethalCollision>();
+        if (lc) lc.enabled = false;
+        var dash = GetComponentInChildren<DashDamageTaker>();
+        if (dash) dash.enabled = false;
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+
+        Patrolling p;
+        if (TryGetComponent<Patrolling>(out p))
+        {
+            GetComponent<Patrolling>().IsPaused = true;
+        }
+    }
+
+    protected void Die(float delay = 1f)
+    {
+        if (isSpawned)
+        {
+            Spawner.Spawn();
+        }
+
+        audioSource.Play();
+        animator.SetBool("isDead", true);
+        Destroy(gameObject, delay);
+    }
+
+    public virtual void OnDeath()
     {
         if (isDead)
         {
             return;
         }
-        isDead = true;
-        audioSource.Play();
-        animator.SetBool("isDead", true);
-        Destroy(gameObject, 1f);
-        GetComponent<Collider2D>().enabled = false;
-        Patrolling p;
-        if(TryGetComponent<Patrolling>(out p))
-        {
-            GetComponent<Patrolling>().IsPaused = true;
-        }
-        GetComponentInChildren<LethalCollision>().enabled = false;
-        rb.isKinematic = true;
-        rb.velocity = Vector3.zero;
-        if (isSpawned)
-        {
-            Spawner.Spawn();
-        }
+        Disable();
+        Die();
     }
 
     private void Start()

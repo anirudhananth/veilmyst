@@ -14,7 +14,7 @@ public class LethalCollision : MonoBehaviour
 
     public static void DefaultCollisionHandler(LethalCollision self, Destructible destructible)
     {
-        destructible.Die(self.gameObject);
+        destructible.Die((self.Parent) ? self.Parent.gameObject : self.gameObject);
     }
 
     private void Start()

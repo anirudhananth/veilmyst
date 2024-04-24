@@ -27,9 +27,6 @@ public class CheckPoint : MonoBehaviour
             GameObject.FindWithTag("Player").GetComponent<Movement>().spawnLocation = transform.position;
             GM.CPPos = transform.position;
             GM.CamPos = CamPos;
-            if(MainCam.transform.position != CamPos) {
-                GM.speed = 0;
-            }
         }
     }
 }

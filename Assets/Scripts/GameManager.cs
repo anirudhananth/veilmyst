@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     // Camera related vars
     Camera MainCam;
+    PixelPerfectCamera PPCam;
     public Vector3 CPPos;
     public Vector3 CamPos;
+    public int PixelPerUnit = 16;
+
+    private float currentPixelPerUnit = 16;
+
     public float speed;
-    private float distance;
-    private float duration;
-    private float distanceCovered;
 
     // Player-related vars
     public GameObject player;
@@ -24,40 +29,28 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         MainCam = Camera.main;
+        PPCam = MainCam.GetComponent<PixelPerfectCamera>();
+        currentPixelPerUnit = PixelPerUnit = PPCam.assetsPPU;
         
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
+        Instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
         // playMovScript.spawnLocation = CPPos;
-
         if (MainCam.transform.position != CamPos)
         {
-            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed);
-            if (speed < 1) speed = 0.5f;
-            speed += 0.08f * Time.deltaTime;
+            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed * Time.deltaTime);
+            // if (speed < 1) speed = 4f;
+            // speed += 0.08f * Time.deltaTime;
         }
-    }
-
-    public IEnumerator move()
-    {
-        speed = 0;
-        distance = Vector3.Distance(MainCam.transform.position, CamPos);
-
-        //Time.timeScale = 0;
-        playMovScript.canDash = false;
-        duration = 1f;
-        while (speed < 1)
+        if (PixelPerUnit != (int)currentPixelPerUnit)
         {
-            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed / duration);
-            speed += 0.02f * Time.fixedDeltaTime;
-
-            //Time.timeScale = speed;
-            yield return new WaitForFixedUpdate();
+            currentPixelPerUnit = Mathf.Lerp(currentPixelPerUnit, PixelPerUnit, speed * Time.deltaTime);
+            PPCam.assetsPPU = (int)currentPixelPerUnit;
         }
-        Time.timeScale = 1;
     }
 }

@@ -22,10 +22,10 @@ public class Player : Actor
 
         Player player = self.GetComponent<Player>();
 
-        LethalCollision lc;
-        if(killer.gameObject.TryGetComponent(out lc))
+        Enemy enemy;
+        if (killer.gameObject.TryGetComponent(out enemy))
         {
-            if(lc.Parent && lc.Parent.tag.Equals("DestructibleEnemy") && self.gameObject.GetComponent<Movement>().isDashing)
+            if(enemy.tag.Equals("DestructibleEnemy") && self.gameObject.GetComponent<Movement>().isDashing)
             {
                 return;
             }

@@ -45,6 +45,7 @@ public class DashDamageTaker : MonoBehaviour
         {
             if(movement.isDashing)
             {
+                movement.DashImpact((Parent)?Parent:gameObject);
                 OnCollideDash(this);                
             }
         }

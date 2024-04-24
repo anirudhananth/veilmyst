@@ -361,6 +361,15 @@ public class Movement : MonoBehaviour
         jumpParticle.Play();
     }
 
+    public void DashImpact(GameObject other)
+    {
+        Vector3 dir = (transform.position - other.transform.position).normalized;
+        dir.y += 0.5f;
+        dir.Normalize();
+        rb.velocity = dir * rb.velocity.magnitude * 0.8f;
+        canDash = true;
+    }
+
     private void Dash(float x, float y)
     {
         if(stamina!=null)
