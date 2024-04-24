@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     // Misc
     public int DeathCount;
 
+    // Level vars
+    public GameObject[] despawning_collectibles;
+    public LevelManager levelManager;
+    public int currentLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,12 @@ public class GameManager : MonoBehaviour
         
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
+
+        despawning_collectibles = GameObject.FindGameObjectsWithTag("Collectible");
+
+        levelManager = FindFirstObjectByType<LevelManager>();
+        levelManager.FindCollectibles();
+        levelManager.currentLevel = currentLevel;
     }
 
     // Update is called once per frame

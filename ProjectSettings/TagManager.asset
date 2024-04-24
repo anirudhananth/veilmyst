@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Solid
   - DestructibleEnemy
+  - Collectible
   layers:
   - Default
   - TransparentFX

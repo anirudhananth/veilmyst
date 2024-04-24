@@ -8,9 +8,13 @@ public class SceneTeleport : MonoBehaviour
     // Start is called before the first frame update
     public string sceneName = "1-2";
     public bool canteleport = false;
+
+    // Level Management
+    private LevelManager levelManager;
+    public int currentLevel;
     void Start()
     {
-        
+        levelManager = FindFirstObjectByType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -44,6 +48,7 @@ public class SceneTeleport : MonoBehaviour
 
     private void OpenScene()
     {
+        levelManager.CompletedLevel();
         SceneManager.LoadScene(sceneName);
     }
 }

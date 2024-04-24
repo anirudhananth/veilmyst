@@ -4928,7 +4928,7 @@ GameObject:
   - component: {fileID: 5355287988879248605}
   m_Layer: 0
   m_Name: Interactable_Collectible
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4975,6 +4975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staminaincreaseamount: 5
+  Name: 
 --- !u!61 &5355287988879248605
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Stamina Var
     public float staminaincreaseamount = 5.0f;
+
+    // For Level Manager
+    public string Name;
+    public LevelManager levelManager;
+
+    // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = FindFirstObjectByType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -28,6 +34,7 @@ public class Collectible : MonoBehaviour
     private void Triggerbehavior()
     {
         MainManager.Instance.IncreaseStamina(staminaincreaseamount);
+        levelManager.CollectedCollectible(gameObject.name);
         Destroy(gameObject);
     }
 }
