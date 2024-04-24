@@ -2,10 +2,12 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEditor;
 
 [RequireComponent(typeof(Destructible))]
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerAudio))]
 public class Player : Actor
 {
     public Animator animator;
@@ -36,7 +38,6 @@ public class Player : Actor
             self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
-            player.staminaBar.gameObject.SetActive(player.staminaBar.isvisible);
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
         }
@@ -45,7 +46,6 @@ public class Player : Actor
         // Disable movement and inputs
         player.rb.velocity = Vector3.zero;
         player.rb.isKinematic = true;
-        player.staminaBar.gameObject.SetActive(false);
         player.input.DeactivateInput();
 
         self.StartCoroutine(SlowMoDeath());
