@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4e98df0bfe80040b55324d50e9a8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: {fileID: 1516300872}
+  stamina: {fileID: 0}
   isvisible: 0
   slider: {fileID: 1328392}
 --- !u!114 &1328392
@@ -3108,7 +3108,7 @@ PrefabInstance:
         type: 3}
       propertyPath: stamina
       value: 
-      objectReference: {fileID: 1516300872}
+      objectReference: {fileID: 0}
     - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
         type: 3}
       propertyPath: wallJumped
@@ -3196,11 +3196,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1704549404}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1516300872}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914, type: 3}
 --- !u!1 &879727856
 GameObject:
@@ -17062,47 +17058,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1509109891}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1516300871 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-    type: 3}
-  m_PrefabInstance: {fileID: 877748127}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1516300872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516300871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04d6ee1921312794a995858d9c2a4da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentstamina: 0
-  defaultmaxstamina: 100
-  useManager: 0
-  maxstamina: 0
-  movement: {fileID: 1516300879}
-  normaljump_stamina: 30
-  fulljump_stamina: 60
-  dash_stamina: 80
-  sliding_10ms_stamina: 0.5
-  ground_charge_10ms_stamina: 1.25
-  canrecharge: 0
---- !u!114 &1516300879 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-    type: 3}
-  m_PrefabInstance: {fileID: 877748127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516300871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3286969c5df8a1e4bb64bc92ea46495e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1516300881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924308874895785105, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,

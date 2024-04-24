@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4e98df0bfe80040b55324d50e9a8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stamina: {fileID: 1465965832}
+  stamina: {fileID: 0}
   isvisible: 0
   slider: {fileID: 1075167735}
 --- !u!1001 &1235682441
@@ -1530,7 +1530,7 @@ PrefabInstance:
         type: 3}
       propertyPath: stamina
       value: 
-      objectReference: {fileID: 1465965832}
+      objectReference: {fileID: 0}
     - target: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
         type: 3}
       propertyPath: wallJumped
@@ -1618,11 +1618,7 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1308986129}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1465965832}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914, type: 3}
 --- !u!1001 &1248364709
 PrefabInstance:
@@ -6374,53 +6370,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a32ca575f0014045bba3b1770c20afe, type: 3}
---- !u!1 &1465965821 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8117108824006022323, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-    type: 3}
-  m_PrefabInstance: {fileID: 1235682441}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1465965829 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 99493568218852288, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
-    type: 3}
-  m_PrefabInstance: {fileID: 1235682441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465965821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3286969c5df8a1e4bb64bc92ea46495e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1465965831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2924308874895785105, guid: b3cb4a7ac7ef44a3eb8f41cdd0f99914,
     type: 3}
   m_PrefabInstance: {fileID: 1235682441}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1465965832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465965821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04d6ee1921312794a995858d9c2a4da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentstamina: 0
-  defaultmaxstamina: 100
-  useManager: 0
-  maxstamina: 0
-  movement: {fileID: 1465965829}
-  normaljump_stamina: 30
-  fulljump_stamina: 60
-  dash_stamina: 80
-  sliding_10ms_stamina: 0.5
-  ground_charge_10ms_stamina: 1.25
-  canrecharge: 0
 --- !u!1001 &1477230696
 PrefabInstance:
   m_ObjectHideFlags: 0
