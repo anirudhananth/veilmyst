@@ -17,15 +17,16 @@ public class UnlockAbility : MonoBehaviour
     [Header("UI vars")]
     public TMP_Text uiText;
     public string Instruction;
-    public float helpTime = 0;
     private bool helped = false;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         playerInput = Player.GetComponent<PlayerInput>();
-        playerInput.actions.FindAction(inputName).Disable(); 
-        uiText.text = "";
+        playerInput.actions.FindAction(inputName).Disable();
+        uiText.GetComponent<TextMeshProUGUI>().text = "";
+        animator = uiText.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -38,25 +39,21 @@ public class UnlockAbility : MonoBehaviour
     {
         if (!helped)
         {
-            helpTime += Time.time;
             helped = true;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && Time.time >= helpTime)
-        {
             playerInput.actions.FindAction(inputName).Enable();
-            uiText.text = Instruction;
         }
+        uiText.text = Instruction;
+        animator.SetBool("show", true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            uiText.text = "";
+            if (uiText.text == Instruction)
+            {
+                animator.SetBool("show", false);
+            }
         }
     }
 }
