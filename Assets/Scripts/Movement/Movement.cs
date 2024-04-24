@@ -6,12 +6,14 @@ using DG.Tweening;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(PlayerAudio))]
 public class Movement : MonoBehaviour
 {
     private Collision coll;
     [HideInInspector]
     public Rigidbody2D rb;
 
+    private PlayerAudio playerAudio;
     private PlayerInput input;
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -76,6 +78,7 @@ public class Movement : MonoBehaviour
         coll = GetComponent<Collision>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<AnimationScript>();
+        playerAudio = GetComponent<PlayerAudio>();
         rb.gravityScale = 3;
         spawnLocation = transform.position;
     }
@@ -432,6 +435,7 @@ public class Movement : MonoBehaviour
         {
             anim.SetTrigger(dir.y > 0 ? "dashUp" : "dashDown");
         }
+        playerAudio.PlayDash();
 
         if (isGroundDash) {
             StartCoroutine(GroundDashWait(dir));
@@ -578,6 +582,7 @@ public class Movement : MonoBehaviour
             // }
                 rb.velocity += platformVelocity;
         }
+        if (Mathf.Abs(rb.velocity.x) > 0.5 && coll.onGround) playerAudio.PlayWalk();
     }
 
     private void Jump(Vector2 dir, bool wall)
@@ -609,6 +614,7 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
+        playerAudio.PlayJump();
     }
 
     IEnumerator DisableMovement(float time)

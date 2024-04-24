@@ -15,6 +15,7 @@ public class Player : Actor
     private Destructible destructible;
     private Vector2 spawnLocation;
     private StaminaBar staminaBar;
+    private PlayerAudio playerAudio;
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
     {
@@ -41,6 +42,7 @@ public class Player : Actor
             player.input.ActivateInput();
         }
         player.animator.SetBool("isDead", true);
+        player.playerAudio.PlayDeath();
         // Disable movement and inputs
         player.rb.velocity = Vector3.zero;
         player.rb.isKinematic = true;
@@ -57,6 +59,7 @@ public class Player : Actor
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
         staminaBar = GetComponentInChildren<StaminaBar>();
+        playerAudio = GetComponent<PlayerAudio>();
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
         Debug.Assert(staminaBar != null);

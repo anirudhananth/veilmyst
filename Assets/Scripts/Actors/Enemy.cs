@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : Actor
 {
     public bool isSpawned = false;
@@ -9,6 +10,7 @@ public class Enemy : Actor
     public EnemySpawner Spawner;
     private Animator animator;
     private Rigidbody2D rb;
+    private AudioSource audioSource;
 
     public void OnDeath()
     {
@@ -17,6 +19,7 @@ public class Enemy : Actor
             return;
         }
         isDead = true;
+        audioSource.Play();
         animator.SetBool("isDead", true);
         Destroy(gameObject, 1f);
         GetComponent<Collider2D>().enabled = false;
@@ -38,6 +41,7 @@ public class Enemy : Actor
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()

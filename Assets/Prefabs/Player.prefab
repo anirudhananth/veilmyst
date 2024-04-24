@@ -14857,6 +14857,7 @@ GameObject:
   - component: {fileID: -1149608380584541964}
   - component: {fileID: 8762005006866471222}
   - component: {fileID: 7690347724824063150}
+  - component: {fileID: 1741369952633824696}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -14966,7 +14967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallMultiplier: 3
   lowJumpMultiplier: 8
-  maxFallSpeed: 8
+  maxFallSpeed: 12
 --- !u!114 &5689299662008537363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15126,7 +15127,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -15211,6 +15212,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1741369952633824696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117108824006022323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8643307962872104bb0b7b68b43757a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jump: {fileID: 8300000, guid: 7edb40517d4824240bd7518c72d3646e, type: 3}
+  Walk:
+  - {fileID: 8300000, guid: 4bbbb1b2aba7fdb46b4b3d7c27f10797, type: 3}
+  - {fileID: 8300000, guid: 05b8c4e30dd9fd7418c62eded30e6c05, type: 3}
+  - {fileID: 8300000, guid: 705a4e9093d0ec044a5cca3e6e4d34e9, type: 3}
+  - {fileID: 8300000, guid: 4b83dde99e29298449523f0218b9af62, type: 3}
+  - {fileID: 8300000, guid: ac7399f7f538d1f4e94133e8c1d5fa3c, type: 3}
+  - {fileID: 8300000, guid: cd6b7bab095cfbf499943f969312d2a8, type: 3}
+  Dash: {fileID: 8300000, guid: b61b994661a3f57418f1046771e728cc, type: 3}
+  Death: {fileID: 8300000, guid: 9b094eb572e0fbc44abe615bdcd2e864, type: 3}
 --- !u!1 &8195859897924604415
 GameObject:
   m_ObjectHideFlags: 0

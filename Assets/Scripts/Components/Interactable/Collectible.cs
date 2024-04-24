@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
+[RequireComponent(typeof(AudioSource))]
 public class Collectible : MonoBehaviour
 {
     // Start is called before the first frame update
     public float staminaincreaseamount = 5.0f;
+    private bool isDead = false;
+    private AudioSource source;
+
     void Start()
     {
-        
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +32,11 @@ public class Collectible : MonoBehaviour
 
     private void Triggerbehavior()
     {
+        if (isDead) return;
+        isDead = true;
         MainManager.Instance.IncreaseStamina(staminaincreaseamount);
-        Destroy(gameObject);
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        source.Play();
+        Destroy(gameObject, 1f);
     }
 }
