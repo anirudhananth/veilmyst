@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -86,28 +86,6 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Temporary level switching
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene("Level1");
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
-        {
-            SceneManager.LoadScene("Level2");
-        }
-        else if (Input.GetKey(KeyCode.Alpha3))
-        {
-            SceneManager.LoadScene("Level3");
-        }
-        else if (Input.GetKey(KeyCode.Alpha4))
-        {
-            SceneManager.LoadScene("TestMap_EnemyAI");
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            SceneManager.LoadScene("TestMap_Platforms");
-        }
-
         if (input == null)
         {
             input = GetComponent<PlayerInput>();
