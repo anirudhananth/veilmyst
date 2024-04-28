@@ -38,7 +38,6 @@ public class BetterJumping : MonoBehaviour
         else if(rb.velocity.y > 0 && jumpAction.ReadValue<float>() != 0 && (movement.hasDashed && !movement.wallJumped)) 
         {
             //When is this triggered?
-            Debug.Log("value not 0");
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
         Vector2 vel = rb.velocity;

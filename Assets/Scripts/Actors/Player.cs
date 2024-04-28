@@ -15,8 +15,6 @@ public class Player : Actor
     private PlayerInput input;
     private Rigidbody2D rb;
     private Destructible destructible;
-    private Vector2 spawnLocation;
-    private StaminaBar staminaBar;
     private PlayerAudio playerAudio;
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
@@ -53,14 +51,11 @@ public class Player : Actor
 
     private void Start()
     {
-        spawnLocation = GameObject.FindWithTag("Player").transform.position;
         input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
-        staminaBar = GetComponentInChildren<StaminaBar>();
         playerAudio = GetComponent<PlayerAudio>();
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
-        Debug.Assert(staminaBar != null);
     }
 }
