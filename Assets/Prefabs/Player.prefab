@@ -15009,12 +15009,14 @@ MonoBehaviour:
   onClimbableWall: 0
   onClimbableLeftWall: 0
   onClimbableRightWall: 0
-  collisionRadius: 0.1
+  collisionRadius: 0.05
   bottomOffset: {x: 0, y: -0.95}
   rightOffset: {x: 0.5, y: -0.33}
   leftOffset: {x: -0.5, y: -0.33}
   topLeftOffset: {x: -0.5, y: 0}
   topRightOffset: {x: 0.5, y: 0}
+  bottomRightOffset: {x: 0.39, y: -0.95}
+  bottomLeftOffset: {x: -0.39, y: -0.95}
 --- !u!114 &-4629850626306885204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15248,7 +15250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentstamina: 0
-  defaultmaxstamina: 150
   useManager: 1
   maxstamina: 150
   movement: {fileID: 99493568218852288}
