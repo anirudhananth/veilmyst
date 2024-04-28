@@ -48,7 +48,7 @@ public class Collision : MonoBehaviour
     [Header("Collision")]
 
     public float collisionRadius = 0.25f;
-    public Vector2 bottomOffset, rightOffset, leftOffset, topLeftOffset, topRightOffset;
+    public Vector2 bottomOffset, rightOffset, leftOffset, topLeftOffset, topRightOffset,bottomRightOffset,bottomLeftOffset;
     private Color debugCollisionColor = Color.red;
 
     // Start is called before the first frame update
@@ -66,9 +66,54 @@ public class Collision : MonoBehaviour
         SetPlatformBooleans(platformCol);
         SetClimbableWallBooleans();
     }
+    void CheckGroundAndLedge(bool groundCol)
+    {
+        //side = -1--->left
+        bool isFacingLeft = (gameObject.GetComponent<Movement>().side<0);
+        bool isLeftCornerOnGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomLeftOffset, collisionRadius, groundLayer);
+        bool isRightCornerOnGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomRightOffset, collisionRadius, groundLayer);
+        bool isMiddleOnGround = groundCol;
+        if(isLeftCornerOnGround || isRightCornerOnGround ||isMiddleOnGround)
+        {onGround = true;}
+        else
+        {
+            onGround = false;
+        }
+        if(isMiddleOnGround)
+        {
+            if(!isLeftCornerOnGround && isRightCornerOnGround && isFacingLeft)//is facing left and on edge
+            {
+                onLedge = true;
+            }
+            else if(isLeftCornerOnGround && !isRightCornerOnGround && !isFacingLeft) //is facing right and on edge
+            {
+                onLedge = true;
+            }
+            else
+            {
+                onLedge = false;
+            }
+        }
+        else
+        {
+            if((isLeftCornerOnGround && !isFacingLeft) || (isRightCornerOnGround && isFacingLeft))
+            {
+                onLedge = true;
+            }
+            else
+            {
+                onLedge = false;
+            }
+        }
+    }
 
     void SetGroundBooleans(Collider2D groundCol) {
-        onGround = groundCol;
+        CheckGroundAndLedge(groundCol);
+        if(gameObject.GetComponent<Rigidbody2D>().velocity.x>= 0.5 && gameObject.GetComponent<Rigidbody2D>().velocity.x<= -0.5)
+        {
+            onLedge = false;
+        }
+        //onGround = groundCol;
         onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) 
             || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
 
@@ -77,7 +122,6 @@ public class Collision : MonoBehaviour
 
         onTopRightWall = Physics2D.OverlapCircle((Vector2)transform.position + topRightOffset, collisionRadius, groundLayer);
         onTopLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + topLeftOffset, collisionRadius, groundLayer);
-
         wallSide = onRightWall ? 1 : -1;
     }
 
@@ -119,5 +163,7 @@ public class Collision : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + topLeftOffset, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + topRightOffset, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + bottomLeftOffset, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + bottomRightOffset, collisionRadius);
     }
 }
