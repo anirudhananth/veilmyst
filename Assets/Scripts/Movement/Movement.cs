@@ -177,7 +177,6 @@ public class Movement : MonoBehaviour
                 {
                     if(stamina.currentstamina<=0)
                     {
-                        //Debug.Log("cannotslide");
                         wallSlide = false;
                         return;
                     }
@@ -326,14 +325,9 @@ public class Movement : MonoBehaviour
         isWallClimbForce = true;
         float wallSide = coll.onRightWall ? 1 : -1;
         wallSideForce = wallSide;
-        float duration = 0.2f;
-        float time = 0;
         isUpwardForce = true;
 
         yield return new WaitForSeconds(0.25f);
-
-        Debug.Log("YO");
-        // rb.velocity = Vector2.zero;
 
         isUpwardForce = false;
         // while (time < duration / 2f) {
@@ -586,8 +580,6 @@ public class Movement : MonoBehaviour
                 return;
             }
         }
-        // if (!canJump) return;
-        // if(wall) Debug.Log(dir.x + " " + dir.y);
         dir = dir.normalized;
         if(isDashing && isGroundDashing) {
             StartCoroutine(ResetDash());

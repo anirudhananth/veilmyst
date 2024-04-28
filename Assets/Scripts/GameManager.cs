@@ -40,12 +40,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // playMovScript.spawnLocation = CPPos;
         if (MainCam.transform.position != CamPos)
         {
             MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed * Time.deltaTime);
-            // if (speed < 1) speed = 4f;
-            // speed += 0.08f * Time.deltaTime;
         }
         if (PixelPerUnit != (int)currentPixelPerUnit)
         {

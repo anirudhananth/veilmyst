@@ -19,7 +19,6 @@ public class Spike : MonoBehaviour
             Rigidbody2D rb = destructible.GetComponent<Rigidbody2D>();
 
             // Only kill if the movement is in an opposite direction
-            Debug.Log($"Dot product {rb.velocity.normalized} · {direction} = {Vector2.Dot(rb.velocity.normalized, direction)}");
             if (rb == null || Vector2.Dot(rb.velocity.normalized, direction) < 0.001)
             {
                 destructible.Die(self.gameObject);
