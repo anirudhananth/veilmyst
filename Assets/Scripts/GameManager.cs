@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.U2D;
 
 public class GameManager : MonoBehaviour
@@ -25,13 +26,17 @@ public class GameManager : MonoBehaviour
     // Misc
     public int DeathCount;
 
+    [Tooltip("UI")]
+    public Showable PauseMenu;
+    public InputActionReference PauseAction;
+
     // Start is called before the first frame update
     void Start()
     {
         MainCam = Camera.main;
         PPCam = MainCam.GetComponent<PixelPerfectCamera>();
         currentPixelPerUnit = PixelPerUnit = PPCam.assetsPPU;
-        
+
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
         Instance = this;
@@ -48,6 +53,11 @@ public class GameManager : MonoBehaviour
         {
             currentPixelPerUnit = Mathf.Lerp(currentPixelPerUnit, PixelPerUnit, speed * Time.deltaTime);
             PPCam.assetsPPU = (int)currentPixelPerUnit;
+        }
+
+        if (PauseAction.action.triggered)
+        {
+            PauseMenu.Toggle();
         }
     }
 }
