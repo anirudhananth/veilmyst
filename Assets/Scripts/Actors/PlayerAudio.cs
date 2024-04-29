@@ -19,7 +19,7 @@ public class PlayerAudio : MonoBehaviour
     public void PlayWalk()
     {
         if (audioSource.isPlaying && !walking) return;
-        if (audioSource.isPlaying && audioSource.time < 0.07) return;
+        if (audioSource.isPlaying && audioSource.time < 0.3) return;
         audioSource.Stop();
         int index = Random.Range(0, Walk.Length);
         audioSource.clip = Walk[index];
