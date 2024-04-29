@@ -25,6 +25,7 @@ public class PhaseManager : MonoBehaviour
     public GameObject Player;
     Movement playerMovement;
     PlayerInput playerInput;
+    InputAction toggleAction;
 
     [Header("Time Type")]
     private float shifTimer = 0; // If it is in timer mode then this is when it will change phase
@@ -36,6 +37,7 @@ public class PhaseManager : MonoBehaviour
         // Player
         playerMovement = Player.GetComponent<Movement>();
         playerInput = Player.GetComponent<PlayerInput>();
+        toggleAction = playerInput.actions["Phase"];
 
         // UI
         timerUI.GetComponent<TextMeshProUGUI>().text = "0";
@@ -72,7 +74,7 @@ public class PhaseManager : MonoBehaviour
         }
 
         // Button for toggle
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (toggleAction.triggered)
         {
             phase = !phase;
         }
@@ -99,7 +101,7 @@ public class PhaseManager : MonoBehaviour
 
     void TimedChanger() // Phase changes after some seconds
     {
-        if(shifTimer < Time.time)
+        if (shifTimer < Time.time)
         {
             phase = !phase;
             shifTimer = Time.time + shiftCD;

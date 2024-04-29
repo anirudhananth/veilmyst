@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Phase",
+                    "type": "Button",
+                    "id": "1a3f5d8b-4126-43b5-a8ae-705f03a1701c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -198,11 +207,22 @@
                 {
                     "name": "",
                     "id": "8e3f4d28-f0ef-483c-a5f1-65509467a00a",
-                    "path": "<Keyboard>/tab",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d49fbecd-1172-49f1-acdd-f8d97ced90d5",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Phase",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
