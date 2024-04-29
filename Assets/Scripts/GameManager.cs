@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     // Camera related vars
-    Camera MainCam;
+    public Camera MainCam;
     PixelPerfectCamera PPCam;
     public Vector3 CPPos;
     public Vector3 CamPos;
