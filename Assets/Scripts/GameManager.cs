@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour
     public Camera MainCam;
     PixelPerfectCamera PPCam;
     public Vector3 CPPos;
-    public Vector3 CamPos;
+    public Vector2 CamPos { get; private set; }
     public int PixelPerUnit = 16;
+    private bool camLocked = false;
 
     private float currentPixelPerUnit = 16;
 
@@ -31,6 +32,13 @@ public class GameManager : MonoBehaviour
     public Showable PauseMenu;
     public InputActionReference PauseAction;
 
+    public void MoveCam(Vector3 pos, bool locked = false)
+    {
+        if (camLocked) return;
+        camLocked = locked;
+        CamPos = pos;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,9 +54,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MainCam.transform.position != CamPos)
+        if ((Vector2)MainCam.transform.position != CamPos)
         {
-            MainCam.transform.position = Vector3.Lerp(MainCam.transform.position, CamPos, speed * Time.deltaTime);
+            var pos = Vector3.Lerp(MainCam.transform.position, CamPos, speed * Time.deltaTime);
+            pos.z = MainCam.transform.position.z;
+            MainCam.transform.position = pos;
         }
         if (PixelPerUnit != (int)currentPixelPerUnit)
         {
