@@ -1,17 +1,19 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
     public static MainManager Instance;
     public static Animator TransitionAnimator;
-    public float MaxStamina=100;
+    public float MaxStamina = 100;
+
     public static IEnumerator DelayedLoadScene(string scene)
     {
         if (TransitionAnimator)
         {
-            TransitionAnimator.SetBool("shown", true);
+            TransitionAnimator.SetBool("show", true);
         }
         else
         {
@@ -28,7 +30,7 @@ public class MainManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance ==null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;

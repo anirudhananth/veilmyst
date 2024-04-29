@@ -46,7 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CPPos: {x: 0, y: 0, z: 0}
   CamPos: {x: 0, y: 0, z: -20}
+  PixelPerUnit: 16
   speed: 5
   player: {fileID: 0}
   playMovScript: {fileID: 0}
   DeathCount: 0
+  PauseMenu: {fileID: 0}
+  PauseAction: {fileID: 493886440147350371, guid: 73bb708951df6e0488eb76cc4336e283,
+    type: 3}

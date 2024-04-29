@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: shown
+    m_ConditionEvent: show
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6111358626330469429}
@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: shown
+    m_ConditionEvent: show
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8661882805222399675}
@@ -86,7 +86,7 @@ AnimatorController:
   m_Name: Wipe
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: shown
+  - m_Name: show
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
