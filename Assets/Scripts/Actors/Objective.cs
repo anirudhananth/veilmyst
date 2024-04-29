@@ -17,9 +17,7 @@ public class Objective: Enemy
 
     private IEnumerator PostDeath()
     {
-        Vector3 pos = transform.position;
-        pos.z = GameManager.Instance.CamPos.z;
-        GameManager.Instance.CamPos = pos;
+        GameManager.Instance.MoveCam(transform.position, true);
         GameManager.Instance.PixelPerUnit = 24;
         Die(2f);
         yield return new WaitForSeconds(1f);
