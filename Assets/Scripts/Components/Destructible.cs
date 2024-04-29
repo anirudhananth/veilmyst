@@ -9,6 +9,7 @@ public class Destructible : MonoBehaviour
 {
     public const float squishCheckRadius = 0.2f;
     public static LayerMask solidMask;
+    public event DeathCallback DeathEvent;
 
     [Tooltip("To overide the death behavior, use GetComponent<Destructible> " +
              "and change OnDeath to the desired custom death handler.")]
@@ -29,12 +30,13 @@ public class Destructible : MonoBehaviour
     public static void OnSquishDefault(Destructible self, GameObject squisherA, GameObject squisherB, bool isHorizontal)
     {
         self.GetComponent<Rigidbody2D>().isKinematic = true;
-        self.OnDeath(self, squisherA);
+        self.Die(squisherA);
     }
 
     public void Die(GameObject killer)
     {
         OnDeath(this, killer);
+        DeathEvent?.Invoke(this, killer);
     }
 
     private bool CheckSquish(Collider2D left, Collider2D right, bool checkHorizontal)

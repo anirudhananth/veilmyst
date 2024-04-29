@@ -11,10 +11,11 @@ using UnityEditor;
 public class Player : Actor
 {
     public Animator animator;
+    public Collision col;
+    public Destructible destructible;
 
     private PlayerInput input;
     private Rigidbody2D rb;
-    private Destructible destructible;
     private PlayerAudio playerAudio;
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
@@ -55,6 +56,7 @@ public class Player : Actor
         rb = GetComponent<Rigidbody2D>();
         destructible = GetComponent<Destructible>();
         playerAudio = GetComponent<PlayerAudio>();
+        col = GetComponent<Collision>();
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
     }

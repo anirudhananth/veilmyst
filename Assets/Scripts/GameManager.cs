@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     // Misc
     public int DeathCount;
+    public GameObject EffectsPrefab;
 
     [Tooltip("UI")]
     public Showable PauseMenu;
