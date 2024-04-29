@@ -3567,7 +3567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06c7e7649d18714494e91f74a97138f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputName: Move
+  inputName: Dash
   Player: {fileID: 1516300871}
   uiText: {fileID: 1038886979}
   Instruction: Try Dashing
