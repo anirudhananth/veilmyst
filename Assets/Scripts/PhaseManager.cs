@@ -90,9 +90,10 @@ public class PhaseManager : MonoBehaviour
 
     void DashChanger() // Change when dashing
     {
-        if (playerInput.actions["Dash"].triggered && playerMovement.canDash)
+        if (playerMovement.isDashing && shifTimer < Time.time)
         {
             phase = !phase;
+            shifTimer = Time.time + 1;
         }
     }
 
