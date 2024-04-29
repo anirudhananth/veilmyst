@@ -2271,16 +2271,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1243871840322732293, guid: 0b691e463df234e1aa7eea7572b5f94f,
-        type: 3}
-      propertyPath: m_ForceIntoRT
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1243871840322732293, guid: 0b691e463df234e1aa7eea7572b5f94f,
-        type: 3}
-      propertyPath: orthographic size
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6090728653120909123, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
       propertyPath: m_Name
@@ -4007,7 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25088d38cc7eb2d4a9abdb8a926c82b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 1
+  TargetPhase: 0
   phaseA: {fileID: 1918046070}
   phaseB: {fileID: 556609848}
   cooldown: 15
@@ -4017,6 +4007,7 @@ MonoBehaviour:
   timeType: 0
   Player: {fileID: 261154691}
   shiftCD: 3
+  GlitchDuration: 0.1
 --- !u!4 &1811898038
 Transform:
   m_ObjectHideFlags: 0

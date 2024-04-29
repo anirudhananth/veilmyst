@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PhaseManager : MonoBehaviour
 {
     [Header("Phase Objects")]
-    public bool phase;
+    public bool TargetPhase;
     public GameObject phaseA;
     public GameObject phaseB;
 
@@ -31,6 +31,15 @@ public class PhaseManager : MonoBehaviour
     private float shifTimer = 0; // If it is in timer mode then this is when it will change phase
     public float shiftCD; // The amount by which shiftimer changes
 
+    public float GlitchDuration = 0.1f;
+    private float transitionTimeout;
+    private bool curPhase;
+
+    private Glitch glitch
+    {
+        get => GameManager.Instance.MainCam.GetComponent<Glitch>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,21 +50,29 @@ public class PhaseManager : MonoBehaviour
 
         // UI
         timerUI.GetComponent<TextMeshProUGUI>().text = "0";
+        curPhase = !TargetPhase;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Phase Change basics
-        if (phase)
+        transitionTimeout -= Time.deltaTime;
+
+        if (TargetPhase != curPhase && transitionTimeout <= 0)
         {
-            phaseA.SetActive(true);
-            phaseB.SetActive(false);
-        }
-        else
-        {
-            phaseA.SetActive(false);
-            phaseB.SetActive(true);
+            curPhase = TargetPhase;
+            glitch.SetShow(false);
+            // Phase Change basics
+            if (TargetPhase)
+            {
+                phaseA.SetActive(true);
+                phaseB.SetActive(false);
+            }
+            else
+            {
+                phaseA.SetActive(false);
+                phaseB.SetActive(true);
+            }
         }
 
         // If dashType
@@ -76,8 +93,16 @@ public class PhaseManager : MonoBehaviour
         // Button for toggle
         if (toggleAction.triggered)
         {
-            phase = !phase;
+            TogglePhase();
         }
+    }
+
+    private void TogglePhase()
+    {
+        // Toggle the phase and set off the transition effect
+        TargetPhase = !TargetPhase;
+        glitch.SetShow(true);
+        transitionTimeout = GlitchDuration;
     }
 
     public void PhaseChanger() // Called by button
@@ -86,7 +111,7 @@ public class PhaseManager : MonoBehaviour
         // phase = !phase;
         if (!timeType && !dashType)
         {
-            phase = !phase;
+            TogglePhase();
         }
     }
 
@@ -94,7 +119,7 @@ public class PhaseManager : MonoBehaviour
     {
         if (playerMovement.isDashing && shifTimer < Time.time)
         {
-            phase = !phase;
+            TogglePhase();
             shifTimer = Time.time + 1;
         }
     }
@@ -103,7 +128,7 @@ public class PhaseManager : MonoBehaviour
     {
         if (shifTimer < Time.time)
         {
-            phase = !phase;
+            TogglePhase();
             shifTimer = Time.time + shiftCD;
         }
     }
