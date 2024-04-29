@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 ////TODO: localization support
@@ -256,14 +257,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private void PerformInteractiveRebind(InputAction action, int bindingIndex, bool allCompositeParts = false)
         {
             m_RebindOperation?.Cancel(); // Will null out m_RebindOperation.
+            bool wasEnabled = action.enabled;
 
             void CleanUp()
             {
                 m_RebindOperation?.Dispose();
                 m_RebindOperation = null;
-                action.Enable();
+                if (wasEnabled) action.Enable();
             }
             action.Disable();
+            EventSystem.current.SetSelectedGameObject(null);
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
@@ -278,6 +281,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 .OnComplete(
                     operation =>
                     {
+                        if (m_RebindText != null)
+                        {
+                            var bindingIndex = action.bindings.IndexOf(x => x.id.ToString() == m_BindingId);
+                            if (bindingIndex != -1) {
+                                string displayString = action.GetBindingDisplayString(bindingIndex);
+                                m_RebindText.text = $"Got {displayString}";
+                            }
+                        }
                         m_RebindOverlay?.SetShow(false);
                         m_RebindStopEvent?.Invoke(this, operation);
                         UpdateBindingDisplay();

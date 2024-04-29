@@ -113,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5978047697847113919}
   - component: {fileID: 1158518958187923964}
+  - component: {fileID: 1269238684921172963}
   m_Layer: 5
   m_Name: RebindOverlay
   m_TagString: Untagged
@@ -148,6 +149,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2445230338850466430}
   m_CullTransparentMesh: 0
+--- !u!114 &1269238684921172963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2445230338850466430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81de5acdfca366c458dcb70c22728cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
+  Animator: {fileID: 2155215327416818379}
 --- !u!1 &2485053355822604704
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   show: 0
+  Animator: {fileID: 9114898355040832249}
 --- !u!225 &5210956489805321504
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -285,7 +301,6 @@ GameObject:
   - component: {fileID: 4878819196625554666}
   - component: {fileID: 2155215327416818379}
   - component: {fileID: 1051439878099920283}
-  - component: {fileID: 5694797807141800199}
   m_Layer: 5
   m_Name: RebindPrompt
   m_TagString: Untagged
@@ -431,19 +446,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5694797807141800199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384872409336702252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81de5acdfca366c458dcb70c22728cae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  show: 0
 --- !u!1 &8949325199204016941
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +655,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -823,7 +825,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -993,7 +995,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -1163,7 +1165,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -1322,7 +1324,7 @@ PrefabInstance:
     - target: {fileID: 6680292650503350826, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_BindingId
-      value: 15c80d57-7e78-458b-bfb0-2a452075fada
+      value: 8e3f4d28-f0ef-483c-a5f1-65509467a00a
       objectReference: {fileID: 0}
     - target: {fileID: 6680292650503350826, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
@@ -1333,7 +1335,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -1342,7 +1344,12 @@ PrefabInstance:
     - target: {fileID: 6982828287641870768, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_text
-      value: 
+      value: Tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982828287641870768, guid: f25dcd618d3acd64795bf8bb32edb6c9,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 8637107748555531459, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
@@ -1498,7 +1505,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -1668,7 +1675,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
@@ -1962,7 +1969,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RebindOverlay
       value: 
-      objectReference: {fileID: 5694797807141800199}
+      objectReference: {fileID: 1269238684921172963}
     - target: {fileID: 6680292650847612335, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_Text
