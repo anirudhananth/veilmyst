@@ -1,15 +1,15 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class AnimatedUI : Showable
 {
     public bool show = false;
 
-    private Animator animator;
+    public Animator Animator;
 
     public override void SetShow(bool show)
     {
-        animator.SetBool("show", show);
+        if (!Animator.gameObject.activeSelf) Animator.gameObject.SetActive(show);
+        Animator.SetBool("show", show);
     }
 
     public override void Toggle()
@@ -20,7 +20,8 @@ public class AnimatedUI : Showable
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        if (Animator == null) Animator = GetComponent<Animator>();
+        else if (!show) Animator.gameObject.SetActive(false);
         SetShow(show);
     }
 }
