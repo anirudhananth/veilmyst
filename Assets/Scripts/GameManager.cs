@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Camera MainCam;
     PixelPerfectCamera PPCam;
     public Vector3 CPPos;
-    public Vector3 CamPos;
+    public Vector2 CamPos { get; set; }
     public Vector3 CamResetPos;
     public int PixelPerUnit = 16;
     private bool camLocked = false;
