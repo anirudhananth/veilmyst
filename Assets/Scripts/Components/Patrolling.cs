@@ -13,6 +13,8 @@ public class Patrolling : MonoBehaviour
 
     [SerializeField]
     float speed = 1f;
+    
+    public bool usePatrol = false;
 
     public bool IsPaused = false;
 
@@ -23,36 +25,43 @@ public class Patrolling : MonoBehaviour
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        currentPoint = pointB.transform;
-        moveDirection = (currentPoint.position - transform.position).normalized;
-        Debug.Assert(pointA != null);
-        Debug.Assert(pointB != null);
+        if(usePatrol)
+        {
+            rb = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
+            currentPoint = pointB.transform;
+            moveDirection = (currentPoint.position - transform.position).normalized;
+            Debug.Assert(pointA != null);
+            Debug.Assert(pointB != null);
+        }
     }
 
     void Update()
     {
-        if (IsPaused) return;
-        rb.velocity = moveDirection * speed;
-
-        if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointB.transform)
+        if(usePatrol)
         {
-            currentPoint = pointA.transform;
-            moveDirection = (currentPoint.position - transform.position).normalized;
-        }
-
-        if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointA.transform)
-        {
-            currentPoint = pointB.transform;
-            moveDirection = (currentPoint.position - transform.position).normalized;
+            if (IsPaused) return;
+            rb.velocity = moveDirection * speed;
+            if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointB.transform)
+            {
+                currentPoint = pointA.transform;
+                moveDirection = (currentPoint.position - transform.position).normalized;
+            }
+            if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointA.transform)
+            {
+                currentPoint = pointB.transform;
+                moveDirection = (currentPoint.position - transform.position).normalized;
+            }
         }
     }
 
     private void OnDrawGizmos() 
     {
-        Gizmos.DrawWireSphere(pointA.transform.position,0.5f);
-        Gizmos.DrawWireSphere(pointB.transform.position,0.5f);
-        Gizmos.DrawLine(pointA.transform.position,pointB.transform.position);
+        if(usePatrol)
+        {
+            Gizmos.DrawWireSphere(pointA.transform.position,0.5f);
+            Gizmos.DrawWireSphere(pointB.transform.position,0.5f);
+            Gizmos.DrawLine(pointA.transform.position,pointB.transform.position);
+        }
     }
 }
