@@ -34,6 +34,7 @@ public class Patrolling : MonoBehaviour
     void Update()
     {
         if (IsPaused) return;
+
         rb.velocity = moveDirection * speed;
 
         if(Vector2.Distance(transform.position, currentPoint.position)<0.5f && currentPoint == pointB.transform)
@@ -54,5 +55,21 @@ public class Patrolling : MonoBehaviour
         Gizmos.DrawWireSphere(pointA.transform.position,0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position,0.5f);
         Gizmos.DrawLine(pointA.transform.position,pointB.transform.position);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.CompareTag("Player"))
+        {
+            // other.transform.SetParent(transform);
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 50f;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if(collision.CompareTag("Player"))
+        {
+            // other.transform.SetParent(transform);
+            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 3f;
+        }
     }
 }
