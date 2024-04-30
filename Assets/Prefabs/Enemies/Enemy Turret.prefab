@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 2285920460113254040, guid: 1f8083f5ed60da74ab00edeb60c9a9b9, type: 3}
   firerate: 2
+  B1: {fileID: 0}
 --- !u!1 &3042890987318726668
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +252,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DestructibleEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8176806061812266843, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 90f6194958d315d46b1aa8892e61b8f2, type: 2}
     - target: {fileID: 8219394142969289101, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Size.x
@@ -310,6 +316,7 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   speed: 1
+  usePatrol: 0
   IsPaused: 0
 --- !u!114 &6883440582500140292 stripped
 MonoBehaviour:
