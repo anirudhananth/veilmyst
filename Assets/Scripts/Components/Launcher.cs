@@ -21,6 +21,7 @@ public class Launcher : MonoBehaviour
     
     IEnumerator Fire()
     {
+        yield return new WaitForSeconds(firerate);
         Debug.Log("Fire");
         B1 = Instantiate(Bullet,gameObject.transform.position, Quaternion.identity);
         if(gameObject.transform.position.x-gameObject.transform.parent.transform.position.x>=0)
@@ -31,7 +32,7 @@ public class Launcher : MonoBehaviour
         {
             B1.GetComponent<Bullet>().facingside=-1;
         }
-        yield return new WaitForSeconds(firerate);
+        //yield return new WaitForSeconds(firerate);
         StartCoroutine(Fire());
     }
 }
