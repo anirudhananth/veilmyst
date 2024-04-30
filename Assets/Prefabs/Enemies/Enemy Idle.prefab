@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: pathpoints.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5178918646204978249, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Interpolate
