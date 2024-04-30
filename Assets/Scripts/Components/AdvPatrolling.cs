@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Patrolling : MonoBehaviour
+public class AdvPatrolling : MonoBehaviour
 {
     [SerializeField]
     public GameObject pointA;
@@ -46,6 +46,7 @@ public class Patrolling : MonoBehaviour
                 currentPoint = pointB.transform;
                 moveDirection = (currentPoint.position - transform.position).normalized;
             }
+        
     }
 
     private void OnDrawGizmos() 
@@ -54,21 +55,5 @@ public class Patrolling : MonoBehaviour
             Gizmos.DrawWireSphere(pointB.transform.position,0.5f);
             Gizmos.DrawLine(pointA.transform.position,pointB.transform.position);
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.CompareTag("Player"))
-        {
-            // other.transform.SetParent(transform);
-            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 50f;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        if(collision.CompareTag("Player"))
-        {
-            // other.transform.SetParent(transform);
-            collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 3f;
-        }
     }
 }

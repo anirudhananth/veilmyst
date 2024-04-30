@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float destroytime = 3f;
+    public float destroytime = 4f;
     public float speed = 1f;
 
     public float facingside;
@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         finalposition = gameObject.transform.position+new Vector3(facingside,0,0)*999;
+        Destroy(gameObject,destroytime);
     }
 
     // Update is called once per frame
