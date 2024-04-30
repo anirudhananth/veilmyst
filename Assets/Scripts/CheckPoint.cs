@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [Header("Main Variables")]
     public GameManager GM; // game manager
     public Vector3 CamPos;
+    public Movement playerMovement;
+
+    [Space]
+
+    [Header("Set If Spawnpoint")]
+    public bool isSpawnPoint = false;
+
     Camera MainCam;
 
     // Start is called before the first frame update
     void Start()
     {
         MainCam = Camera.main;
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 
     // Update is called once per frame
@@ -24,7 +33,10 @@ public class CheckPoint : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            GameObject.FindWithTag("Player").GetComponent<Movement>().spawnLocation = transform.position;
+            if(isSpawnPoint) {
+                playerMovement.spawnLocation = transform.position;
+                GM.CamResetPos = CamPos;
+            } 
             GM.CPPos = transform.position;
             GM.MoveCam(CamPos);
         }
