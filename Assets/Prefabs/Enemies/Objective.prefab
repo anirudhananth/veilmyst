@@ -189,7 +189,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Parent
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8557205376062163531}
     - target: {fileID: 7014566413050211916, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Name
@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSpawned: 0
   isDead: 0
+  useCustomizeDeathTime: 0
+  deathanimtaitontime: 1
   Spawner: {fileID: 0}
   sceneName: 1-2
 --- !u!4 &7920109341966164336 stripped
