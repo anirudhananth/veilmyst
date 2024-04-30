@@ -7,6 +7,9 @@ public class Enemy : Actor
 {
     public bool isSpawned = false;
     public bool isDead = false;
+
+    public bool useCustomizeDeathTime = false;
+    public float deathanimtaitontime = 1f;
     public EnemySpawner Spawner;
     private Animator animator;
     private Rigidbody2D rb;
@@ -30,7 +33,7 @@ public class Enemy : Actor
         }
     }
 
-    protected void Die(float delay = 1f)
+    protected void Die(float death = 1f)
     {
         if (isSpawned)
         {
@@ -39,7 +42,14 @@ public class Enemy : Actor
 
         audioSource.Play();
         animator.SetBool("isDead", true);
-        Destroy(gameObject, delay);
+        if (useCustomizeDeathTime)
+        {
+            Destroy(gameObject, deathanimtaitontime);
+        }
+        else
+        {
+            Destroy(gameObject, death);
+        }
     }
 
     public virtual void OnDeath()
