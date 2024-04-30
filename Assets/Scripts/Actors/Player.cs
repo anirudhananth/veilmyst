@@ -33,10 +33,13 @@ public class Player : Actor
         }
         IEnumerator SlowMoDeath()
         { 
+            GameManager gameManager = FindObjectOfType<GameManager>();
             yield return new WaitForSeconds(0.8f);
             self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
+            gameManager.CamPos = gameManager.CamResetPos;
+            gameManager.DeathCount++;
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
         }

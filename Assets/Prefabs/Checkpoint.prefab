@@ -92,3 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
   CamPos: {x: 0, y: 0, z: -10}
+  playerMovement: {fileID: 0}
+  isSpawnPoint: 0

@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public Camera MainCam;
     PixelPerfectCamera PPCam;
     public Vector3 CPPos;
-    public Vector2 CamPos { get; private set; }
+    public Vector2 CamPos { get; set; }
+    public Vector3 CamResetPos;
     public int PixelPerUnit = 16;
     private bool camLocked = false;
 
@@ -43,9 +44,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         MainCam = Camera.main;
+        CamResetPos = MainCam.transform.position;
         PPCam = MainCam.GetComponent<PixelPerfectCamera>();
         currentPixelPerUnit = PixelPerUnit = PPCam.assetsPPU;
-
+        DeathCount = 0;
+        
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
         Instance = this;
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
             pos.z = MainCam.transform.position.z;
             MainCam.transform.position = pos;
         }
+
         if (PixelPerUnit != (int)currentPixelPerUnit)
         {
             currentPixelPerUnit = Mathf.Lerp(currentPixelPerUnit, PixelPerUnit, speed * Time.deltaTime);

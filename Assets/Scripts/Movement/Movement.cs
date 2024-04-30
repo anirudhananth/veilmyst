@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -142,7 +142,7 @@ public class Movement : MonoBehaviour
             GetComponent<BetterJumping>().enabled = true;
         }
         
-        if (wallGrab && !isDashing)
+        if (wallGrab && !isDashing && coll.onClimbableWall && canMove)
         {
             rb.gravityScale = 0;
 
@@ -151,25 +151,28 @@ public class Movement : MonoBehaviour
 
             float speedModifier = y > 0 ? .5f : 1;
 
-            if(!coll.onPlatformWall) {
-                rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
-            } else if(coll.platform) {
-                Rigidbody2D platform = coll.platform.GetComponent<Rigidbody2D>();
-                Vector2 platformVelocity = platform.velocity;
-                float wallSide = coll.onRightWall ? 1 : -1;
-                rb.velocity = new Vector2(rb.velocity.x + wallSide, platformVelocity.y + y * (speed * speedModifier));
-            }
+            rb.velocity = new Vector2(0, y * (speed * speedModifier));
+            // if(!coll.onPlatformWall) {
+            //     // transform.position = new Vector3(transform.position.x, transform.position.y + y * (speed * speedModifier) * Time.deltaTime, transform.position.z);
+            // } else if(coll.platform) {
+            //     Rigidbody2D platform = coll.platform.GetComponent<Rigidbody2D>();
+            //     Vector2 platformVelocity = platform.velocity;
+            //     float wallSide = coll.onRightWall ? 1 : -1;
+            //     rb.velocity = new Vector2(rb.velocity.x + wallSide, platformVelocity.y + y * (speed * speedModifier));
+            // }
         }
         else if (!wallGrab && !isDashing)
         {
-            rb.gravityScale = 3;
+            if(!coll.riding) {
+                rb.gravityScale = 3;
+            }
         }
 
         if (y > 0 && wallGrab && ((coll.onLeftWall && !coll.onTopLeftWall) || (coll.onRightWall && !coll.onTopRightWall))) {
             StartCoroutine(WallClimbEndForce());
         }
 
-        if(coll.onWall && !coll.onGround && !isDashing && rb.velocity.y < 0)
+        if(coll.onWall && !coll.onPlatformWall && !coll.onGround && !isDashing && rb.velocity.y < 0)
         {
             if (x != 0 && !wallGrab && (canWallSlide || rb.velocity.y < 0))
             {
@@ -242,7 +245,7 @@ public class Movement : MonoBehaviour
             {
                 stamina.StartRecharge();
             }
-            if(rb.velocity.y < 0) {
+            if(rb.velocity.y < 0 && !coll.onPlatform) {
                 rb.velocity = new(rb.velocity.x, 0);
             }
         }
@@ -328,6 +331,8 @@ public class Movement : MonoBehaviour
         isUpwardForce = true;
 
         yield return new WaitForSeconds(0.25f);
+
+        // rb.velocity = Vector2.zero;
 
         isUpwardForce = false;
         // while (time < duration / 2f) {
@@ -497,7 +502,12 @@ public class Movement : MonoBehaviour
                 Jump((Vector2.up / 1f + wallDir / 2f), true);
             }
         } else if(_x != 0) {
-            Jump((Vector2.up / 1f + wallDir / 2f), true);
+            if(_x == wallDir.x) {
+                Jump((Vector2.up / 1f + wallDir / 2f), true);
+            } else {
+                Jump((Vector2.up / 1f + wallDir / 2.5f), true);
+            }
+            // Jump((Vector2.up / 1f + wallDir / 2f), true);
         }
 
         wallJumped = true;
@@ -518,7 +528,13 @@ public class Movement : MonoBehaviour
         }
         float push = pushingWall ? 0 : rb.velocity.x;
 
-        rb.velocity = new Vector2(push, -slideSpeed);
+        if(!coll.onPlatformWall) {
+            rb.velocity = new Vector2(push, -slideSpeed);
+        } else if(coll.platform) {
+            Vector2 platformVelocity = coll.platform.GetComponent<Rigidbody2D>().velocity;
+            rb.velocity = new Vector2(push + platformVelocity.x, -slideSpeed);
+        }
+        // rb.velocity = new Vector2(push, -slideSpeed);
     }
 
     private void Walk(Vector2 dir)
@@ -545,25 +561,19 @@ public class Movement : MonoBehaviour
         {
             if(isWallClimbForce) {
                 rb.velocity = new Vector2(0, rb.velocity.y);
-            } else {
+            } else if(!coll.riding) {
                 rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+            } else {
+                Vector2 platformVelocity = coll.riding.velocity;
+                // rb.velocity = new Vector2(dir.x * speed + platformVelocity.x, rb.velocity.y);
+                rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed + platformVelocity.x, rb.velocity.y)), 30f * Time.deltaTime);
             }
         }
         else
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
-        if (coll.riding)
-        {
-            Vector2 platformVelocity = coll.riding.velocity;
-            platformVelocity.y = 0;
-            // if(platformVelocity.x > 0) {
-            //     rb.velocity += platformVelocity;
-            // } else {
-            // }
-                rb.velocity += platformVelocity;
-        }
-        if (Mathf.Abs(rb.velocity.x) > 0.5 && coll.onGround) playerAudio.PlayWalk();
+        if (Mathf.Abs(rb.velocity.x) > 0.5 && coll.onGround && (Mathf.Abs(x) == 1)) playerAudio.PlayWalk();
     }
 
     private void Jump(Vector2 dir, bool wall)
@@ -589,7 +599,15 @@ public class Movement : MonoBehaviour
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
         if(!wall) rb.velocity = new Vector2(rb.velocity.x, 0);
-        else rb.velocity = Vector2.zero;
+        if(coll.riding) {
+            rb.gravityScale = 3f;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(coll.riding.velocity.y, 0));
+        } else if(coll.onPlatformWall && !coll.onGround && coll.platform) {
+            Rigidbody2D platform = coll.platform.GetComponent<Rigidbody2D>();
+            Vector2 platformVelocity = platform.velocity;
+            rb.velocity = new Vector2(0, Mathf.Max(platformVelocity.y, 0));
+        } else if(wall) rb.velocity = Vector2.zero;
+
         rb.velocity += dir * jumpForce;
 
         particle.Play();
