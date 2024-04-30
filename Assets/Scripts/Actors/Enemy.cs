@@ -11,12 +11,14 @@ public class Enemy : Actor
     public bool useCustomizeDeathTime = false;
     public float deathanimtaitontime = 1f;
     public EnemySpawner Spawner;
-    private Animator animator;
-    private Rigidbody2D rb;
-    private AudioSource audioSource;
+    protected Animator animator;
+    protected Rigidbody2D rb;
+    protected AudioSource audioSource;
+
 
     protected void Disable()
     {
+        Debug.Log("disable");
         isDead = true;
         GetComponent<Collider2D>().enabled = false;
         var lc = GetComponentInChildren<LethalCollision>();
@@ -39,7 +41,6 @@ public class Enemy : Actor
         {
             Spawner.Spawn();
         }
-
         audioSource.Play();
         animator.SetBool("isDead", true);
         if (useCustomizeDeathTime)
@@ -62,14 +63,14 @@ public class Enemy : Actor
         Die();
     }
 
-    private void Start()
+    protected void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    protected void Update()
     {
         animator.SetBool("isMoving", rb.velocity.magnitude > 0.01);
     }
