@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class CameraFallLoop : MonoBehaviour
@@ -9,6 +10,7 @@ public class CameraFallLoop : MonoBehaviour
     public float OscillateSpeedRad;
     public float OscillateDistance;
     public GameObject StillObject;
+    public CinemachineBrain Brain;
 
     private float initialPosY;
     private Vector3 stillObjectOffset;
@@ -23,6 +25,7 @@ public class CameraFallLoop : MonoBehaviour
 
     public void Update()
     {
+        if (Brain.IsBlending) return;
         var pos = transform.position;
         pos.y += FallSpeed * Time.deltaTime; 
         if (Mathf.Abs(pos.y - initialPosY) > ResetDistance)
