@@ -294,7 +294,7 @@ PrefabInstance:
     - target: {fileID: 5165425439078029257, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: CamPos.x
-      value: 28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165425439078029257, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
@@ -2284,7 +2284,7 @@ PrefabInstance:
     - target: {fileID: 5165425439078029257, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: CamPos.x
-      value: 28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165425439078029257, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
