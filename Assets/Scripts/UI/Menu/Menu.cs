@@ -20,8 +20,8 @@ public enum HintVariant
 
 public class Menu : Showable
 {
+    public static Menu FocusedMenu;
     public MenuItem[] MenuItems;
-    public PlayerInput PlayerInput;
     public TextMeshProUGUI HintText;
     public AudioClip SelectAudioClip;
     public AudioClip ConfirmAudioClip;
@@ -36,12 +36,15 @@ public class Menu : Showable
     private int selectedItemIndex = -1;
     private const float inputDelay = .03f;
     private float inputDelayTimer = 0;
+    private PlayerInput PlayerInput;
 
     private AudioSource audioSource;
 
     public override void SetShow(bool show)
     {
         HasFocus = show;
+        if (HasFocus) FocusedMenu = this;
+        else FocusedMenu = null;
         if (MenuCamera != null) MenuCamera.Priority = show ? Priority.Menu : Priority.Default;
         foreach (MenuItem item in MenuItems)
         {
@@ -96,6 +99,7 @@ public class Menu : Showable
         {
             item.ParentMenu = this;
         }
+        PlayerInput = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
         UpAction = PlayerInput.actions["Up"];
         DownAction = PlayerInput.actions["Down"];
         LeftAction = PlayerInput.actions["Left"];

@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     // Camera related vars
     public Camera MainCam;
+    public Camera MenuCam;
     PixelPerfectCamera PPCam;
     public Vector3 CPPos;
     public Vector2 CamPos { get; set; }
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject EffectsPrefab;
 
     [Tooltip("UI")]
-    public Showable PauseMenu;
+    public Menu PauseMenu;
     public InputActionReference PauseAction;
 
     public void MoveCam(Vector3 pos, bool locked = false)
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
         PPCam = MainCam.GetComponent<PixelPerfectCamera>();
         currentPixelPerUnit = PixelPerUnit = PPCam.assetsPPU;
         DeathCount = 0;
-        
+
         player = GameObject.FindGameObjectWithTag("Player");
         playMovScript = player.GetComponent<Movement>();
         Instance = this;
@@ -72,7 +73,11 @@ public class GameManager : MonoBehaviour
 
         if (PauseAction.action.triggered)
         {
-            PauseMenu.Toggle();
+            if (Menu.FocusedMenu == null) PauseMenu.SetShow(true);
+            else Menu.FocusedMenu?.Toggle();
         }
+
+        MainCam.gameObject.SetActive(Menu.FocusedMenu == null);
+        MenuCam.gameObject.SetActive(Menu.FocusedMenu != null);
     }
 }

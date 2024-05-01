@@ -22,12 +22,14 @@ public class MenuVolumeAction : MenuHorizontalAction
 
     public override void Select(Menu sourceMenu)
     {
-        menuItem.ParentMenu.SetHintText(HintVariant.Volume);
+        if (menuItem.ParentMenu)
+            menuItem.ParentMenu.SetHintText(HintVariant.Volume);
     }
 
     public override void Deselect(Menu sourceMenu)
     {
-        menuItem.ParentMenu.SetHintText(HintVariant.Default);
+        if (menuItem.ParentMenu)
+            menuItem.ParentMenu.SetHintText(HintVariant.Default);
     }
 
     private void HandleShow(bool show)
