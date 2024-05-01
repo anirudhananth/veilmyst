@@ -23,17 +23,17 @@ public class CameraFallLoop : MonoBehaviour
         stillObjectOffset = StillObject.transform.position - transform.position;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (Brain.IsBlending) return;
         var pos = transform.position;
-        pos.y += FallSpeed * Time.deltaTime;
+        pos.y += FallSpeed * Time.fixedDeltaTime;
         if (Mathf.Abs(pos.y - initialPos.y) > ResetDistance)
         {
             pos = initialPos;
         }
         transform.position = pos;
-        yOffsetRad += OscillateSpeedRad * Time.deltaTime;
+        yOffsetRad += OscillateSpeedRad * Time.fixedDeltaTime;
         Vector3 yAdjustment = Vector3.down * Mathf.Sin(yOffsetRad) * OscillateDistance;
         StillObject.transform.position = transform.position + stillObjectOffset + yAdjustment;
     }
