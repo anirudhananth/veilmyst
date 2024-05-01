@@ -266,7 +266,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 if (wasEnabled) action.Enable();
             }
             action.Disable();
-            EventSystem.current.SetSelectedGameObject(null);
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
