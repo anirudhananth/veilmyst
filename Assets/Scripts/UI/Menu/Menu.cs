@@ -1,11 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Menu : MonoBehaviour
+public static class Priority
+{
+    public const int Default = 10;
+    public const int Menu = 12;
+    public const int MenuOverride = 14;
+}
+
+public enum HintVariant
+{
+    Level, Default
+}
+
+public class Menu : Showable
 {
     public MenuItem[] MenuItems;
     public PlayerInput PlayerInput;
@@ -13,10 +26,11 @@ public class Menu : MonoBehaviour
     public AudioClip SelectAudioClip;
     public AudioClip ConfirmAudioClip;
     public bool HasFocus = false;
+    public Menu ParentMenu;
+    public AnimatedUI Animator;
+    public CinemachineVirtualCamera MenuCamera;
 
-    private InputAction upAction;
-    private InputAction downAction;
-    private InputAction enterAction;
+    public InputAction UpAction, DownAction, LeftAction, RightAction, EnterAction;
     private bool initialized = false;
 
     private int selectedItemIndex = -1;
@@ -25,17 +39,61 @@ public class Menu : MonoBehaviour
 
     private AudioSource audioSource;
 
+    public override void SetShow(bool show)
+    {
+        HasFocus = show;
+        if (MenuCamera != null) MenuCamera.Priority = show ? Priority.Menu : Priority.Default;
+        foreach (MenuItem item in MenuItems)
+        {
+            item.SetShow(show);
+        }
+        if (Animator) Animator.SetShow(show);
+    }
+
+    public override void Toggle()
+    {
+        SetShow(!HasFocus);
+    }
+
+    public void OverrideHint(string text)
+    {
+        HintText.text = text;
+    }
+
+    public void SetHintText(HintVariant variant)
+    {
+        string upStr = UpAction.GetBindingDisplayString(0);
+        string downStr = DownAction.GetBindingDisplayString(0);
+        string clickStr = EnterAction.GetBindingDisplayString(0);
+        string leftStr = LeftAction.GetBindingDisplayString(0);
+        string rightStr = RightAction.GetBindingDisplayString(0);
+
+        switch (variant)
+        {
+            case HintVariant.Default:
+                HintText.text = $"[{upStr}] Select Up | [{downStr}] Select Down | [{clickStr}] Select";
+                break;
+            case HintVariant.Level:
+                HintText.text = $"[{leftStr}] Prev level | [{rightStr}] Next level | [{clickStr}] Play | [{upStr}/{downStr}] ...";
+                break;
+        }
+    }
+
     private void Init()
     {
         initialized = true;
         MenuItems = GetComponentsInChildren<MenuItem>();
-        upAction = PlayerInput.actions["Up"];
-        downAction = PlayerInput.actions["Down"];
-        enterAction = PlayerInput.actions["Enter"];
-        string upStr = upAction.GetBindingDisplayString(0);
-        string downStr = downAction.GetBindingDisplayString(0);
-        string clickStr = enterAction.GetBindingDisplayString(0);
-        HintText.text = $"[{upStr}] Select Up | [{downStr}] Select Down | [{clickStr}] Select";
+        foreach (MenuItem item in MenuItems)
+        {
+            item.ParentMenu = this;
+        }
+        UpAction = PlayerInput.actions["Up"];
+        DownAction = PlayerInput.actions["Down"];
+        LeftAction = PlayerInput.actions["Left"];
+        RightAction = PlayerInput.actions["Right"];
+        EnterAction = PlayerInput.actions["Enter"];
+        SetHintText(HintVariant.Default);
+        SetShow(HasFocus);
 
         Debug.Assert(MenuItems.Length > 0);
         selectedItemIndex = -1;
@@ -48,7 +106,8 @@ public class Menu : MonoBehaviour
     private void Select(int index)
     {
         if (selectedItemIndex != -1) MenuItems[selectedItemIndex].Deselect();
-        if (audioSource) {
+        if (audioSource)
+        {
             audioSource.clip = SelectAudioClip;
             audioSource.Play();
         }
@@ -58,8 +117,13 @@ public class Menu : MonoBehaviour
 
     private void Enter()
     {
-        if (audioSource) {
+        if (audioSource)
+        {
             audioSource.clip = ConfirmAudioClip;
+            if (MenuItems[selectedItemIndex].ConfirmAudioClip)
+            {
+                audioSource.clip = MenuItems[selectedItemIndex].ConfirmAudioClip;
+            }
             audioSource.Play();
         }
         if (selectedItemIndex != -1) MenuItems[selectedItemIndex].Enter(this);
@@ -85,17 +149,17 @@ public class Menu : MonoBehaviour
         int index = selectedItemIndex;
         int count = MenuItems.Length;
 
-        if (upAction.triggered)
+        if (UpAction.triggered)
         {
             Select((index + count - 1) % count);
             inputDelayTimer = inputDelay;
         }
-        else if (downAction.triggered)
+        else if (DownAction.triggered)
         {
             Select((index + count + 1) % count);
             inputDelayTimer = inputDelay;
         }
-        else if (enterAction.triggered)
+        else if (EnterAction.triggered)
         {
             Enter();
             inputDelayTimer = inputDelay;
