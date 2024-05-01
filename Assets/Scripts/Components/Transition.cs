@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Showable))]
 public class Transition : MonoBehaviour
 {
-    public void Start()
+    public void Awake()
     {
-        MainManager.TransitionAnimator = GetComponent<Animator>();
+        MainManager.TransitionAnimator = GetComponent<Showable>();
     }
 }

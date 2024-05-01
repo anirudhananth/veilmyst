@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class AnimatedUI : Showable
 {
-    public bool show = false;
+    public bool Show = false;
+    public bool HideByDefault = true;
 
     public Animator Animator;
 
@@ -14,14 +15,14 @@ public class AnimatedUI : Showable
 
     public override void Toggle()
     {
-        show = !show;
-        SetShow(show);
+        Show = !Show;
+        SetShow(Show);
     }
 
     private void Start()
     {
         if (Animator == null) Animator = GetComponent<Animator>();
-        else if (!show) Animator.gameObject.SetActive(false);
-        SetShow(show);
+        else if (!Show && HideByDefault) Animator.gameObject.SetActive(false);
+        SetShow(Show);
     }
 }
