@@ -41,16 +41,16 @@ public class Player : Actor
         { 
             GameManager gameManager = FindObjectOfType<GameManager>();
             PhaseManager phaseManager = FindObjectOfType<PhaseManager>();
-            if(phaseManager && phaseManager.CurrentPhase == phaseManager.StartingPhase)
-            {
-                phaseManager.PhaseChanger();
-            }
             yield return new WaitForSeconds(0.8f);
             self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
             player.rb.isKinematic = false;
             gameManager.CamPos = gameManager.CamResetPos;
             gameManager.DeathCount++;
+            if(phaseManager && phaseManager.CurrentPhase == phaseManager.StartingPhase)
+            {
+                phaseManager.PhaseChanger();
+            }
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
             isDead = false;
