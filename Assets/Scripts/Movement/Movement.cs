@@ -60,6 +60,9 @@ public class Movement : MonoBehaviour
     public int side = 1;
     private bool isUpwardForce = true;
     private float wallSideForce;
+    private float dashDelay = 50f; //Milliseconds
+    private bool isDashPressed = true;
+    private DateTime dashPressedTime;
 
     [Space]
     [Header("Polish")]
@@ -90,6 +93,8 @@ public class Movement : MonoBehaviour
         playerAudio = GetComponent<PlayerAudio>();
         rb.gravityScale = 3;
         spawnLocation = transform.position;
+
+        isDashPressed = false;
     }
 
     // Update is called once per frame
@@ -248,8 +253,15 @@ public class Movement : MonoBehaviour
             canJump = true;
         }
 
-        if (canDash && (dashAction.triggered || (animationOverride && overiddenIsDashing)) && !hasDashed)
+        if (!isDashPressed && canDash && (dashAction.triggered || (animationOverride && overiddenIsDashing)) && !hasDashed)
         {
+            isDashPressed = true;
+            dashPressedTime = DateTime.Now;
+        }
+
+        if (isDashPressed && (DateTime.Now - dashPressedTime).TotalMilliseconds > dashDelay)
+        {
+            isDashPressed = false;
             Dash(x, y);
         }
 
