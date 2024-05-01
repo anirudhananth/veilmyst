@@ -12,25 +12,25 @@ public class CameraFallLoop : MonoBehaviour
     public GameObject StillObject;
     public CinemachineBrain Brain;
 
-    private float initialPosY;
+    private Vector3 initialPos;
     private Vector3 stillObjectOffset;
     private float yOffsetRad = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-       initialPosY = transform.position.y; 
-       stillObjectOffset = StillObject.transform.position - transform.position;
+        initialPos = transform.position;
+        stillObjectOffset = StillObject.transform.position - transform.position;
     }
 
     public void Update()
     {
         if (Brain.IsBlending) return;
         var pos = transform.position;
-        pos.y += FallSpeed * Time.deltaTime; 
-        if (Mathf.Abs(pos.y - initialPosY) > ResetDistance)
+        pos.y += FallSpeed * Time.deltaTime;
+        if (Mathf.Abs(pos.y - initialPos.y) > ResetDistance)
         {
-            pos.y = initialPosY;
+            pos = initialPos;
         }
         transform.position = pos;
         yOffsetRad += OscillateSpeedRad * Time.deltaTime;
