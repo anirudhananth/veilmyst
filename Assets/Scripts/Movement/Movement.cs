@@ -72,6 +72,15 @@ public class Movement : MonoBehaviour
     [Header("Stamina")]
     public Stamina stamina;
 
+    public bool AnimationOverride = false;
+    public bool overiddenIsDashing = false;
+    public bool overiddenIsJumping = false;
+    public Vector2 overiddenMoveDelta;
+
+    private bool animationOverride = false;
+    private const float maxAnimationInterval = 1f;
+    private float animationInterval = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,12 +104,28 @@ public class Movement : MonoBehaviour
             wallClimbAction = input.actions["WallClimb"];
         }
         Vector2 moveDelta = moveAction.ReadValue<Vector2>();
+        if (AnimationOverride)
+        {
+            if (animationInterval > 0) {
+                animationInterval -= Time.deltaTime;
+            }
+            else
+            {
+                animationOverride = true;
+                animationInterval = maxAnimationInterval;
+            }
+        }
+
+        if (AnimationOverride) moveDelta = overiddenMoveDelta;
         x = moveDelta.x;
         y = moveDelta.y;
         Vector2 dir = new Vector2(x, y);
 
-        Walk(moveDelta);
-        anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        if (!(AnimationOverride && overiddenIsDashing))
+        {
+            Walk(moveDelta);
+            anim.SetHorizontalMovement(x, y, rb.velocity.y);
+        }
 
         if(isWallClimbForce) {
             rb.gravityScale = 0;
@@ -194,7 +219,7 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
         
-        if (jumpAction.triggered)
+        if (jumpAction.triggered || (animationOverride && overiddenIsJumping && coll.onGround))
         {
             isHoldingJump = true;
             anim.SetTrigger("jump");
@@ -223,7 +248,7 @@ public class Movement : MonoBehaviour
             canJump = true;
         }
 
-        if (canDash && dashAction.triggered && !hasDashed)
+        if (canDash && (dashAction.triggered || (animationOverride && overiddenIsDashing)) && !hasDashed)
         {
             Dash(x, y);
         }
@@ -299,6 +324,12 @@ public class Movement : MonoBehaviour
                 anim.Flip(side);
             }
         }
+
+        if (animationOverride)
+        {
+            overiddenMoveDelta.x *= -1;
+        }
+        animationOverride = false;
     }
 
     IEnumerator ResetDash() {
@@ -576,7 +607,7 @@ public class Movement : MonoBehaviour
         if (Mathf.Abs(rb.velocity.x) > 0.5 && coll.onGround && (Mathf.Abs(x) == 1)) playerAudio.PlayWalk();
     }
 
-    private void Jump(Vector2 dir, bool wall)
+    public void Jump(Vector2 dir, bool wall)
     {
         if(stamina!=null)
         {

@@ -11,7 +11,7 @@ public struct LevelData
     public Showable Grid;
 }
 
-public class MenuLevelSelectAction : MenuActionBase
+public class MenuLevelSelectAction : MenuHorizontalAction
 {
     public LevelData[] Levels;
     public int SelectedLevelIndex = -1;
@@ -20,14 +20,13 @@ public class MenuLevelSelectAction : MenuActionBase
 
     LevelData curLevel => Levels[SelectedLevelIndex];
     string levelText => $"{curLevel.DisplayName} ({curLevel.LevelID})";
-    private AudioSource audioSource;
 
     public override void Start()
     {
         base.Start();
         Debug.Assert(Levels.Length > 0, "No levels configured!");
         menuItem.RegisterShow(HandleShow);
-        audioSource = GetComponent<AudioSource>();
+        RegisterMove(HandleMove);
     }
 
     public override void Trigger(Menu source)
@@ -76,20 +75,9 @@ public class MenuLevelSelectAction : MenuActionBase
         Levels[nextLevelIndex].Grid.SetShow(true);
     }
 
-    private void Update()
+    private void HandleMove(int diff)
     {
-        if (!menuItem.ParentMenu || !menuItem.ParentMenu.HasFocus) return;
-
-        var p = menuItem.ParentMenu;
-
-        int diff = 0;
-        if (p.LeftAction.triggered) diff = -1;
-        else if (p.RightAction.triggered) diff = 1;
-        if (diff != 0)
-        {
-            audioSource.Play();
-            SelectLevel((SelectedLevelIndex + Levels.Length + diff) % Levels.Length);
-        }
+        SelectLevel((SelectedLevelIndex + Levels.Length + diff) % Levels.Length);
     }
 
     private void HandleShow(bool show)

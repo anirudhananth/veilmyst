@@ -15,7 +15,7 @@ public static class Priority
 
 public enum HintVariant
 {
-    Level, Default
+    Level, Default, Volume, RebindNormal, RebindReset
 }
 
 public class Menu : Showable
@@ -75,6 +75,15 @@ public class Menu : Showable
                 break;
             case HintVariant.Level:
                 HintText.text = $"[{leftStr}] Prev level | [{rightStr}] Next level | [{clickStr}] Play | [{upStr}/{downStr}] ...";
+                break;
+            case HintVariant.Volume:
+                HintText.text = $"[{leftStr}] Lower Volume | [{rightStr}] Higher Volume | [{clickStr}] Test Audio | [{upStr}/{downStr}] ...";
+                break;
+            case HintVariant.RebindNormal:
+                HintText.text = $"[{rightStr}] Switch to Reset | [{clickStr}] Start Rebind | [{upStr}/{downStr}] ...";
+                break;
+            case HintVariant.RebindReset:
+                HintText.text = $"[{leftStr}] Rebind | [{clickStr}] Reset to Default | [{upStr}/{downStr}] ...";
                 break;
         }
     }
