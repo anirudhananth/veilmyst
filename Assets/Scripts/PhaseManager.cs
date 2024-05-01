@@ -33,8 +33,11 @@ public class PhaseManager : MonoBehaviour
 
     public float GlitchDuration = 0.1f;
     private float transitionTimeout;
-    private bool curPhase;
 
+    [Header("Read Only")]
+    public bool StartingPhase;
+    public bool CurrentPhase;
+    
     private Glitch glitch
     {
         get => GameManager.Instance.MainCam.GetComponent<Glitch>();
@@ -50,7 +53,8 @@ public class PhaseManager : MonoBehaviour
 
         // UI
         timerUI.GetComponent<TextMeshProUGUI>().text = "0";
-        curPhase = !TargetPhase;
+        CurrentPhase = !TargetPhase;
+        StartingPhase = !TargetPhase;
     }
 
     // Update is called once per frame
@@ -58,9 +62,9 @@ public class PhaseManager : MonoBehaviour
     {
         transitionTimeout -= Time.deltaTime;
 
-        if (TargetPhase != curPhase && transitionTimeout <= 0)
+        if (TargetPhase != CurrentPhase && transitionTimeout <= 0)
         {
-            curPhase = TargetPhase;
+            CurrentPhase = TargetPhase;
             glitch.SetShow(false);
             // Phase Change basics
             if (TargetPhase)

@@ -13,6 +13,7 @@ public class Player : Actor
     public Animator animator;
     public Collision col;
     public Destructible destructible;
+    public static bool isDead;
 
     private PlayerInput input;
     private Rigidbody2D rb;
@@ -22,6 +23,11 @@ public class Player : Actor
     {
 
         Player player = self.GetComponent<Player>();
+        if(isDead)
+        {
+            return;
+        }
+        isDead = true;
 
         Enemy enemy;
         if (killer.gameObject.TryGetComponent(out enemy))
@@ -34,6 +40,11 @@ public class Player : Actor
         IEnumerator SlowMoDeath()
         { 
             GameManager gameManager = FindObjectOfType<GameManager>();
+            PhaseManager phaseManager = FindObjectOfType<PhaseManager>();
+            if(phaseManager && phaseManager.CurrentPhase == phaseManager.StartingPhase)
+            {
+                phaseManager.PhaseChanger();
+            }
             yield return new WaitForSeconds(0.8f);
             self.transform.position = self.GetComponent<Movement>().spawnLocation;
             player.animator.SetBool("isDead", false);
@@ -42,6 +53,7 @@ public class Player : Actor
             gameManager.DeathCount++;
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
+            isDead = false;
         }
         player.animator.SetBool("isDead", true);
         player.playerAudio.PlayDeath();
@@ -60,6 +72,7 @@ public class Player : Actor
         destructible = GetComponent<Destructible>();
         playerAudio = GetComponent<PlayerAudio>();
         col = GetComponent<Collision>();
+        isDead = false;
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
     }
