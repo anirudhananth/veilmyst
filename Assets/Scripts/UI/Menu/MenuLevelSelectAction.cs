@@ -48,9 +48,7 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     {
         if (!menuItem?.ParentMenu) return;
 
-        Debug.Log($"Refreshing cam p{Camera.Priority} at {menuItem.ParentMenu.name}");
         Camera.Priority = menuItem.ParentMenu.MenuCamera.Priority + (menuItem.Selected && menuItem.ParentMenu.HasFocus ? 1 : -1);
-        Debug.Log($"Refreshing cam p{Camera.Priority} at {menuItem.ParentMenu.name}");
         SelectLevel(0);
         if (menuItem.Selected)
         {
