@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI HintText;
     public AudioClip SelectAudioClip;
     public AudioClip ConfirmAudioClip;
+    public bool HasFocus = false;
 
     private InputAction upAction;
     private InputAction downAction;
@@ -61,7 +62,7 @@ public class Menu : MonoBehaviour
             audioSource.clip = ConfirmAudioClip;
             audioSource.Play();
         }
-        if (selectedItemIndex != -1) MenuItems[selectedItemIndex].Enter();
+        if (selectedItemIndex != -1) MenuItems[selectedItemIndex].Enter(this);
     }
 
     private void Update()
@@ -70,6 +71,8 @@ public class Menu : MonoBehaviour
         {
             Init();
         }
+
+        if (!HasFocus) return;
 
         if (selectedItemIndex == -1 || MenuItems.Length == 0) return;
 
