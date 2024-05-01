@@ -1,9 +1,18 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class MenuLevelSelectAction : MenuActionBase
 {
-    public override void Trigger()
+    public Camera FromCamera;
+    public Camera TargetCamera;
+    public Menu TargetMenu;
+
+    private Menu previousMenu;
+
+    public override void Trigger(Menu source)
     {
-        Debug.Log("Select levels");
+       previousMenu = source; 
+       previousMenu.HasFocus = false;
+       TargetMenu.HasFocus = true;
     }
 }

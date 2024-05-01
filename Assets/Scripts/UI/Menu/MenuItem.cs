@@ -30,16 +30,16 @@ public class MenuItem : MonoBehaviour
         textBox.text = $" {text} ";
     }
 
-    public void Enter()
+    public void Enter(Menu source)
     {
         Animator.SetTrigger("triggered");
-        StartCoroutine(Trigger(0.5f));
+        StartCoroutine(Trigger(source, 0.5f));
     }
 
-    private IEnumerator Trigger(float delay)
+    private IEnumerator Trigger(Menu source, float delay)
     {
         yield return new WaitForSeconds(delay);
-        menuAction.Trigger();
+        menuAction.Trigger(source);
     }
 
 }
