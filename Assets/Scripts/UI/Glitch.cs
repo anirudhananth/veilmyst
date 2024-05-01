@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
-[RequireComponent(typeof(Kino.AnalogGlitch))]
 public class Glitch : Showable
 {
-    private Kino.AnalogGlitch glitchEffect;
+    public Volume glitchEffect;
 
     public override void SetShow(bool show) { 
         glitchEffect.enabled = show;
@@ -14,7 +14,6 @@ public class Glitch : Showable
     }
 
     private void Start() {
-        glitchEffect = GetComponent<Kino.AnalogGlitch>();
         SetShow(false);
     }
 }
