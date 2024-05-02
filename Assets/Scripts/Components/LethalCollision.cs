@@ -26,7 +26,19 @@ public class LethalCollision : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) 
-    {
+    {   
+        Bullet b1;
+        if(Parent &&  Parent.gameObject && Parent.gameObject.TryGetComponent<Bullet>(out b1))
+        {
+            if(!b1.canbedestroyed)
+            {
+                return;
+            }
+            else
+            {
+                Destroy(Parent.gameObject);
+            }
+        }
         Destructible destructible;
         if (Parent && Parent.isDead) return;
         if (other.gameObject.TryGetComponent(out destructible))

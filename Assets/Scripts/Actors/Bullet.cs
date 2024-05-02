@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public float facingside;
 
     public Vector3 finalposition;
-    private bool canbedestroyed=false;
+    public bool canbedestroyed=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,18 +24,9 @@ public class Bullet : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, finalposition, speed*Time.deltaTime);
     }
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(canbedestroyed)
-        {
-            Destroy(gameObject);
-        }
-            
-    }
     IEnumerator SetBulletDestroyable()
     {
         yield return new WaitForSeconds(0.2f);
         canbedestroyed=true;
-
     }
 }
