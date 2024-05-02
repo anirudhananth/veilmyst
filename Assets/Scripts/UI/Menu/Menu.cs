@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cinemachine;
 using TMPro;
 using UnityEditor;
@@ -94,7 +95,7 @@ public class Menu : Showable
     private void Init()
     {
         initialized = true;
-        MenuItems = GetComponentsInChildren<MenuItem>();
+        MenuItems = GetComponentsInChildren<MenuItem>().Where(e => e.gameObject.activeSelf).ToArray();
         foreach (MenuItem item in MenuItems)
         {
             item.ParentMenu = this;
