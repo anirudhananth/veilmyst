@@ -7,7 +7,8 @@ public class ShootingEnemy : Enemy
 {
     public Launcher launcher;   
     private GameObject B1; 
-    protected new void Start()
+
+    protected void OnEnable() 
     {
         base.Start();
         launcher = GetComponentInChildren<Launcher>();

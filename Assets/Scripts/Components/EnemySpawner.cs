@@ -27,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
         PatrolPosition = PatrolPoint.transform.position;
 
         SpawnedPawn = Instantiate(SpawnEnemy,SpawnPosition, Quaternion.identity);
+        SpawnedPawn.transform.parent = gameObject.transform.parent;
         SpawnedPawn.GetComponent<Patrolling>().pointA = SpawnPoint;
         SpawnedPawn.GetComponent<Patrolling>().pointB = PatrolPoint;
         SpawnedPawn.GetComponent<Enemy>().isSpawned = true;
