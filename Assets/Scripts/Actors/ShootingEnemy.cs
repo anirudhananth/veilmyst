@@ -22,6 +22,7 @@ public class ShootingEnemy : Enemy
         if(!isDead)
         {
             B1 = Instantiate(launcher.Bullet,launcher.gameObject.transform.position, Quaternion.identity);
+            B1.transform.parent = gameObject.transform.parent;
             if(launcher.gameObject.transform.position.x-launcher.gameObject.transform.parent.transform.position.x>=0)
             {
                 B1.GetComponent<Bullet>().facingside=1;
