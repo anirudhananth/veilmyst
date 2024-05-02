@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
@@ -238,6 +238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}

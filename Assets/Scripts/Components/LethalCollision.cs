@@ -33,5 +33,6 @@ public class LethalCollision : MonoBehaviour
         {
             OnCollideDestructible(this, destructible);
         }
+        //Debug.Log(gameObject.name + " collider of" +other.gameObject.name);
     }
 }

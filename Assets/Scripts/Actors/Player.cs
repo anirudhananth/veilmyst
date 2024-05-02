@@ -21,14 +21,11 @@ public class Player : Actor
 
     public static void PlayerDeathHandler(Destructible self, GameObject killer)
     {
-
         Player player = self.GetComponent<Player>();
         if(isDead)
         {
             return;
         }
-        isDead = true;
-
         Enemy enemy;
         if (killer.gameObject.TryGetComponent(out enemy))
         {
@@ -37,6 +34,9 @@ public class Player : Actor
                 return;
             }
         }
+        isDead = true;
+
+
         IEnumerator SlowMoDeath()
         { 
             GameManager gameManager = FindObjectOfType<GameManager>();
@@ -75,5 +75,6 @@ public class Player : Actor
         isDead = false;
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
+        Debug.Log("Player Start");
     }
 }

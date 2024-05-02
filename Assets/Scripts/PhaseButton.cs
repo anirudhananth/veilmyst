@@ -20,10 +20,14 @@ public class PhaseButton : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (cooldown < Time.time)
+        if(collision.gameObject.name == "Player")
         {
-            PM.PhaseChanger();
-            cooldown = Time.time + .5f;
+            if (cooldown < Time.time)
+            {
+                PM.PhaseChanger();
+                cooldown = Time.time + .5f;
+            }
         }
+
     }
 }

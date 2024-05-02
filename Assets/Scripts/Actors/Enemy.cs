@@ -18,7 +18,6 @@ public class Enemy : Actor
 
     protected void Disable()
     {
-        Debug.Log("disable");
         isDead = true;
         GetComponent<Collider2D>().enabled = false;
         var lc = GetComponentInChildren<LethalCollision>();
