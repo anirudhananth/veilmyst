@@ -344,7 +344,7 @@ public class Movement : MonoBehaviour
         animationOverride = false;
     }
 
-    IEnumerator ResetDash() {
+    public IEnumerator ResetDash() {
         dashParticle.Stop();
         isGroundDashed = false;
 
@@ -352,6 +352,8 @@ public class Movement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(0.3f);
         isGroundDashWindow = false;
+        canDash = true;
+        hasDashed = false;
     }
 
     IEnumerator SetWallSlide() {
@@ -447,7 +449,7 @@ public class Movement : MonoBehaviour
         Camera.main.transform.DOComplete();
         Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         // ------------------------- IMPORTANT -------------------------
-        // FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
+        FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
         // rb.velocity = Vector2.zero;
 
@@ -477,6 +479,7 @@ public class Movement : MonoBehaviour
         isGroundDashing = true;
         isGroundDashWindow = true;
         StartCoroutine(GroundDash());
+        FindObjectOfType<GhostTrail>().ShowGhost();
         rb.gravityScale = 3;
         rb.velocity = dir.normalized * dashSpeed;
 
@@ -495,7 +498,7 @@ public class Movement : MonoBehaviour
     IEnumerator DashWait(Vector2 dir)
     {
         // ------------------------- IMPORTANT -------------------------
-        // FindObjectOfType<GhostTrail>().ShowGhost();
+        FindObjectOfType<GhostTrail>().ShowGhost();
         StartCoroutine(GroundDash());
         // DOVirtual.Float(14, 0, .2f, RigidbodyDrag);
 

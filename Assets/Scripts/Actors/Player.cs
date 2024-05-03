@@ -36,7 +36,7 @@ public class Player : Actor
         }
         isDead = true;
 
-
+        self.GetComponent<BoxCollider2D>().enabled = false;
         IEnumerator SlowMoDeath()
         { 
             GameManager gameManager = FindObjectOfType<GameManager>();
@@ -54,6 +54,7 @@ public class Player : Actor
             yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
             isDead = false;
+            self.GetComponent<BoxCollider2D>().enabled = true;
         }
         player.animator.SetBool("isDead", true);
         player.playerAudio.PlayDeath();

@@ -15120,6 +15120,10 @@ MonoBehaviour:
   wallJumpParticle: {fileID: 7296716780685526721}
   slideParticle: {fileID: 1438832306725646903}
   stamina: {fileID: 0}
+  AnimationOverride: 0
+  overiddenIsDashing: 0
+  overiddenIsJumping: 0
+  overiddenMoveDelta: {x: 0, y: 0}
 --- !u!114 &8675352683686222898
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -60,6 +60,7 @@ public class Enemy : Actor
         }
         Disable();
         Die();
+        StartCoroutine(FindObjectOfType<Movement>().ResetDash());
     }
 
     protected void Start()
