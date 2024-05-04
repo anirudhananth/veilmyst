@@ -14,29 +14,50 @@ public class CheckPoint : MonoBehaviour
     [Header("Set If Spawnpoint")]
     public bool isSpawnPoint = false;
 
-    Camera MainCam;
+    private Animator animator;
+    private bool unlocked = false;
+    private bool active = false;
 
-    // Start is called before the first frame update
-    void Start()
+    protected void Activate()
     {
-        MainCam = Camera.main;
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        if (!unlocked) return;
+        active = true;
+        animator.SetBool("active", true);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void Deactivate()
     {
-        
+        if (!unlocked) return;
+        active = false;
+        animator.SetBool("active", false);
+    }
+
+    private void Start()
+    {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        animator = GetComponentInChildren<Animator>();
+        if (!isSpawnPoint) animator.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            if(isSpawnPoint) {
-                playerMovement.spawnLocation = transform.position;
-                GM.CamResetPos = CamPos;
-            } 
+            if (isSpawnPoint)
+            {
+                if (!unlocked)
+                {
+                    unlocked = true;
+                    animator.SetBool("unlocked", true);
+                }
+                if (!active)
+                {
+                    // There can only be one activate spawn point at a time.
+                    GM.ActiveSpawnPoint?.Deactivate();
+                    Activate();
+                }
+                GM.SetSpawn(this);
+            }
             GM.CPPos = transform.position;
             GM.MoveCam(CamPos);
         }

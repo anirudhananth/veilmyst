@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] GameObject Target;
+    public GameObject Target;
+    public Animator SourceAnimator;
+    public Animator DestAnimator;
 
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) 
-    {
-        Player player;
-        if (other.gameObject.TryGetComponent<Player>(out player))
+        if (other.gameObject.GetComponent<Player>())
         {
-            Triggerbehavior(other.gameObject);
+            SourceAnimator.SetTrigger("teleport");
+            DestAnimator.SetTrigger("teleport");
+            TriggerBehavior(other.gameObject);
         }
     }
-    
-    private void Triggerbehavior(GameObject gameObject)
+
+    private void TriggerBehavior(GameObject gameObject)
     {
-        Teleport( gameObject);
+        Teleport(gameObject);
     }
 
     private void Teleport(GameObject gameObject)
     {
-        gameObject.transform.SetPositionAndRotation(Target.transform.position,Quaternion.identity);
+        gameObject.transform.SetPositionAndRotation(Target.transform.position, Quaternion.identity);
     }
 }

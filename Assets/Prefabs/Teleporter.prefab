@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6405195132122183557}
-  - component: {fileID: 962615188793689765}
   - component: {fileID: 4128808932635507050}
   - component: {fileID: 2130252415011116273}
   m_Layer: 0
-  m_Name: Interactable_teleporter_one_way
+  m_Name: Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,18 +35,6 @@ Transform:
   - {fileID: 4419027578908975314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &962615188793689765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908273465135354589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25906223c27335449804cb9a6f319c77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &4128808932635507050
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 4869821900726896908}
+  SourceAnimator: {fileID: 6070374675757079506}
+  DestAnimator: {fileID: 8912654949709368932}
 --- !u!1 &3819046221626911761
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8086255664556958725}
   - component: {fileID: 7714349261594908819}
+  - component: {fileID: 6070374675757079506}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -179,8 +169,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 33466791, guid: 3ef7b9f394f6cf248b14c9d2e6214cf4, type: 3}
-  m_Color: {r: 0.09028797, g: 0.99371064, b: 0, a: 1}
+  m_Sprite: {fileID: -138500731, guid: d14362a7827572246b28f670c000144a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -190,6 +180,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6070374675757079506
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819046221626911761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60850beedf1bb5441a905b20e9421474, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4869821900726896908
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4419027578908975314}
   - component: {fileID: 7985341703965057991}
+  - component: {fileID: 8912654949709368932}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -263,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1991995377, guid: 3ef7b9f394f6cf248b14c9d2e6214cf4, type: 3}
+  m_Sprite: {fileID: 16850601, guid: 7e656f0456e41184f81721ce05e87c61, type: 3}
   m_Color: {r: 0.9748427, g: 0.9748427, b: 0.9748427, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -274,3 +286,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8912654949709368932
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4869821900726896908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd75daf5d404369448ca0ff049b458c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
