@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Vector3 CamResetPos;
     public int PixelPerUnit = 16;
     public CheckPoint ActiveSpawnPoint { get; private set; }
+    public PhaseManager PhaseManager;
 
     private bool camLocked = false;
 
@@ -50,8 +51,7 @@ public class GameManager : MonoBehaviour
         CamResetPos = checkPoint.CamPos;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         MainCam = Camera.main;
         CamResetPos = MainCam.transform.position;

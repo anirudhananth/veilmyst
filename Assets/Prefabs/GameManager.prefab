@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6914802506993459298}
   - {fileID: 2822637405943040090}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50,6 +51,7 @@ MonoBehaviour:
   CPPos: {x: 0, y: 0, z: 0}
   CamResetPos: {x: 0, y: 0, z: 0}
   PixelPerUnit: 16
+  PhaseManager: {fileID: 7699979356544136503}
   speed: 5
   player: {fileID: 0}
   playMovScript: {fileID: 0}
@@ -59,6 +61,63 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   PauseAction: {fileID: 493886440147350371, guid: 73bb708951df6e0488eb76cc4336e283,
     type: 3}
+--- !u!1 &4641943525295013897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6914802506993459298}
+  - component: {fileID: 7699979356544136503}
+  m_Layer: 0
+  m_Name: PhaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6914802506993459298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641943525295013897}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.2532911, y: -1.2016029, z: -0.21961485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8849977334530110462}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7699979356544136503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641943525295013897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25088d38cc7eb2d4a9abdb8a926c82b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetPhase: 1
+  phaseA: {fileID: 0}
+  phaseB: {fileID: 0}
+  cooldown: 15
+  timerUI: {fileID: 0}
+  timeLeft: 0
+  dashType: 0
+  timeType: 0
+  Player: {fileID: 0}
+  shiftCD: 3
+  GlitchDuration: 0.1
+  StartingPhase: 0
+  CurrentPhase: 0
 --- !u!1001 &5093124698910198885
 PrefabInstance:
   m_ObjectHideFlags: 0
