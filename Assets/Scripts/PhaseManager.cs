@@ -4,9 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+public delegate void PhaseChangeEvent(PhaseManager pm, bool phase);
+
 public class PhaseManager : MonoBehaviour
 {
     [Header("Phase Objects")]
+    [Tooltip("phaseA=true; phaseB=false")]
     public bool TargetPhase;
     public GameObject phaseA;
     public GameObject phaseB;
@@ -31,13 +34,20 @@ public class PhaseManager : MonoBehaviour
     private float shifTimer = 0; // If it is in timer mode then this is when it will change phase
     public float shiftCD; // The amount by which shiftimer changes
 
+    public event PhaseChangeEvent OnPhaseChange;
+
     public float GlitchDuration = 0.1f;
     private float transitionTimeout;
 
     [Header("Read Only")]
     public bool StartingPhase;
     public bool CurrentPhase;
-    
+
+    public void RegisterPhaseChange(PhaseChangeEvent handler)
+    {
+        OnPhaseChange += handler;
+    }
+
     private Glitch glitch
     {
         get => GameManager.Instance.MainCam.GetComponent<Glitch>();
@@ -77,6 +87,7 @@ public class PhaseManager : MonoBehaviour
                 phaseA.SetActive(false);
                 phaseB.SetActive(true);
             }
+            OnPhaseChange?.Invoke(this, TargetPhase);
         }
 
         // If dashType
