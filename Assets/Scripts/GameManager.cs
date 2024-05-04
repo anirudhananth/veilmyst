@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Vector2 CamPos { get; set; }
     public Vector3 CamResetPos;
     public int PixelPerUnit = 16;
+    public CheckPoint ActiveSpawnPoint { get; private set; }
+
     private bool camLocked = false;
 
     private float currentPixelPerUnit = 16;
@@ -39,6 +41,13 @@ public class GameManager : MonoBehaviour
         if (camLocked) return;
         camLocked = locked;
         CamPos = pos;
+    }
+
+    public void SetSpawn(CheckPoint checkPoint)
+    {
+        playMovScript.spawnLocation = checkPoint.transform.position;
+        ActiveSpawnPoint = checkPoint;
+        CamResetPos = checkPoint.CamPos;
     }
 
     // Start is called before the first frame update
