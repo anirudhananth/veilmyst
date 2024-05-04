@@ -5084,6 +5084,7 @@ MonoBehaviour:
   animator: {fileID: 2308148853942964492}
   ActivateAudio: {fileID: 8300000, guid: f359d3600b699e349993a408674af374, type: 3}
   CollectAudio: {fileID: 8300000, guid: 49a84498a90b7d64f9ea01d4d666255c, type: 3}
+  FailAudio: {fileID: 8300000, guid: b9299732d7fd6a746b2d6750cf562029, type: 3}
 --- !u!61 &5355287988879248605
 BoxCollider2D:
   m_ObjectHideFlags: 0
