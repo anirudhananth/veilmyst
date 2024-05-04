@@ -36,6 +36,7 @@ public class CheckPoint : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
         animator = GetComponentInChildren<Animator>();
+        animator.keepAnimatorStateOnDisable = true;
         if (!isSpawnPoint) animator.gameObject.SetActive(false);
     }
 

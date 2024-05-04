@@ -76,6 +76,5 @@ public class Player : Actor
         isDead = false;
         destructible.OnDeath = PlayerDeathHandler;
         Debug.Assert(animator != null);
-        Debug.Log("Player Start");
     }
 }

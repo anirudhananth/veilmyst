@@ -10,6 +10,7 @@ public class Collectible : MonoBehaviour
     public Animator animator;
     public AudioClip ActivateAudio;
     public AudioClip CollectAudio;
+    public AudioClip FailAudio;
 
     private bool isTouched = false;
     private bool isDead = false;
@@ -21,6 +22,7 @@ public class Collectible : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.PhaseManager.RegisterPhaseChange(HandlePhaseChange);
         source = GetComponent<AudioSource>();
     }
 
@@ -62,10 +64,27 @@ public class Collectible : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
+    private void Fail()
+    {
+        if (!isTouched) return;
+        if (!gameObject.activeSelf) return;
+        isTouched = false;
+        animator.SetBool("active", false);
+        source.clip = FailAudio;
+        source.Play();
+    }
+
+    private void HandlePhaseChange(PhaseManager pm, bool phase)
+    {
+        // Reset the crowns if the phase has changed
+        if (isDead) return;
+        if (!isTouched) return;
+        Fail();
+    }
+
     private void HandlePlayerDeath(Destructible destructible, GameObject killer)
     {
-        isTouched = false;
-        if (animator) animator.SetBool("active", false);
+        Fail();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
