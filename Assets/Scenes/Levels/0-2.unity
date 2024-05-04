@@ -6976,6 +6976,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
@@ -6984,7 +6989,7 @@ PrefabInstance:
     - target: {fileID: 9050235658899963338, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.75
+      value: -19.51
       objectReference: {fileID: 0}
     - target: {fileID: 9050235658899963338, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
@@ -11331,6 +11336,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
@@ -27631,6 +27641,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8085622564064708320, guid: cf056996e7b68464d9e81bc08a6d86dd,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30830,6 +30845,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
@@ -31673,7 +31693,7 @@ PrefabInstance:
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8952452
+      value: 0.6490528
       objectReference: {fileID: 0}
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
@@ -31683,7 +31703,7 @@ PrefabInstance:
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.29
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
@@ -32366,6 +32386,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
@@ -32530,6 +32555,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
@@ -34074,6 +34104,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492165096}
     m_Modifications:
+    - target: {fileID: 164911830616320669, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8356455758768791228, guid: e8fd1f9392364be4f87184e0f3ce8ef0,
         type: 3}
       propertyPath: m_Name
