@@ -63,6 +63,7 @@ public class Movement : MonoBehaviour
     private float dashDelay = 50f; //Milliseconds
     private bool isDashPressed = true;
     private DateTime dashPressedTime;
+    private Coroutine dashCoroutine;
 
     [Space]
     [Header("Polish")]
@@ -125,6 +126,12 @@ public class Movement : MonoBehaviour
         x = moveDelta.x;
         y = moveDelta.y;
         Vector2 dir = new Vector2(x, y);
+
+        if(Player.isDead) {
+            rb.velocity = Vector2.zero;
+            isDashPressed = false;
+            return;
+        }
 
         if (!(AnimationOverride && overiddenIsDashing))
         {
@@ -347,6 +354,7 @@ public class Movement : MonoBehaviour
     public IEnumerator ResetDash() {
         dashParticle.Stop();
         isGroundDashed = false;
+        isDashPressed = false;
 
         yield return new WaitForSeconds(0.1f);
         isDashing = false;
@@ -469,9 +477,9 @@ public class Movement : MonoBehaviour
         playerAudio.PlayDash();
 
         if (isGroundDash) {
-            StartCoroutine(GroundDashWait(dir));
+            dashCoroutine = StartCoroutine(GroundDashWait(dir));
         } else {
-            StartCoroutine(DashWait(dir));
+            dashCoroutine = StartCoroutine(DashWait(dir));
         }
     }
 
