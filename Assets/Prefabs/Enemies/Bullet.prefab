@@ -132,12 +132,12 @@ PrefabInstance:
     - target: {fileID: 1371459383757773220, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1371459383757773220, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1371459383757773220, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
@@ -211,9 +211,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3130518918195948272, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130518918195948272, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 1842954677, guid: 03f5f815c003a294fb87ea5faf1f3800,
+        type: 3}
     - target: {fileID: 3130518918195948272, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Color.b
@@ -262,12 +268,12 @@ PrefabInstance:
     - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4269910158171322908, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5178918646204978249, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
@@ -307,8 +313,13 @@ PrefabInstance:
     - target: {fileID: 8176806061812266843, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8176806061812266843, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 647753fa812daee459237d93e3ed4317, type: 2}
     - target: {fileID: 8219394142969289101, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
       propertyPath: m_Size.x
