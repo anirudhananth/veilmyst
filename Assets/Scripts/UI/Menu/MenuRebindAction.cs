@@ -108,6 +108,7 @@ public class MenuRebindAction : MenuHorizontalAction
         {
             lockedIn = false;
             rebindActionUI.rebindPrompt.text = "";
+            MainManager.Instance.RebindSaveLoad.Save();
             Refresh();
         }
     }

@@ -52,6 +52,7 @@ MonoBehaviour:
   CamResetPos: {x: 0, y: 0, z: 0}
   PixelPerUnit: 16
   PhaseManager: {fileID: 7699979356544136503}
+  RebindSaveLoad: {fileID: 0}
   speed: 5
   player: {fileID: 0}
   playMovScript: {fileID: 0}
@@ -113,7 +114,6 @@ MonoBehaviour:
   timeLeft: 0
   dashType: 0
   timeType: 0
-  Player: {fileID: 0}
   shiftCD: 3
   GlitchDuration: 0.1
   StartingPhase: 0

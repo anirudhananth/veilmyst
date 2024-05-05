@@ -62,6 +62,7 @@ public class Player : Actor
         player.rb.velocity = Vector3.zero;
         player.rb.isKinematic = true;
         player.input.DeactivateInput();
+        MainManager.Instance.SavesManager.StatAddDeath();
 
         self.StartCoroutine(SlowMoDeath());
     }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7889714053093593510}
   - component: {fileID: 6154162582540045467}
   - component: {fileID: 4366928815617262730}
+  - component: {fileID: 1351323707319622445}
+  - component: {fileID: 3338907028415268799}
   m_Layer: 0
   m_Name: MainManager
   m_TagString: Untagged
@@ -46,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxStamina: 100
+  RebindSaveLoad: {fileID: 1351323707319622445}
+  SavesManager: {fileID: 3338907028415268799}
+  CurrentLevel: 
 --- !u!82 &4366928815617262730
 AudioSource:
   m_ObjectHideFlags: 0
@@ -142,3 +147,102 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1351323707319622445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373458580872641544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6c2da2db9374dada6761b5e35121c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 73bb708951df6e0488eb76cc4336e283, type: 3}
+--- !u!114 &3338907028415268799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373458580872641544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ff6becec0a68f4289da1f781d63c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LevelStats:
+  - name: MainMenu
+    isMenu: 1
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 0-1
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 1-1
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID:
+    - a1c3be60287e2810ba41b1a285924b76
+  - name: 1-2
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID:
+    - 3a2d526d22af9631504086120b9bf57a
+  - name: 1-3
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 1-4
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 1-5
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 2-1
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 2-2
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: 2-3
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  - name: B-1
+    isMenu: 0
+    unlocked: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID: []
+  crownCompletionWeight: 100
+  levelCompletionWeight: 100

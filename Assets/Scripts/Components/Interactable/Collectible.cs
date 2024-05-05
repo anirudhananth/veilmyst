@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Unity.VisualScripting.Member;
 
 [RequireComponent(typeof(AudioSource))]
@@ -11,6 +14,10 @@ public class Collectible : MonoBehaviour
     public AudioClip ActivateAudio;
     public AudioClip CollectAudio;
     public AudioClip FailAudio;
+    public string CollectibleID => GenerateID(MainManager.Instance.CurrentLevel, transform);
+    // For inspector display only
+    [SerializeField]
+    private string m_CollectibleID;
 
     private bool isTouched = false;
     private bool isDead = false;
@@ -20,10 +27,20 @@ public class Collectible : MonoBehaviour
     private AudioSource source;
     private Player player;
 
+    public static string GenerateID(string sceneName, Transform collectible)
+    {
+        string rawID = $"{collectible.transform.position}-crown-{sceneName}";
+        return Hash128.Compute(rawID).ToSafeString();
+    }
+
     void Start()
     {
         GameManager.Instance.PhaseManager.RegisterPhaseChange(HandlePhaseChange);
         source = GetComponent<AudioSource>();
+        if (MainManager.Instance.SavesManager.CurrentLevelStat.collectedCrownsID.Contains(CollectibleID))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -61,6 +78,7 @@ public class Collectible : MonoBehaviour
         effect.GetComponent<SpriteEffects>().Play(transform.position, "pickup");
         source.clip = CollectAudio;
         source.Play();
+        MainManager.Instance.SavesManager.StatCollectCrown(CollectibleID);
         Destroy(gameObject, 1f);
     }
 
