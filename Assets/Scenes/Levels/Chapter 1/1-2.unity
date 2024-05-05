@@ -3695,7 +3695,7 @@ PrefabInstance:
     - target: {fileID: 1243871840322732293, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
       propertyPath: orthographic size
-      value: 9.375
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 6090728653120909123, guid: 0b691e463df234e1aa7eea7572b5f94f,
         type: 3}
@@ -8383,7 +8383,7 @@ PrefabInstance:
     - target: {fileID: 8557205376062163531, guid: 6a32ca575f0014045bba3b1770c20afe,
         type: 3}
       propertyPath: sceneName
-      value: 1-2-Bonus1
+      value: 1-3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

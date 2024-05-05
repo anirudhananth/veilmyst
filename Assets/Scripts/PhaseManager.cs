@@ -107,10 +107,10 @@ public class PhaseManager : MonoBehaviour
         }
 
         // Button for toggle
-        if (toggleAction.triggered)
-        {
-            TogglePhase();
-        }
+        // if (toggleAction.triggered)
+        // {
+        //     TogglePhase();
+        // }
     }
 
     private void TogglePhase()
