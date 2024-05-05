@@ -5,61 +5,37 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Celeste/Scenes/SampleScene.unity
-    guid: 3f10384c504ad484d977d5872506b53f
-  - enabled: 0
-    path: Assets/Scenes/Movement.unity
-    guid: 547c93a1fc1774d09a52b38cbf079087
-  - enabled: 0
-    path: Assets/Scenes/TestMap_Art.unity
-    guid: 47c1c1ff6a677504bb43ad6b3ae10575
-  - enabled: 0
-    path: Assets/Scenes/Levels/ReferenceLevel.unity
-    guid: 7cb53c637380f954bb6f3014ab775f67
-  - enabled: 0
-    path: Assets/Scenes/Level1.unity
-    guid: b5757188e400eb84795739ea2452c22f
-  - enabled: 0
-    path: Assets/Scenes/Level2.unity
-    guid: 84b9032ea6a188a448873ee87b15b755
-  - enabled: 0
-    path: Assets/Scenes/Level3.unity
-    guid: 5fb90bbb244a9b849a50edfca6fd6f4a
-  - enabled: 0
-    path: Assets/Scenes/TestMap_EnemyAI.unity
-    guid: df9cff37b2f97c94f9da5667f7527ccf
-  - enabled: 0
-    path: Assets/Scenes/TestMap_Platforms.unity
-    guid: 36be664863ae9c04b8d03c2de5865971
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/Levels/MainMenu.unity
     guid: 02a85cc6b37f2384b87a7ea341c6b906
   - enabled: 1
-    path: Assets/Scenes/Levels/0-1.unity
-    guid: bf3d04bad77a03f47ae18894215e35c7
+    path: Assets/Scenes/Levels/Tutorial/0-1.unity
+    guid: fe3b357e611bd4b2f83004003f46d362
   - enabled: 1
-    path: Assets/Scenes/Levels/1-1.unity
+    path: Assets/Scenes/Levels/Chapter 1/1-1.unity
     guid: 6ea19d43063f0804a8bc84c9ddabee49
   - enabled: 1
-    path: Assets/Scenes/Levels/1-2.unity
+    path: Assets/Scenes/Levels/Chapter 1/1-2.unity
     guid: 32dfdfd666ef935429ed7b325e06641c
   - enabled: 1
-    path: Assets/Scenes/Levels/1-2-Bonus1.unity
+    path: Assets/Scenes/Levels/Chapter 1/1-3.unity
     guid: 8d730a75a4edf8d4fbb16dbe3124304a
   - enabled: 1
-    path: Assets/Scenes/Levels/1-3.unity
+    path: Assets/Scenes/Levels/Chapter 1/1-4.unity
     guid: c4cf17627bb7d48d8bcd68f90e7fa6d2
   - enabled: 1
-    path: Assets/Scenes/Levels/1-4.unity
+    path: Assets/Scenes/Levels/Chapter 1/1-5.unity
     guid: b6f6ed48046434b418bba8c42af52e2a
   - enabled: 1
-    path: Assets/Scenes/PhaseChangeLevel.unity
+    path: Assets/Scenes/Levels/Chapter 2/2-1.unity
     guid: db7aa74804b0a4cfaa4192c412cd17ee
   - enabled: 1
-    path: Assets/Scenes/PhaseChangeLevel-2.unity
-    guid: f25bba082be424b5a8d074816d40a686
+    path: Assets/Scenes/Levels/Chapter 2/2-2.unity
+    guid: 0d8987a4096ca7742b8185a217bbd3c4
+  - enabled: 1
+    path: Assets/Scenes/Levels/Chapter 2/2-3.unity
+    guid: ea0194546681c3c4e99641ec60dbdb69
+  - enabled: 1
+    path: Assets/Scenes/Levels/B-Side/B-1.unity
+    guid: 875ab23607d4b4657a8672c7c50d6681
   m_configObjects: {}
