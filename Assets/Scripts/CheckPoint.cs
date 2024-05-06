@@ -22,21 +22,21 @@ public class CheckPoint : MonoBehaviour
     {
         if (!unlocked) return;
         active = true;
-        animator.SetBool("active", true);
+        if (animator != null) animator.SetBool("active", true);
     }
 
     protected void Deactivate()
     {
         if (!unlocked) return;
         active = false;
-        animator.SetBool("active", false);
+        if (animator != null) animator.SetBool("active", false);
     }
 
     private void Start()
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
         animator = GetComponentInChildren<Animator>();
-        animator.keepAnimatorStateOnDisable = true;
+        if (animator != null) animator.keepAnimatorStateOnDisable = true;
         if (!isSpawnPoint) animator.gameObject.SetActive(false);
     }
 
@@ -49,7 +49,7 @@ public class CheckPoint : MonoBehaviour
                 if (!unlocked)
                 {
                     unlocked = true;
-                    animator.SetBool("unlocked", true);
+                    if (animator != null) animator.SetBool("unlocked", true);
                 }
                 if (!active)
                 {

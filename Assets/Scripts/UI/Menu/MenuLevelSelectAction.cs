@@ -44,8 +44,19 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     {
         base.Start();
         Debug.Assert(Levels.Length > 0, "No levels configured!");
+        for (int i = 0; i < Levels.Length; i++)
+        {
+            if (Levels[i].LevelID == MainManager.Instance.CurrentLevel)
+            {
+                SelectedLevelIndex = i;
+                break;
+            }
+            if (SavesManager.Instance.GetLevelStat(Levels[i].LevelID).unlocked)
+            {
+                SelectedLevelIndex = i;
+            }
+        }
         menuItem.RegisterShow(HandleShow);
-
         RegisterMove(HandleMove);
     }
 
