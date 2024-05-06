@@ -22,6 +22,8 @@ public enum HintVariant
 public class Menu : Showable
 {
     public static Menu FocusedMenu;
+    public static Dictionary<CinemachineVirtualCamera, HashSet<Menu>> CameraRefs = new();
+
     public MenuItem[] MenuItems;
     public TextMeshProUGUI HintText;
     public AudioClip SelectAudioClip;
@@ -45,8 +47,30 @@ public class Menu : Showable
     {
         HasFocus = show;
         if (HasFocus) FocusedMenu = this;
-        else FocusedMenu = null;
-        if (MenuCamera != null) MenuCamera.Priority = show ? Priority.Menu : Priority.Default;
+        else if (FocusedMenu == this) FocusedMenu = null;
+
+        // Display the camera if there is at least one active menu using it
+        if (show && !CameraRefs[MenuCamera].Contains(this))
+        {
+            CameraRefs[MenuCamera].Add(this);
+        }
+        else if (!show && CameraRefs[MenuCamera].Contains(this))
+        {
+            CameraRefs[MenuCamera].Remove(this);
+        }
+
+        if (MenuCamera != null)
+        {
+            if (CameraRefs[MenuCamera].Count == 0)
+            {
+                MenuCamera.Priority = Priority.Default;
+            }
+            else
+            {
+                MenuCamera.Priority = Priority.Menu;
+            }
+        }
+        // Propagate set show to the menu items
         foreach (MenuItem item in MenuItems)
         {
             item.SetShow(show);
@@ -94,6 +118,16 @@ public class Menu : Showable
 
     private void Init()
     {
+        if (MenuCamera)
+        {
+            if (!CameraRefs.ContainsKey(MenuCamera))
+            {
+                CameraRefs[MenuCamera] = new()
+                {
+                    this
+                };
+            }
+        }
         initialized = true;
         MenuItems = GetComponentsInChildren<MenuItem>().Where(e => e.gameObject.activeSelf).ToArray();
         foreach (MenuItem item in MenuItems)
