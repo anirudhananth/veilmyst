@@ -20,7 +20,7 @@ public class DashDamageTaker : MonoBehaviour
         //If gameobject has script called Enemy
 
         Enemy enemy;
-        if(self.Parent.TryGetComponent(out enemy))
+        if (self.Parent.TryGetComponent(out enemy))
         {
             enemy.OnDeath();
         }
@@ -28,7 +28,7 @@ public class DashDamageTaker : MonoBehaviour
         {
             Destroy(self.gameObject);
         }
-        
+
     }
 
     private void Start()
@@ -38,15 +38,24 @@ public class DashDamageTaker : MonoBehaviour
         Debug.Assert(collider.isTrigger, $"{gameObject} must set isTrigger on the collider to true");
     }
 
-    void OnTriggerEnter2D(Collider2D other) 
+    void OnTriggerEnter2D(Collider2D other)
     {
         Movement movement;
         if (other.gameObject.TryGetComponent(out movement))
         {
-            if(movement.isDashing)
+            if (movement.isDashing)
             {
-                movement.DashImpact((Parent)?Parent:gameObject);
-                OnCollideDash(this);                
+                Enemy enemy;
+                if ((Parent && Parent.TryGetComponent(out enemy)) || (!Parent && TryGetComponent(out enemy)))
+                {
+                    if (enemy.isDead)
+                    {
+                        OnCollideDash(this);
+                        return;
+                    }
+                }
+                movement.DashImpact((Parent) ? Parent : gameObject);
+                OnCollideDash(this);
             }
         }
     }
