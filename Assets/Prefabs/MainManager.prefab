@@ -65,7 +65,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -282,6 +282,8 @@ MonoBehaviour:
     deathCount: 0
     collectedCrownsID: []
     crownsID:
+    - 5721551bed4446e15e65ea06316ff074
+    - 7f349d475752993c7364ee881152d37f
     - f710120051bde53a9767131909db72ea
     prereqLevel: 2-3
   - name: B-2
