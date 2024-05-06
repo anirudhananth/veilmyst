@@ -262,6 +262,17 @@
                 },
                 {
                     "name": "",
+                    "id": "180067da-b785-4cfc-9ed8-b16b199a950e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d49fbecd-1172-49f1-acdd-f8d97ced90d5",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
