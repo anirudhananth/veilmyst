@@ -97,6 +97,7 @@ public class MenuRebindAction : MenuHorizontalAction
             menuItem.ParentMenu.SetHintText(variant);
             Camera.Priority = menuItem.ParentMenu.MenuCamera.Priority + (lockedIn ? 1 : -1);
         }
+        rebindActionUI.UpdateBindingDisplay();
     }
 
     protected override void Update()
