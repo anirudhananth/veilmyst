@@ -67,7 +67,7 @@ public class Collectible : MonoBehaviour
     private void Fail()
     {
         if (!isTouched) return;
-        if (!gameObject.activeSelf) return;
+        if (gameObject==null || !gameObject.activeSelf) return;
         isTouched = false;
         animator.SetBool("active", false);
         source.clip = FailAudio;
