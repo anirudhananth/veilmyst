@@ -13,12 +13,12 @@ public class AnimatedUI : Showable
         if (group && show && HideByDefault) group.alpha = 1;
         if (!Animator.gameObject.activeSelf) Animator.gameObject.SetActive(show);
         Animator.SetBool("show", show);
+        Show = show;
     }
 
     public override void Toggle()
     {
-        Show = !Show;
-        SetShow(Show);
+        SetShow(!Show);
     }
 
     private void Start()

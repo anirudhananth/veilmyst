@@ -16,7 +16,7 @@ public class StatsDisplay : MonoBehaviour
     {
         if (deathTextbox) deathTextbox.text = stat.deathCount.ToString();
         if (collectedCrownsTextbox) collectedCrownsTextbox.text = stat.collectedCrownsID.Length.ToString();
-        if (crownsTextbox) crownsTextbox.text = stat.crownsID.Length.ToString();
+        if (crownsTextbox && stat.crownsID != null) crownsTextbox.text = stat.crownsID.Length.ToString();
         if (completionTextbox) completionTextbox.text = string.Format("{0:P2}", saves.Completion);
     }
 
