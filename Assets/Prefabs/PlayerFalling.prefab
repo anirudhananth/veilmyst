@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3759464811144267992}
   - component: {fileID: 2131578259312641050}
   - component: {fileID: 242514131814720096}
+  - component: {fileID: 2529461158958866510}
   m_Layer: 0
   m_Name: PlayerFalling
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 7193215625211559721}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: faf9abf25373c50449a68fd4a4f2b480, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -241,6 +242,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2529461158958866510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193215625211559721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 279c3f818f4946441adf75e14cf4e588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3759464811144267992}
+  AltAnimatorController: {fileID: 9100000, guid: c51693c3f76e428448b67c1943179177,
+    type: 2}
 --- !u!1 &7689203255871888520
 GameObject:
   m_ObjectHideFlags: 0

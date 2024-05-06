@@ -150,10 +150,19 @@ public class SavesManager : MonoBehaviour, ISavable
 
     public void UnlockAll()
     {
+
+        bool allCompleted = m_LevelStats.All(e => e.completed);
         for (int i = 0; i < m_LevelStats.Length; i++)
         {
-            m_LevelStats[i].unlocked = true;
-            m_LevelStats[i].completed = true;
+            if (allCompleted)
+            {
+                m_LevelStats[i].collectedCrownsID = m_LevelStats[i].crownsID;
+            }
+            else
+            {
+                m_LevelStats[i].unlocked = true;
+                m_LevelStats[i].completed = true;
+            }
         }
         StatsChanged?.Invoke();
     }
