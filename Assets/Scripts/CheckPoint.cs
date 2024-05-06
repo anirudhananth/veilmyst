@@ -54,8 +54,12 @@ public class CheckPoint : MonoBehaviour
                 if (!active)
                 {
                     // There can only be one activate spawn point at a time.
-                    GM.ActiveSpawnPoint?.Deactivate();
-                    Activate();
+                    if(GM.ActiveSpawnPoint)
+                    {
+                        GM.ActiveSpawnPoint?.Deactivate();
+                        Activate();
+                    }
+                    
                 }
                 GM.SetSpawn(this);
             }
