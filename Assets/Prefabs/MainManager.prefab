@@ -244,7 +244,9 @@ MonoBehaviour:
     deathCount: 0
     collectedCrownsID: []
     crownsID:
-    - 770458bab4205b0b231f83a22253128f
+    - cc53931acbd47a5259051a5f88e7b3ca
+    - 3eb08d7646aa4cffc9400cbc7854db86
+    - 6f5324d1979207804dce4808e5f3d358
     prereqLevel: 1-5
   - name: 2-2
     isMenu: 0
@@ -253,9 +255,7 @@ MonoBehaviour:
     deathCount: 0
     collectedCrownsID: []
     crownsID:
-    - e9691b37c3bd1a734e0d107c0edea872
-    - 2f0a1b2ec800374d281a70667e274a4b
-    - 2bb4c2012cc74133d85f9dfc8eb8d6de
+    - 0e7510cda9d0fad9b95bcf5e209a6758
     prereqLevel: 2-1
   - name: 2-3
     isMenu: 0
