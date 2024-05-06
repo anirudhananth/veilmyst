@@ -57,8 +57,8 @@ public class CheckPoint : MonoBehaviour
                     if(GM.ActiveSpawnPoint)
                     {
                         GM.ActiveSpawnPoint?.Deactivate();
-                        Activate();
                     }
+                    Activate();
                     
                 }
                 GM.SetSpawn(this);
