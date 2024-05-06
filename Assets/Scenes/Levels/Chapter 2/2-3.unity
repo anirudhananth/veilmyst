@@ -16444,7 +16444,7 @@ PrefabInstance:
     - target: {fileID: 8557205376062163531, guid: 6a32ca575f0014045bba3b1770c20afe,
         type: 3}
       propertyPath: sceneName
-      value: PhaseChangeLevel-2
+      value: B-1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32285,7 +32285,7 @@ PrefabInstance:
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.2406857
+      value: 1.4377807
       objectReference: {fileID: 0}
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
@@ -32295,7 +32295,7 @@ PrefabInstance:
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.3213
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 744418528913271076, guid: 5de7535bf8eef4d27b9b633223e4165b,
         type: 3}
