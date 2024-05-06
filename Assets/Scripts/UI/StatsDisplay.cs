@@ -15,7 +15,7 @@ public class StatsDisplay : MonoBehaviour
     public void DrawStats(LevelStat stat)
     {
         if (deathTextbox) deathTextbox.text = stat.deathCount.ToString();
-        if (collectedCrownsTextbox) collectedCrownsTextbox.text = stat.collectedCrownsID.Length.ToString();
+        if (collectedCrownsTextbox && stat.collectedCrownsID != null) collectedCrownsTextbox.text = stat.collectedCrownsID.Length.ToString();
         if (crownsTextbox && stat.crownsID != null) crownsTextbox.text = stat.crownsID.Length.ToString();
         if (completionTextbox) completionTextbox.text = string.Format("{0:P2}", saves.Completion);
     }

@@ -152,7 +152,14 @@ public class SavesManager : MonoBehaviour, ISavable
 
     public void ResetSave()
     {
-        m_LevelStats = originalStats;
+        for (int i = 0; i < m_LevelStats.Length; i++)
+        {
+            m_LevelStats[i].unlocked = false;
+            m_LevelStats[i].completed = false;
+            m_LevelStats[i].deathCount = 0;
+            m_LevelStats[i].collectedCrownsID = Array.Empty<string>();
+        }
+        m_LevelStats[0].unlocked = true;
         Save();
         StatsChanged?.Invoke();
     }
