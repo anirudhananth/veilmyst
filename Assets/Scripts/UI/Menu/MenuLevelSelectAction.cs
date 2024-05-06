@@ -80,7 +80,7 @@ public class MenuLevelSelectAction : MenuHorizontalAction
         if (!menuItem?.ParentMenu) return;
 
         Camera.Priority = menuItem.ParentMenu.MenuCamera.Priority + (menuItem.Selected && menuItem.ParentMenu.HasFocus ? 1 : -1);
-        SelectLevel(0);
+        SelectLevel(SelectedLevelIndex);
         if (menuItem.Selected)
         {
             menuItem.ParentMenu.SetHintText(HintVariant.Level);
