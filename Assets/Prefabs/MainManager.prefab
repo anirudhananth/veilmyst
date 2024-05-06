@@ -183,8 +183,8 @@ MonoBehaviour:
     deathCount: 0
     collectedCrownsID: []
     crownsID:
-    - e9cb1efe9ab0b6188043f71e0fbff533
     - fa7ec5c423e50429ec0b5be41a4ab1a7
+    - e9cb1efe9ab0b6188043f71e0fbff533
     prereqLevel: MainMenu
   - name: 1-1
     isMenu: 0
