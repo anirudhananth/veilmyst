@@ -69,9 +69,19 @@ public class Enemy : Actor
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
+    public static bool HasParameter(string paramName, Animator animator)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+    return false;
+    }
 
     protected void Update()
     {
-        animator.SetBool("isMoving", rb.velocity.magnitude > 0.01);
+        if(HasParameter("isMoving",animator))
+            animator.SetBool("isMoving", rb.velocity.magnitude > 0.01);   
     }
 }
