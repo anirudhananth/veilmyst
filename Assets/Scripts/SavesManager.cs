@@ -56,7 +56,7 @@ public class SavesManager : MonoBehaviour, ISavable
     public int TotalCrownsCollected => m_LevelStats.Aggregate(0, (acc, cur) => acc + cur.collectedCrownsID.Length);
     public int TotalCrowns => m_LevelStats.Aggregate(0, (acc, cur) => acc + cur.crownsID.Length);
     public int TotalLevels => m_LevelStats.Length;
-    public int LevelsUnlocked => m_LevelStats.Count(l => l.unlocked);
+    public int LevelsUnlocked => m_LevelStats.Count(l => l.completed);
 
     // Stats related to completion calculation
     public int crownCompletionWeight = 20;
