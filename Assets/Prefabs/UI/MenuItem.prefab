@@ -197,6 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 4838945194551504024}
   Animator: {fileID: 8489469870329560129}
+  show: 1
+  ParentMenu: {fileID: 0}
+  ConfirmAudioClip: {fileID: 0}
 --- !u!95 &8489469870329560129
 Animator:
   serializedVersion: 5
