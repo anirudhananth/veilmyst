@@ -5578,6 +5578,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7699979356544136503, guid: 9c69a885740ed4584b5cc09362816835,
+        type: 3}
+      propertyPath: phaseA
+      value: 
+      objectReference: {fileID: 1918046070}
+    - target: {fileID: 7699979356544136503, guid: 9c69a885740ed4584b5cc09362816835,
+        type: 3}
+      propertyPath: phaseB
+      value: 
+      objectReference: {fileID: 556609848}
+    - target: {fileID: 7699979356544136503, guid: 9c69a885740ed4584b5cc09362816835,
+        type: 3}
+      propertyPath: timerUI
+      value: 
+      objectReference: {fileID: 676573797}
+    - target: {fileID: 7699979356544136503, guid: 9c69a885740ed4584b5cc09362816835,
+        type: 3}
+      propertyPath: CurrentPhase
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8849977334530110462, guid: 9c69a885740ed4584b5cc09362816835,
         type: 3}
       propertyPath: m_LocalPosition.x
