@@ -37,6 +37,7 @@ public class SavesManager : MonoBehaviour, ISavable
 
     [SerializeField]
     public LevelStat[] m_LevelStats;
+    private LevelStat[] originalStats;
 
     // Computed fields
     public LevelStat CurrentLevelStat
@@ -93,10 +94,10 @@ public class SavesManager : MonoBehaviour, ISavable
     public void Load()
     {
         var saveJson = PlayerPrefs.GetString("save");
-        return;
         Debug.Log($"Loading: \n{saveJson}");
         if (!string.IsNullOrEmpty(saveJson))
         {
+            if (originalStats == null) originalStats = m_LevelStats;
             GameSave save = JsonUtility.FromJson<GameSave>(saveJson);
             m_LevelStats = save.levelStats;
             UpdateMap();
@@ -146,11 +147,14 @@ public class SavesManager : MonoBehaviour, ISavable
             m_LevelStats[i].unlocked = true;
             m_LevelStats[i].completed = true;
         }
+        StatsChanged?.Invoke();
     }
 
     public void ResetSave()
     {
-        PlayerPrefs.SetString("save", "");
+        m_LevelStats = originalStats;
+        Save();
+        StatsChanged?.Invoke();
     }
 
     private void OnLevelEnd(string level, bool completeLevel)

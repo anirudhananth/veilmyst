@@ -15,6 +15,11 @@ public class LevelPreview : AnimatedUI
 
     LevelStat levelStat => SavesManager.Instance.GetLevelStat(levelID);
 
+    public void Start()
+    {
+        SavesManager.Instance.StatsChanged.AddListener(Refresh);
+    }
+
     public void Init(string levelID, StatsDisplay statsDisplay, Sprite image, Showable locked, Showable complete)
     {
         this.levelID = levelID;
@@ -27,8 +32,12 @@ public class LevelPreview : AnimatedUI
     public override void SetShow(bool show)
     {
         base.SetShow(show);
+        Refresh();
+    }
 
-        if (show)
+    private void Refresh()
+    {
+        if (Show)
         {
             PreviewImage.color = levelStat.unlocked ? ColorNormal : ColorLocked;
             if (lockOverlay) lockOverlay.SetShow(!levelStat.unlocked);
