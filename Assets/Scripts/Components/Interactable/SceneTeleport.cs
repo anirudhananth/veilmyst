@@ -43,6 +43,6 @@ public class SceneTeleport : MonoBehaviour
 
     private void OpenScene()
     {
-        MainManager.LoadScene(sceneName);
+        MainManager.LoadScene(sceneName, false);
     }
 }

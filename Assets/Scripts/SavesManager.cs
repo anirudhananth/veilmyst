@@ -153,10 +153,10 @@ public class SavesManager : MonoBehaviour, ISavable
         PlayerPrefs.SetString("save", "");
     }
 
-    private void OnLevelEnd(string level)
+    private void OnLevelEnd(string level, bool completeLevel)
     {
         // Trigger an autosave whenever a level ends (including the main menu)
-        m_LevelStats[levelStatsIndex[level]].completed = true;
+        if (levelStatsIndex.ContainsKey(level)) m_LevelStats[levelStatsIndex[level]].completed = true;
         Debug.Log($"Completed {level}");
         for (int i = 0; i < m_LevelStats.Length; i++)
         {

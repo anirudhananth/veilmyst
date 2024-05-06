@@ -51,7 +51,7 @@ public class MenuLevelSelectAction : MenuHorizontalAction
 
     public override void Trigger(Menu source)
     {
-        MainManager.LoadScene(curLevel.LevelID);
+        if (curLevelStat.unlocked) MainManager.LoadScene(curLevel.LevelID, false);
     }
 
     public override void Select(Menu sourceMenu)

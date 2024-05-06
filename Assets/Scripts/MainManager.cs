@@ -35,7 +35,7 @@ public class MainManager : MonoBehaviour
     private static LevelEvent m_LevelLoadEvent;
     private static LevelEvent m_LevelEndEvent;
 
-    public static IEnumerator DelayedLoadScene(string scene)
+    public static IEnumerator DelayedLoadScene(string scene, bool completeLevel)
     {
         InGame = false;
         if (TransitionAnimator)
@@ -46,7 +46,7 @@ public class MainManager : MonoBehaviour
         {
             Debug.LogError("Missing Transition game object");
         }
-        m_LevelEndEvent?.Invoke(Instance.CurrentLevel);
+        m_LevelEndEvent?.Invoke(Instance.CurrentLevel, completeLevel);
         yield return new WaitForSeconds(0.8f);
         Instance.CurrentLevel = scene;
         AsyncOperation op = SceneManager.LoadSceneAsync(scene);
@@ -55,12 +55,12 @@ public class MainManager : MonoBehaviour
             yield return new WaitForSeconds(0.16f);
         } while (!op.isDone);
         InGame = !SavesManager.Instance.CurrentLevelStat.isMenu;
-        m_LevelLoadEvent?.Invoke(scene);
+        m_LevelLoadEvent?.Invoke(scene, false);
     }
 
-    public static void LoadScene(string scene)
+    public static void LoadScene(string scene, bool completeLevel)
     {
-        Instance.StartCoroutine(DelayedLoadScene(scene));
+        Instance.StartCoroutine(DelayedLoadScene(scene, completeLevel));
     }
 
     private void Awake()
@@ -86,7 +86,7 @@ public class MainManager : MonoBehaviour
     }
 
     [Serializable]
-    public class LevelEvent : UnityEvent<string>
+    public class LevelEvent : UnityEvent<string, bool>
     {
     }
 }

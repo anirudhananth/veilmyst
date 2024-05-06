@@ -21,6 +21,6 @@ public class Objective: Enemy
         GameManager.Instance.PixelPerUnit = 24;
         Die(2f);
         yield return new WaitForSeconds(1f);
-        MainManager.LoadScene(sceneName);
+        MainManager.LoadScene(sceneName, true);
     }
 }
