@@ -176,73 +176,113 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_LevelStats:
-  - name: MainMenu
-    isMenu: 1
-    unlocked: 0
-    deathCount: 0
-    collectedCrownsID: []
-    crownsID: []
   - name: 0-1
     isMenu: 0
-    unlocked: 0
+    unlocked: 1
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - e9cb1efe9ab0b6188043f71e0fbff533
+    - fa7ec5c423e50429ec0b5be41a4ab1a7
+    prereqLevel: 
   - name: 1-1
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
     crownsID:
     - a1c3be60287e2810ba41b1a285924b76
+    prereqLevel: 0-1
   - name: 1-2
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
     crownsID:
     - 3a2d526d22af9631504086120b9bf57a
+    prereqLevel: 1-1
   - name: 1-3
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - 989861f0fe770e74d74b9f06dfc78c6a
+    - d587837da6242a56520f9199c24807a0
+    - a055d725ce1ea3941ed553aa69c44c90
+    prereqLevel: 1-2
   - name: 1-4
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - 4ab765dc89513701cab473cd458e679e
+    - 78258e863073d7a3494d3d63a890751e
+    - 59d5918f9ceca533d5a5aca6a3160ca2
+    - fe4070563094c3a2e7661819781673bd
+    prereqLevel: 1-3
   - name: 1-5
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - d9b8add447d82dcd11af6981da373bd1
+    - ad292b1524b639266724ed5b14360624
+    prereqLevel: 1-4
   - name: 2-1
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - 770458bab4205b0b231f83a22253128f
+    prereqLevel: 1-5
   - name: 2-2
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - e9691b37c3bd1a734e0d107c0edea872
+    - 2f0a1b2ec800374d281a70667e274a4b
+    - 2bb4c2012cc74133d85f9dfc8eb8d6de
+    prereqLevel: 2-1
   - name: 2-3
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - 47dd26310deaa358f2da69ab57b7d79d
+    - a8324bc45b1a49c005ea4e00692728f7
+    - 6a1d816f785285fb9f9ad62622c80c4f
+    - cb1dcac0ac03f0fdf498374f776cb8f3
+    - 0f67b0b616485b08c185d44f06f5abb8
+    - ede1a47ade83002117a75f288222ecd0
+    - 81cba7626eaa27298cc917f019f989f7
+    - cc9243139aeb10c2ae166bb94da2178e
+    - b4253abb6e766ff4c57a33011077cfea
+    - c8f24e4a50ba2936ac4f8867c414583c
+    prereqLevel: 2-2
   - name: B-1
     isMenu: 0
     unlocked: 0
+    completed: 0
     deathCount: 0
     collectedCrownsID: []
-    crownsID: []
+    crownsID:
+    - f710120051bde53a9767131909db72ea
+    prereqLevel: 2-3
   crownCompletionWeight: 100
   levelCompletionWeight: 100

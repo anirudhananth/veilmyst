@@ -4,7 +4,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 [Serializable]
 public struct LevelStat
@@ -12,10 +11,12 @@ public struct LevelStat
     public string name;
     public bool isMenu;
     public bool unlocked;
+    public bool completed;
 
     public int deathCount;
     public string[] collectedCrownsID;
     public string[] crownsID;
+    public string prereqLevel;
 }
 
 public struct GameSave
@@ -38,7 +39,18 @@ public class SavesManager : MonoBehaviour, ISavable
     public LevelStat[] m_LevelStats;
 
     // Computed fields
-    public LevelStat CurrentLevelStat => m_LevelStats[levelStatsIndex[MainManager.Instance.CurrentLevel]];
+    public LevelStat CurrentLevelStat
+    {
+        get
+        {
+            if (levelStatsIndex.ContainsKey(MainManager.Instance.CurrentLevel))
+                return m_LevelStats[levelStatsIndex[MainManager.Instance.CurrentLevel]];
+            LevelStat stat = new();
+            stat.name = MainManager.Instance.CurrentLevel;
+            stat.isMenu = true;
+            return stat;
+        }
+    }
     public int TotalDeaths => m_LevelStats.Aggregate(0, (acc, cur) => acc + cur.deathCount);
     public int TotalCrownsCollected => m_LevelStats.Aggregate(0, (acc, cur) => acc + cur.collectedCrownsID.Length);
     public int TotalCrowns => m_LevelStats.Aggregate(0, (acc, cur) => acc + cur.crownsID.Length);
@@ -91,6 +103,11 @@ public class SavesManager : MonoBehaviour, ISavable
         }
     }
 
+    public LevelStat GetLevelStat(string name)
+    {
+        return m_LevelStats[levelStatsIndex[name]];
+    }
+
     public void StatAddDeath()
     {
         var stat = CurrentLevelStat;
@@ -122,9 +139,33 @@ public class SavesManager : MonoBehaviour, ISavable
         }
     }
 
+    public void UnlockAll()
+    {
+        for (int i = 0; i < m_LevelStats.Length; i++)
+        {
+            m_LevelStats[i].unlocked = true;
+            m_LevelStats[i].completed = true;
+        }
+    }
+
+    public void ResetSave()
+    {
+        PlayerPrefs.SetString("save", "");
+    }
+
     private void OnLevelEnd(string level)
     {
         // Trigger an autosave whenever a level ends (including the main menu)
+        m_LevelStats[levelStatsIndex[level]].completed = true;
+        Debug.Log($"Completed {level}");
+        for (int i = 0; i < m_LevelStats.Length; i++)
+        {
+            if (m_LevelStats[i].prereqLevel == level)
+            {
+                m_LevelStats[i].unlocked = true;
+                Debug.Log($"Unlocked {m_LevelStats[i].name}");
+            }
+        }
         Save();
     }
 }

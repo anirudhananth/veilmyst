@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
@@ -8,7 +9,7 @@ public struct LevelData
 {
     public string LevelID;
     public string DisplayName;
-    public Showable Grid;
+    public Sprite PreviewImage;
 }
 
 public class MenuLevelSelectAction : MenuHorizontalAction
@@ -16,7 +17,24 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     public LevelData[] Levels;
     public int SelectedLevelIndex = -1;
     public TextMeshProUGUI LevelName;
+    public TextMeshProUGUI LevelIndicator;
     public CinemachineVirtualCamera Camera;
+    public GameObject PreviewPrefab;
+    public Transform PreviewLocation;
+    public StatsDisplay StatsDisplay;
+
+    public Showable LockedText;
+    public Showable CompletedText;
+
+    private Dictionary<string, LevelPreview> previews;
+    private LevelPreview curPreview
+    {
+        get
+        {
+            if (previews == null) InitPreviews();
+            return previews[curLevel.LevelID];
+        }
+    }
 
     LevelData curLevel => Levels[SelectedLevelIndex];
     public LevelStat curLevelStat => SavesManager.Instance.GetLevelStat(curLevel.LevelID);
@@ -27,6 +45,7 @@ public class MenuLevelSelectAction : MenuHorizontalAction
         base.Start();
         Debug.Assert(Levels.Length > 0, "No levels configured!");
         menuItem.RegisterShow(HandleShow);
+
         RegisterMove(HandleMove);
     }
 
@@ -43,6 +62,17 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     public override void Deselect(Menu sourceMenu)
     {
         Refresh();
+    }
+
+    private void InitPreviews()
+    {
+        previews = new();
+        foreach (LevelData data in Levels)
+        {
+            LevelPreview preview = Instantiate(PreviewPrefab, PreviewLocation.position, PreviewLocation.rotation).GetComponent<LevelPreview>();
+            preview.Init(data.LevelID, StatsDisplay, data.PreviewImage, LockedText, CompletedText);
+            previews[data.LevelID] = preview;
+        }
     }
 
     private void Refresh()
@@ -68,12 +98,13 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     {
         if (SelectedLevelIndex != -1)
         {
-            curLevel.Grid.SetShow(false);
+            curPreview.SetShow(false);
         }
 
         SelectedLevelIndex = nextLevelIndex;
+        LevelIndicator.text = new string('|', SelectedLevelIndex) + 'x' + new string('|', previews.Count - SelectedLevelIndex - 1);
         LevelName.text = levelText;
-        Levels[nextLevelIndex].Grid.SetShow(true);
+        previews[Levels[nextLevelIndex].LevelID].SetShow(true);
     }
 
     private void HandleMove(int diff)

@@ -32,6 +32,7 @@ public class Menu : Showable
     public Menu ParentMenu;
     public AnimatedUI Animator;
     public CinemachineVirtualCamera MenuCamera;
+    public List<Showable> AdditionalChildren;
 
     public InputAction UpAction, DownAction, LeftAction, RightAction, EnterAction;
     private bool initialized = false;
@@ -72,6 +73,10 @@ public class Menu : Showable
         }
         // Propagate set show to the menu items
         foreach (MenuItem item in MenuItems)
+        {
+            item.SetShow(show);
+        }
+        foreach (Showable item in AdditionalChildren)
         {
             item.SetShow(show);
         }

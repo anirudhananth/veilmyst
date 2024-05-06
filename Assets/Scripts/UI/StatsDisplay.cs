@@ -1,4 +1,4 @@
-using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StatsDisplay : MonoBehaviour
@@ -7,10 +7,18 @@ public class StatsDisplay : MonoBehaviour
     public AnimatedText deathTextbox;
     public AnimatedText collectedCrownsTextbox;
     public AnimatedText crownsTextbox;
+    public AnimatedText completionTextbox;
 
-    private int deathCount => MainManager.Instance.SavesManager.CurrentLevelStat.deathCount;
-    private int collectedCrownsCount => MainManager.Instance.SavesManager.CurrentLevelStat.collectedCrownsID.Length;
-    private int crownsCount => MainManager.Instance.SavesManager.CurrentLevelStat.crownsID.Length;
+    private SavesManager saves => MainManager.Instance.SavesManager;
+    private LevelStat curStats => saves.CurrentLevelStat;
+
+    public void DrawStats(LevelStat stat)
+    {
+        if (deathTextbox) deathTextbox.text = stat.deathCount.ToString();
+        if (collectedCrownsTextbox) collectedCrownsTextbox.text = stat.collectedCrownsID.Length.ToString();
+        if (crownsTextbox) crownsTextbox.text = stat.crownsID.Length.ToString();
+        if (completionTextbox) completionTextbox.text = string.Format("{0:P2}", saves.Completion);
+    }
 
     private void Start()
     {
@@ -20,8 +28,6 @@ public class StatsDisplay : MonoBehaviour
 
     private void RedrawStats()
     {
-        if (deathTextbox) deathTextbox.text = deathCount.ToString();
-        if (collectedCrownsTextbox) collectedCrownsTextbox.text = collectedCrownsCount.ToString();
-        if (crownsTextbox) crownsTextbox.text = crownsCount.ToString();
+        DrawStats(curStats);
     }
 }

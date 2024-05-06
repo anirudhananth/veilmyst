@@ -40,11 +40,11 @@ public class SavesManagerEditor : UnityEditor.Editor
 
         int index = size;
 
+        string prevLevelName = "";
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
         {
             if (scene.enabled)
             {
-
                 string name = scene.path.Split("/").Last().Split(".").First();
                 int i;
                 if (lookup.ContainsKey(name))
@@ -62,11 +62,18 @@ public class SavesManagerEditor : UnityEditor.Editor
 
                 var val = m_LevelStats.GetArrayElementAtIndex(i);
                 val.FindPropertyRelative("name").stringValue = name;
+                Debug.Log(prevLevelName);
+                if (!string.IsNullOrEmpty(prevLevelName))
+                {
+                    val.FindPropertyRelative("prereqLevel").stringValue = prevLevelName;
+                }
+                else
+                {
+                    val.FindPropertyRelative("unlocked").boolValue = true;
+                }
+                prevLevelName = name;
                 if (EditorSceneManager.GetActiveScene().name == name)
                 {
-                    Debug.Log("here");
-                    Debug.Log(EditorSceneManager.GetActiveScene().name);
-                    Debug.Log(name);
                     // Populate the crowns ID
                     var idArr = val.FindPropertyRelative("crownsID");
                     int idArrSize = 0;

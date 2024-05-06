@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Showable))]
 public class IngameUI : MonoBehaviour
 {
+    public bool Inverted = false;
+
     private Showable group;
 
     private void Start()
@@ -15,6 +17,8 @@ public class IngameUI : MonoBehaviour
 
     private void Update()
     {
-        group.SetShow(Menu.FocusedMenu == null && MainManager.InGame);
+        bool inGame = Menu.FocusedMenu == null && MainManager.InGame;
+        if (Inverted) inGame = !inGame;
+        group.SetShow(inGame);
     }
 }
