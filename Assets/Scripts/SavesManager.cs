@@ -156,10 +156,12 @@ public class SavesManager : MonoBehaviour, ISavable
     private void OnLevelEnd(string level, bool completeLevel)
     {
         // Trigger an autosave whenever a level ends (including the main menu)
+        if (!completeLevel) return;
         if (levelStatsIndex.ContainsKey(level)) m_LevelStats[levelStatsIndex[level]].completed = true;
         Debug.Log($"Completed {level}");
         for (int i = 0; i < m_LevelStats.Length; i++)
         {
+            if (m_LevelStats[i].completed) m_LevelStats[i].unlocked = true;
             if (m_LevelStats[i].prereqLevel == level)
             {
                 m_LevelStats[i].unlocked = true;

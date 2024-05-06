@@ -41,6 +41,8 @@ public class Collectible : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        Debug.Assert(MainManager.Instance.SavesManager.CurrentLevelStat.crownsID.Contains(CollectibleID), $"Crown {CollectibleID} is missing from the scene level stat!");
     }
 
     // Update is called once per frame
