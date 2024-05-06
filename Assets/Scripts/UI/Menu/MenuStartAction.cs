@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class MenuStartAction : MenuActionBase
 {
+    public string sceneName = "0-1";
+
     public override void Trigger(Menu source)
     {
-        MainManager.LoadScene("0-1", false);
+        MainManager.LoadScene(sceneName, false);
     }
 }
