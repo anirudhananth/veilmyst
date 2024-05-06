@@ -22,10 +22,12 @@ public struct LevelStat
 public struct GameSave
 {
     public LevelStat[] levelStats;
+    public int version;
 }
 
 public class SavesManager : MonoBehaviour, ISavable
 {
+    public const int VERSION = 1;
     public static SavesManager Instance;
     [SerializeField]
     public Dictionary<string, int> levelStatsIndex
@@ -85,6 +87,7 @@ public class SavesManager : MonoBehaviour, ISavable
     public void Save()
     {
         GameSave save;
+        save.version = VERSION;
         save.levelStats = m_LevelStats;
         var saveJson = JsonUtility.ToJson(save, true);
         Debug.Log($"Saving: \n{saveJson}");
@@ -99,6 +102,11 @@ public class SavesManager : MonoBehaviour, ISavable
         {
             if (originalStats == null) originalStats = m_LevelStats;
             GameSave save = JsonUtility.FromJson<GameSave>(saveJson);
+            if (save.version != VERSION)
+            {
+                PlayerPrefs.SetString("save", "");
+                return;
+            }
             m_LevelStats = save.levelStats;
             UpdateMap();
         }

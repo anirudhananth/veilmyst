@@ -34,7 +34,7 @@ public class MenuLevelSelectActionEditor : UnityEditor.Editor
         for (int i = 0; i < size; i++)
         {
             var val = m_Levels.GetArrayElementAtIndex(i);
-            string name = val.FindPropertyRelative("name").stringValue;
+            string name = val.FindPropertyRelative("LevelID").stringValue;
             lookup[name] = i;
         }
 

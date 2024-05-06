@@ -185,7 +185,7 @@ MonoBehaviour:
     crownsID:
     - e9cb1efe9ab0b6188043f71e0fbff533
     - fa7ec5c423e50429ec0b5be41a4ab1a7
-    prereqLevel: 
+    prereqLevel: MainMenu
   - name: 1-1
     isMenu: 0
     unlocked: 0
@@ -284,5 +284,16 @@ MonoBehaviour:
     crownsID:
     - f710120051bde53a9767131909db72ea
     prereqLevel: 2-3
+  - name: B-2
+    isMenu: 0
+    unlocked: 0
+    completed: 0
+    deathCount: 0
+    collectedCrownsID: []
+    crownsID:
+    - c2840f40302567439bd034ccd402fd76
+    - a3b3494c451e29f495c68cfbf90bbb58
+    - 49b21f086855d3162e526d1732b1fca7
+    prereqLevel: B-1
   crownCompletionWeight: 100
   levelCompletionWeight: 100
