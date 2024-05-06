@@ -71,7 +71,6 @@ public class MenuRebindAction : MenuHorizontalAction
 
     public override void Deselect(Menu sourceMenu)
     {
-        resetMode = false;
         Refresh();
     }
 
@@ -88,8 +87,8 @@ public class MenuRebindAction : MenuHorizontalAction
 
     private void Refresh()
     {
-        if (resetMode && menuItem.Selected) ActionTextBox.text = "Reset to Default";
-        else ActionTextBox.text = actionText;
+        if (resetMode) menuItem.OverriddenText = $"{actionText} [Reset]";
+        else menuItem.OverriddenText = $"[{actionText}] Reset";
 
         Player.AnimationOverride = lockedIn;
         HintVariant variant = resetMode ? HintVariant.RebindReset : HintVariant.RebindNormal;
@@ -100,8 +99,9 @@ public class MenuRebindAction : MenuHorizontalAction
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (menuItem.ParentMenu == null || !menuItem.ParentMenu.HasFocus) return;
 
         if (lockedIn && rebindActionUI?.ongoingRebind == null)

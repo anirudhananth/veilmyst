@@ -22,9 +22,9 @@ public abstract class MenuHorizontalAction : MenuActionBase
         OnMove += handler;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (!menuItem.ParentMenu || !menuItem.ParentMenu.HasFocus) return;
+        if (!menuItem.ParentMenu || !menuItem.ParentMenu.HasFocus || !menuItem.Selected) return;
 
         var p = menuItem.ParentMenu;
 

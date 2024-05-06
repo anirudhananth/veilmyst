@@ -19,6 +19,7 @@ public class MenuLevelSelectAction : MenuHorizontalAction
     public CinemachineVirtualCamera Camera;
 
     LevelData curLevel => Levels[SelectedLevelIndex];
+    public LevelStat curLevelStat => SavesManager.Instance.GetLevelStat(curLevel.LevelID);
     string levelText => $"{curLevel.DisplayName} ({curLevel.LevelID})";
 
     public override void Start()

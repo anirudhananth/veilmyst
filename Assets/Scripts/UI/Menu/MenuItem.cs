@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,16 @@ public class MenuItem : Showable
     public bool Selected { get; private set; }
     [Tooltip("Use this to replace the menu-wide confirmation sound effect")]
     public AudioClip ConfirmAudioClip;
+    public string OverriddenText
+    {
+        get => overriddenText;
+        set
+        {
+            overriddenText = value;
+            if (!string.IsNullOrEmpty(value)) textBox.text = value;
+        }
+    }
+    private string overriddenText = "";
 
     private MenuActionBase menuAction;
     private string text;
@@ -29,7 +40,7 @@ public class MenuItem : Showable
     {
         Selected = true;
         Animator.SetBool("selected", true);
-        textBox.text = $"[{text}]";
+        textBox.text = string.IsNullOrEmpty(overriddenText) ? $"[{text}]" : overriddenText;
         menuAction.Select(ParentMenu);
     }
 
@@ -37,7 +48,7 @@ public class MenuItem : Showable
     {
         Selected = false;
         Animator.SetBool("selected", false);
-        textBox.text = $" {text} ";
+        textBox.text = string.IsNullOrEmpty(overriddenText) ? $" {text} " : overriddenText;
         menuAction.Deselect(ParentMenu);
     }
 
