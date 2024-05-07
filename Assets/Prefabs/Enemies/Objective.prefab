@@ -257,6 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014566413050211916, guid: 52753f32b49253842a7da39c31cc9a38,
         type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014566413050211916, guid: 52753f32b49253842a7da39c31cc9a38,
+        type: 3}
       propertyPath: m_TagString
       value: DestructibleEnemy
       objectReference: {fileID: 0}
