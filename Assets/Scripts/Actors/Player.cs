@@ -51,7 +51,7 @@ public class Player : Actor
             {
                 phaseManager.PhaseChanger();
             }
-            yield return new WaitForSeconds(0.2f);
+            //yield return new WaitForSeconds(0.2f);
             player.input.ActivateInput();
             isDead = false;
             self.GetComponent<BoxCollider2D>().enabled = true;

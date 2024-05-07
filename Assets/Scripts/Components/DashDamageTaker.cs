@@ -59,4 +59,27 @@ public class DashDamageTaker : MonoBehaviour
             }
         }
     }
+
+    void OnTriggerStay2D(Collider2D other) 
+    {
+        Movement movement;
+        if (other.gameObject.TryGetComponent(out movement))
+        {
+            if (movement.isDashing)
+            {
+                Enemy enemy;
+                if ((Parent && Parent.TryGetComponent(out enemy)) || (!Parent && TryGetComponent(out enemy)))
+                {
+                    if (enemy.isDead)
+                    {
+                        OnCollideDash(this);
+                        return;
+                    }
+                }
+                movement.DashImpact((Parent) ? Parent : gameObject);
+                OnCollideDash(this);
+            }
+        }
+        
+    }
 }
