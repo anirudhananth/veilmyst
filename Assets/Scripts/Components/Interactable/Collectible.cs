@@ -23,7 +23,7 @@ public class Collectible : MonoBehaviour
     private bool isTouched = false;
     private bool isDead = false;
     private float groundedTimeout = 0;
-    private const float maxGroundedTimeout = 0.05f;
+    private const float maxGroundedTimeout = 0.2f;
 
     private AudioSource source;
     private Player player;
@@ -83,6 +83,7 @@ public class Collectible : MonoBehaviour
         source.clip = CollectAudio;
         source.Play();
         MainManager.Instance.SavesManager.StatCollectCrown(CollectibleID);
+        if (player) player.destructible.OnDeath -= HandlePlayerDeath;
         Destroy(gameObject, 1f);
     }
 
