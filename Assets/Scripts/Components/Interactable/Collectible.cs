@@ -14,7 +14,8 @@ public class Collectible : MonoBehaviour
     public AudioClip ActivateAudio;
     public AudioClip CollectAudio;
     public AudioClip FailAudio;
-    public string CollectibleID => GenerateID(MainManager.Instance.CurrentLevel, transform);
+    public Vector3 InitPos;
+    public string CollectibleID => GenerateID(MainManager.Instance.CurrentLevel, InitPos);
     // For inspector display only
     [SerializeField]
     private string m_CollectibleID;
@@ -27,14 +28,15 @@ public class Collectible : MonoBehaviour
     private AudioSource source;
     private Player player;
 
-    public static string GenerateID(string sceneName, Transform collectible)
+    public static string GenerateID(string sceneName, Vector3 collectible)
     {
-        string rawID = $"{collectible.transform.position}-crown-{sceneName}";
+        string rawID = $"{collectible}-crown-{sceneName}";
         return Hash128.Compute(rawID).ToSafeString();
     }
 
     void Start()
     {
+        InitPos = transform.position;
         GameManager.Instance.PhaseManager.RegisterPhaseChange(HandlePhaseChange);
         source = GetComponent<AudioSource>();
         if (MainManager.Instance.SavesManager.CurrentLevelStat.collectedCrownsID.Contains(CollectibleID))

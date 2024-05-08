@@ -23,7 +23,7 @@ public class CollectibleEditor : Editor
     private void GenerateID()
     {
         string sceneName = EditorSceneManager.GetActiveScene().name;
-        m_CollectibleID.stringValue = Collectible.GenerateID(sceneName, target.GetComponent<Transform>());
+        m_CollectibleID.stringValue = Collectible.GenerateID(sceneName, target.GetComponent<Collectible>().transform.position);
     }
 
     private void OnEnable()

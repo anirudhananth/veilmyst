@@ -81,7 +81,7 @@ public class SavesManagerEditor : UnityEditor.Editor
                     foreach (Collectible collectible in FindObjectsOfType<Collectible>())
                     {
                         idArr.InsertArrayElementAtIndex(idArrSize);
-                        idArr.GetArrayElementAtIndex(idArrSize).stringValue = Collectible.GenerateID(name, collectible.transform);
+                        idArr.GetArrayElementAtIndex(idArrSize).stringValue = Collectible.GenerateID(name, collectible.transform.position);
                         idArrSize++;
                     }
                 }
