@@ -22,6 +22,7 @@ public class Collectible : MonoBehaviour
 
     private bool isTouched = false;
     private bool isDead = false;
+    private bool isCollected = false;
     private float groundedTimeout = 0;
     private const float maxGroundedTimeout = 0.2f;
 
@@ -76,6 +77,8 @@ public class Collectible : MonoBehaviour
     private void Collect()
     {
         if (isDead) return;
+        if (isCollected) return;
+        isCollected = true;
         isDead = true;
         animator.GetComponent<SpriteRenderer>().enabled = false;
         GameObject effect = Instantiate(GameManager.Instance.EffectsPrefab);
@@ -89,8 +92,9 @@ public class Collectible : MonoBehaviour
 
     private void Fail()
     {
+        if (isCollected) return;
         if (!isTouched) return;
-        if (gameObject==null || !gameObject.activeSelf) return;
+        if (!gameObject==null || !gameObject.activeSelf) return;
         isTouched = false;
         animator.SetBool("active", false);
         source.clip = FailAudio;
